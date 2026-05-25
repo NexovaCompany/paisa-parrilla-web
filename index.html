@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paisa Parrilla | Restaurante Bar – Bocagrande, Cartagena</title>
+  <meta name="description" content="Sabor típico colombiano en el corazón de Bocagrande, Cartagena. Platos típicos, parrilla, música en vivo. Reservas: +57 302 858 1981">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brown:   #7B3A0E;
+      --brown-l: #A05020;
+      --brown-d: #3D1800;
+      --yellow:  #FFD700;
+      --yellow-d:#E6C200;
+      --red:     #C8102E;
+      --red-d:   #A00D24;
+      --bg:      #FFF8EF;
+      --card:    #FFFFFF;
+      --text:    #2A1200;
+      --text-l:  #6B3A18;
+      --text-m:  #9A6040;
+      --border:  #F0D8B8;
+      --sh:      0 4px 24px rgba(123,58,14,.11);
+      --sh-h:    0 10px 44px rgba(123,58,14,.22);
+      --r:       16px;
+      --r-s:     8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; object-fit: cover; }
+    section { padding: 80px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .sec-title { font-size: clamp(1.9rem,4vw,2.8rem); color: var(--brown-d); text-align: center; margin-bottom: 8px; }
+    .sec-sub   { text-align: center; color: var(--text-l); font-size: .97rem; margin-bottom: 48px; }
+
+    /* ── BUTTONS ── */
+    .btn-y {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--yellow); color: var(--brown-d);
+      font-weight: 700; font-size: .95rem;
+      padding: 14px 28px; border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(255,215,0,.35);
+      transition: all .2s;
+    }
+    .btn-y:hover { background: var(--yellow-d); transform: translateY(-2px); box-shadow: 0 6px 30px rgba(255,215,0,.45); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #fff;
+      font-weight: 600; font-size: .95rem;
+      padding: 14px 28px; border-radius: 50px;
+      border: 2px solid rgba(255,255,255,.4);
+      transition: all .2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.75); }
+
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff;
+      font-weight: 700; font-size: 1rem;
+      padding: 16px 32px; border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      transition: all .2s;
+    }
+    .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+    .btn-outline-w {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.12); color: #fff;
+      font-weight: 600; font-size: 1rem;
+      padding: 16px 32px; border-radius: 50px;
+      border: 2px solid rgba(255,255,255,.4);
+      transition: all .2s;
+    }
+    .btn-outline-w:hover { background: rgba(255,255,255,.22); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--brown-d);
+      border-bottom: 1px solid rgba(255,255,255,.08); padding: 8px 20px;
+    }
+    .nav-in {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 42px; width: auto; object-fit: contain; display: block; }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.75); transition: color .2s; }
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-cta {
+      background: var(--yellow) !important; color: var(--brown-d) !important;
+      padding: 8px 20px; border-radius: 50px; font-weight: 700 !important;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--yellow-d) !important; }
+    @media(max-width:768px){ .nav-links { display: none; } }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 58px;
+      background: linear-gradient(140deg, #3D1800 0%, #7B3A0E 50%, #A05020 100%);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; top: -40%; right: -15%;
+      width: 65%; height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,.07) 0%, transparent 65%);
+    }
+    #hero::after {
+      content: ''; position: absolute; bottom: -15%; left: -10%;
+      width: 50%; height: 60%;
+      background: radial-gradient(circle, rgba(200,16,46,.06) 0%, transparent 65%);
+    }
+    .hero-in {
+      max-width: 1100px; margin: 0 auto; padding: 60px 20px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-text { color: #fff; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,215,0,.14); border: 1px solid rgba(255,215,0,.4);
+      color: var(--yellow); font-size: .78rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 50px; margin-bottom: 24px;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .hero-title { font-size: clamp(2.2rem,5vw,3.6rem); color: #fff; margin-bottom: 16px; }
+    .hero-title em { font-style: normal; color: var(--yellow); }
+    .hero-slogan { font-size: 1.05rem; color: rgba(255,255,255,.82); margin-bottom: 36px; font-weight: 300; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ── INSTAGRAM CARD ── */
+    .ig-card {
+      background: #fff; border-radius: 22px; overflow: hidden;
+      box-shadow: 0 22px 64px rgba(0,0,0,.32); max-width: 370px; margin-left: auto;
+    }
+    .ig-head {
+      background: linear-gradient(135deg, #3D1800, #7B3A0E);
+      padding: 18px 18px 14px;
+    }
+    .ig-handle-bar {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;
+    }
+    .ig-handle-link {
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,.9); font-size: .83rem; font-weight: 600;
+      text-decoration: none; transition: color .2s;
+    }
+    .ig-handle-link:hover { color: var(--yellow); }
+    .ig-icon {
+      width: 22px; height: 22px; flex-shrink: 0;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border-radius: 6px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 13px; line-height: 1;
+    }
+    .ig-open-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+      color: #fff; font-size: .72rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 50px;
+      transition: all .2s; cursor: pointer; text-decoration: none;
+    }
+    .ig-open-btn:hover { background: rgba(255,255,255,.28); }
+    .ig-profile-row { display: flex; align-items: center; gap: 14px; }
+    .ig-avatar {
+      width: 68px; height: 68px; border-radius: 50%;
+      border: 3px solid var(--yellow); overflow: hidden; flex-shrink: 0;
+      background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+      display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+    }
+    .ig-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .ig-name-blk { color: #fff; }
+    .ig-name { font-family: 'Playfair Display',serif; font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .ig-tick {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 17px; height: 17px; background: var(--yellow); border-radius: 50%;
+      font-size: 9px; color: var(--brown-d);
+    }
+    .ig-cat { font-size: .72rem; color: rgba(255,255,255,.7); margin-top: 3px; }
+    .ig-stats-link {
+      display: flex; background: rgba(0,0,0,.18); border-radius: 11px;
+      margin-top: 14px; overflow: hidden; text-decoration: none;
+      transition: background .2s;
+    }
+    .ig-stats-link:hover { background: rgba(0,0,0,.28); }
+    .ig-stat { flex: 1; text-align: center; padding: 10px 6px; color: #fff; }
+    .ig-stat + .ig-stat { border-left: 1px solid rgba(255,255,255,.14); }
+    .ig-stat-n { font-weight: 700; font-size: 1rem; display: block; line-height: 1; }
+    .ig-stat-l { font-size: .63rem; opacity: .72; text-transform: uppercase; letter-spacing: .05em; margin-top: 2px; display: block; }
+    .ig-bio { padding: 12px 16px; font-size: .79rem; color: var(--text); line-height: 1.55; border-bottom: 1px solid var(--border); }
+    .ig-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .ig-cell {
+      aspect-ratio: 1; overflow: hidden; background: var(--border);
+      display: flex; align-items: center; justify-content: center; font-size: 1.7rem;
+      position: relative;
+    }
+    .ig-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .ig-cell:hover img { transform: scale(1.08); }
+    /* Hover overlay on grid cells */
+    .ig-cell::after {
+      content: '▶';
+      position: absolute; inset: 0;
+      background: rgba(61,24,0,.55);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.4rem;
+      opacity: 0; transition: opacity .25s;
+    }
+    .ig-cell:hover::after { opacity: 1; }
+    /* Full-width Instagram CTA button at bottom of card */
+    .ig-cta {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px;
+      background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff; font-weight: 700; font-size: .88rem;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .ig-cta:hover { opacity: .88; }
+    .ig-cta-logo { height: 20px; width: auto; border-radius: 4px; }
+
+    @media(max-width:768px){
+      .hero-in { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero-btns { justify-content: center; }
+      .ig-card { margin: 0 auto; }
+    }
+
+    /* ── STRIP ── */
+    #strip { background: var(--brown-d); padding: 26px 20px; }
+    .strip-in {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-around; gap: 18px; flex-wrap: wrap;
+    }
+    .strip-item { display: flex; align-items: center; gap: 10px; color: #fff; font-size: .88rem; font-weight: 500; }
+    .strip-item span:first-child { font-size: 1.35rem; }
+
+    /* ── GALLERY ── */
+    #galeria { background: var(--bg); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 20px; }
+    .g-card {
+      border-radius: var(--r); overflow: hidden; background: var(--card);
+      box-shadow: var(--sh); transition: all .3s; cursor: default;
+    }
+    .g-card:hover { transform: translateY(-6px); box-shadow: var(--sh-h); }
+    .g-img {
+      width: 100%; height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem;
+      background: linear-gradient(135deg,#f5e8d4,#e8d4b8);
+      overflow: hidden;
+    }
+    .g-img img { width: 100%; height: 100%; object-fit: cover; }
+    .g-info { padding: 16px; }
+    .g-name  { font-family: 'Playfair Display',serif; font-size: 1.08rem; color: var(--brown-d); margin-bottom: 4px; }
+    .g-desc  { font-size: .8rem; color: var(--text-l); line-height: 1.55; }
+    .g-badge {
+      display: inline-block; background: var(--yellow); color: var(--brown-d);
+      font-size: .68rem; font-weight: 700; padding: 2px 10px; border-radius: 50px;
+      margin-top: 8px; text-transform: uppercase; letter-spacing: .05em;
+    }
+
+    /* ── MENU ── */
+    #menu { background: linear-gradient(180deg,#f7ede0 0%,var(--bg) 100%); }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 16px; }
+    .m-card {
+      background: var(--card); border-radius: var(--r); padding: 24px 16px;
+      text-align: center; box-shadow: var(--sh); border: 1px solid var(--border);
+      transition: all .25s;
+    }
+    .m-card:hover { border-color: var(--brown); transform: translateY(-3px); box-shadow: var(--sh-h); }
+    .m-icon  { font-size: 2.2rem; margin-bottom: 10px; }
+    .m-name  { font-family: 'Playfair Display',serif; font-size: .98rem; color: var(--brown-d); margin-bottom: 6px; }
+    .m-desc  { font-size: .77rem; color: var(--text-m); line-height: 1.5; }
+    .m-price { margin-top: 10px; font-size: .8rem; font-weight: 600; color: var(--red); }
+    .m-cta-box {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--brown), var(--brown-d));
+      border-radius: var(--r); padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+    .m-cta-box h3 { color: #fff; font-size: 1.3rem; margin-bottom: 4px; }
+    .m-cta-box p  { color: rgba(255,255,255,.8); font-size: .9rem; }
+
+    /* ── BAR ── */
+    #bar { background: var(--brown-d); }
+    #bar .sec-title { color: var(--yellow); }
+    #bar .sec-sub   { color: rgba(255,255,255,.72); }
+    .bar-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(155px,1fr)); gap: 16px; }
+    .bar-item {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.11);
+      border-radius: var(--r); padding: 22px 14px; text-align: center; transition: all .25s;
+    }
+    .bar-item:hover { background: rgba(255,215,0,.14); border-color: rgba(255,215,0,.4); }
+    .bar-icon { font-size: 2rem; margin-bottom: 8px; }
+    .bar-name { font-weight: 600; font-size: .88rem; color: var(--yellow); }
+
+    /* ── NOSOTROS ── */
+    #nosotros { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-text h2 { font-size: clamp(1.8rem,3.5vw,2.5rem); color: var(--brown-d); margin-bottom: 16px; }
+    .about-text p  { color: var(--text-l); font-size: .96rem; line-height: 1.8; margin-bottom: 12px; }
+    .about-feats { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+    .about-feat {
+      display: flex; align-items: flex-start; gap: 12px; padding: 14px;
+      background: rgba(123,58,14,.06); border-radius: var(--r-s); border-left: 3px solid var(--brown);
+    }
+    .af-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .af-text strong { display: block; font-size: .88rem; color: var(--brown-d); margin-bottom: 2px; }
+    .af-text span   { font-size: .78rem; color: var(--text-m); }
+    .about-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .av-item {
+      border-radius: var(--r); overflow: hidden;
+      background: linear-gradient(135deg,var(--border),#e8d4b8);
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center; font-size: 3rem;
+    }
+    .av-item.tall { grid-row: span 2; aspect-ratio: unset; }
+    .av-item img { width: 100%; height: 100%; object-fit: cover; }
+    @media(max-width:768px){ .about-grid { grid-template-columns: 1fr; } .about-visual { display: none; } }
+
+    /* ── UBICACIÓN ── */
+    #ubicacion { background: var(--bg); }
+    .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
+    .loc-info { display: flex; flex-direction: column; gap: 20px; }
+    .loc-item { display: flex; gap: 16px; align-items: flex-start; }
+    .loc-icon {
+      width: 46px; height: 46px; background: var(--brown); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem; flex-shrink: 0; color: #fff;
+    }
+    .loc-item h4 { font-family: 'Poppins',sans-serif; font-weight: 600; font-size: .88rem; color: var(--text); margin-bottom: 4px; }
+    .loc-item p, .loc-item a { font-size: .85rem; color: var(--text-l); line-height: 1.55; }
+    .loc-item a:hover { color: var(--brown); }
+    .map-box { border-radius: var(--r); overflow: hidden; box-shadow: var(--sh); min-height: 320px; }
+    .map-box iframe { width: 100%; height: 100%; min-height: 360px; border: 0; display: block; }
+    @media(max-width:768px){ .loc-grid { grid-template-columns: 1fr; } }
+
+    /* ── CTA FINAL ── */
+    #cta { background: linear-gradient(135deg, var(--red) 0%, var(--red-d) 100%); text-align: center; padding: 80px 20px; }
+    #cta h2 { color: #fff; font-size: clamp(2rem,5vw,3rem); margin-bottom: 12px; }
+    #cta p  { color: rgba(255,255,255,.85); font-size: 1.08rem; margin-bottom: 36px; }
+    .cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--brown-d); color: rgba(255,255,255,.65); padding: 44px 20px; text-align: center; }
+    .foot-in { max-width: 1100px; margin: 0 auto; }
+    .foot-logo { margin-bottom: 12px; display: flex; justify-content: center; }
+    .foot-logo img { height: 52px; width: auto; object-fit: contain; }
+    .foot-links { display: flex; justify-content: center; gap: 22px; margin: 14px 0; flex-wrap: wrap; }
+    .foot-links a { font-size: .83rem; color: rgba(255,255,255,.55); transition: color .2s; }
+    .foot-links a:hover { color: var(--yellow); }
+    .foot-social { display: flex; justify-content: center; gap: 14px; margin: 14px 0; }
+    .foot-social a {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+      transition: background .2s;
+    }
+    .foot-social a:hover { background: var(--brown-l); }
+    .foot-copy { font-size: .78rem; color: rgba(255,255,255,.35); margin-top: 18px; }
+
+    /* ── FLOATING WHATSAPP ── */
+    .wa-float {
+      position: fixed; bottom: 26px; right: 26px; z-index: 99;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366; color: #fff; font-size: 1.55rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.5);
+      transition: all .2s; animation: wapulse 2.5s infinite;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+    @keyframes wapulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,.5); }
+      50%      { box-shadow: 0 4px 34px rgba(37,211,102,.78); }
+    }
+
+    /* ── FADE IN ── */
+    .fi { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .fi.vis { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20Paisa%20Parrilla%20%F0%9F%8D%BD%EF%B8%8F"
+   class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp reservas">💬</a>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-in">
+    <div class="nav-logo">
+      <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#galeria">Platos</a></li>
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#bar">Bar</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva" target="_blank" rel="noopener" class="nav-cta">📲 Reservar</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-in">
+
+    <!-- Text -->
+    <div class="hero-text">
+      <div class="hero-badge">🇨🇴 Bocagrande · Cartagena de Indias</div>
+      <h1 class="hero-title">
+        Sabor típico<br><em>colombiano</em><br>en el corazón del Caribe
+      </h1>
+      <p class="hero-slogan">Comida auténtica, música en vivo y el mejor ambiente paisa a pasos del mar</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20Paisa%20Parrilla%20%F0%9F%8D%BD%EF%B8%8F"
+           class="btn-y" target="_blank" rel="noopener">📲 Reservar mesa</a>
+        <a href="#galeria" class="btn-ghost">Ver platos ↓</a>
+      </div>
+    </div>
+
+    <!-- Instagram Card -->
+    <div class="ig-card">
+      <!-- Header marrón con logo y botón de acceso -->
+      <div class="ig-head">
+        <div class="ig-handle-bar">
+          <a href="https://instagram.com/paisaparrilla21" target="_blank" rel="noopener" class="ig-handle-link">
+            <span class="ig-icon">📷</span>
+            @paisaparrilla21
+          </a>
+          <a href="https://instagram.com/paisaparrilla21" target="_blank" rel="noopener" class="ig-open-btn">
+            Abrir ↗
+          </a>
+        </div>
+        <div class="ig-profile-row">
+          <div class="ig-avatar">
+            <img src="assets/instagram/LogoInsta.png" alt="Paisa Parrilla"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='🍽️'">
+          </div>
+          <div class="ig-name-blk">
+            <div class="ig-name">Parrilla Restaurante Bar <span class="ig-tick">✓</span></div>
+            <div class="ig-cat">Bar &amp; Grill · Comida típica colombiana</div>
+          </div>
+        </div>
+        <!-- Stats clickables que llevan a Instagram -->
+        <a href="https://instagram.com/paisaparrilla21" target="_blank" rel="noopener" class="ig-stats-link">
+          <div class="ig-stat"><span class="ig-stat-n">182</span><span class="ig-stat-l">posts</span></div>
+          <div class="ig-stat"><span class="ig-stat-n">10K</span><span class="ig-stat-l">seguidores</span></div>
+          <div class="ig-stat"><span class="ig-stat-n">91</span><span class="ig-stat-l">siguiendo</span></div>
+        </a>
+      </div>
+
+      <!-- Bio -->
+      <div class="ig-bio">
+        🍽️ Ven y disfruta de nuestros platos típicos 🇨🇴, en una excelente presentación. 🍛🥩 📍 Av. San Martín #7-61, Bocagrande, Cartagena. Reservas 👇
+      </div>
+
+      <!-- Grid — cada celda lleva a Instagram -->
+      <a href="https://instagram.com/paisaparrilla21" target="_blank" rel="noopener" class="ig-grid">
+        <div class="ig-cell"><img src="assets/instagram/grid-1.jpg" alt="" onerror="this.parentElement.innerHTML='🥩'"></div>
+        <div class="ig-cell"><img src="assets/instagram/grid-2.jpg" alt="" onerror="this.parentElement.innerHTML='🍛'"></div>
+        <div class="ig-cell"><img src="assets/instagram/grid-3.jpg" alt="" onerror="this.parentElement.innerHTML='🫕'"></div>
+        <div class="ig-cell"><img src="assets/instagram/grid-4.jpg" alt="" onerror="this.parentElement.innerHTML='🐟'"></div>
+        <div class="ig-cell"><img src="assets/instagram/grid-5.jpg" alt="" onerror="this.parentElement.innerHTML='🎵'"></div>
+        <div class="ig-cell"><img src="assets/instagram/grid-6.jpg" alt="" onerror="this.parentElement.innerHTML='🍻'"></div>
+      </a>
+
+      <!-- CTA Instagram — botón grande al pie de la tarjeta -->
+      <a href="https://instagram.com/paisaparrilla21" target="_blank" rel="noopener" class="ig-cta">
+        <span class="ig-icon" style="width:20px;height:20px;font-size:12px;">📷</span>
+        Seguir en Instagram · @paisaparrilla21
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ STRIP ═══ -->
+<div id="strip">
+  <div class="strip-in">
+    <div class="strip-item"><span>🎵</span><span>Música en vivo</span></div>
+    <div class="strip-item"><span>🇨🇴</span><span>Cocina típica auténtica</span></div>
+    <div class="strip-item"><span>📍</span><span>Bocagrande, Cartagena</span></div>
+    <div class="strip-item"><span>🛵</span><span>Domicilios por Rappi</span></div>
+    <div class="strip-item"><span>🌊</span><span>Ambiente festivo caribeño</span></div>
+  </div>
+</div>
+
+<!-- ═══ GALERÍA ═══ -->
+<section id="galeria">
+  <div class="container">
+    <h2 class="sec-title fi">Nuestros platos estrella</h2>
+    <p class="sec-sub fi">Lo mejor de la cocina paisa y del Caribe colombiano</p>
+
+    <div class="gallery-grid">
+
+      <div class="g-card fi">
+        <div class="g-img">🍛</div>
+        <div class="g-info">
+          <h3 class="g-name">Bandeja Paisa</h3>
+          <p class="g-desc">El plato más icónico de Colombia: frijoles, chicharrón, carne molida, chorizo, huevo, arroz, aguacate y arepa.</p>
+          <span class="g-badge">⭐ Favorito</span>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🫕</div>
+        <div class="g-info">
+          <h3 class="g-name">Cazuela Paisa</h3>
+          <p class="g-desc">Reconfortante cazuela con los sabores tradicionales de la región Antioqueña.</p>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🥩</div>
+        <div class="g-info">
+          <h3 class="g-name">Picada Colombiana</h3>
+          <p class="g-desc">Chicharrón al barril, pollo, cerdo, chorizo, chinchulines, papa criolla, patacón, maduro, arepa, guacamole y hogao. Para compartir.</p>
+          <span class="g-badge">🔥 Para compartir</span>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🥓</div>
+        <div class="g-info">
+          <h3 class="g-name">Chicharrón al Barril</h3>
+          <p class="g-desc">Crujiente y jugoso, preparado al estilo paisa tradicional. Una especialidad de la casa.</p>
+          <span class="g-badge">⭐ Especialidad</span>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🥩</div>
+        <div class="g-info">
+          <h3 class="g-name">Baby Beef</h3>
+          <p class="g-desc">Jugoso corte a la parrilla, acompañado de las mejores guarniciones colombianas.</p>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🐟</div>
+        <div class="g-info">
+          <h3 class="g-name">Salmón de la Casa</h3>
+          <p class="g-desc">Preparado con receta exclusiva: equilibrio perfecto de mar y sazón caribeña.</p>
+          <span class="g-badge">🌊 Del mar</span>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🦐</div>
+        <div class="g-info">
+          <h3 class="g-name">Arroz con Camarón</h3>
+          <p class="g-desc">Arroz cremoso con camarones frescos. Sabor caribeño en cada cucharada.</p>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🐠</div>
+        <div class="g-info">
+          <h3 class="g-name">Mojarra</h3>
+          <p class="g-desc">Frita o asada, acompañada de patacón, arroz con coco y ensalada. El sabor del Caribe.</p>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🫓</div>
+        <div class="g-info">
+          <h3 class="g-name">Patacón con Carne Desmechada</h3>
+          <p class="g-desc">Patacón crocante con carne desmechada, hogao y guacamole. Un clásico irresistible.</p>
+          <span class="g-badge">💛 Clásico</span>
+        </div>
+      </div>
+
+      <div class="g-card fi">
+        <div class="g-img">🍳</div>
+        <div class="g-info">
+          <h3 class="g-name">Calentado con Chicharrón</h3>
+          <p class="g-desc">La mejor forma de empezar el día: calentado tradicional con chicharrón crujiente.</p>
+          <span class="g-badge">☀️ Desayuno</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MENÚ ═══ -->
+<section id="menu">
+  <div class="container">
+    <h2 class="sec-title fi">Nuestra carta</h2>
+    <p class="sec-sub fi">Menú ejecutivo de almuerzo desde <strong>$28.000 COP</strong> · Carta completa en el local</p>
+
+    <div class="menu-grid">
+
+      <div class="m-card fi">
+        <div class="m-icon">⭐</div>
+        <div class="m-name">Especiales del día</div>
+        <div class="m-desc">Platos del chef con ingredientes frescos. Consultar disponibilidad.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🥗</div>
+        <div class="m-name">Entradas</div>
+        <div class="m-desc">Para abrir el apetito al estilo colombiano.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🇨🇴</div>
+        <div class="m-name">Platos típicos</div>
+        <div class="m-desc">Bandeja Paisa, Cazuela, Calentado y los grandes clásicos.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🥩</div>
+        <div class="m-name">Carnes</div>
+        <div class="m-desc">Baby Beef, cortes a la parrilla y más opciones jugosas.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🍖</div>
+        <div class="m-name">Picadas</div>
+        <div class="m-desc">Perfectas para compartir. Picada Colombiana, chicharrón y más.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🐟</div>
+        <div class="m-name">Pescados</div>
+        <div class="m-desc">Salmón, mojarra, arroz con camarón. Sabores del mar Caribe.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">👶</div>
+        <div class="m-name">Menú infantil</div>
+        <div class="m-desc">Opciones especiales pensadas para los más pequeños.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🍔</div>
+        <div class="m-name">Hamburguesas</div>
+        <div class="m-desc">Jugosas hamburguesas artesanales al estilo de la casa.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">☀️</div>
+        <div class="m-name">Desayunos</div>
+        <div class="m-desc">Calentados, huevos, arepas y changua. El mejor comienzo.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🍰</div>
+        <div class="m-name">Postres y café</div>
+        <div class="m-desc">Dulce final colombiano y café de la mejor calidad.</div>
+        <div class="m-price">Consultar carta</div>
+      </div>
+
+      <div class="m-cta-box fi">
+        <div>
+          <h3>¿Quieres ver la carta completa?</h3>
+          <p>Escríbenos por WhatsApp o visítanos directamente en Bocagrande</p>
+        </div>
+        <a href="https://wa.me/573028581981?text=Hola%2C%20me%20gustaría%20ver%20la%20carta%20completa%20de%20Paisa%20Parrilla"
+           class="btn-y" target="_blank" rel="noopener">📲 Pedir carta</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BAR ═══ -->
+<section id="bar">
+  <div class="container">
+    <h2 class="sec-title fi">Bar &amp; Cócteles</h2>
+    <p class="sec-sub fi">Brinda con el mejor ambiente caribeño</p>
+    <div class="bar-grid">
+      <div class="bar-item fi"><div class="bar-icon">🍹</div><div class="bar-name">Cócteles</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🫙</div><div class="bar-name">Sangrías</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍷</div><div class="bar-name">Vinos</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🥃</div><div class="bar-name">Whiskey</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🌵</div><div class="bar-name">Tequila</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍺</div><div class="bar-name">Cervezas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NOSOTROS ═══ -->
+<section id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fi">
+        <h2>Como en casa de la abuela,<br>en plena Cartagena</h2>
+        <p>
+          En Paisa Parrilla llevamos los sabores más auténticos de la cocina colombiana al corazón de Bocagrande.
+          Cada plato es una celebración de nuestra herencia culinaria, preparado con los ingredientes más frescos y la sazón que nos distingue.
+        </p>
+        <p>
+          Más que un restaurante, somos un punto de encuentro: donde la familia se reúne, los amigos celebran
+          y los visitantes descubren lo mejor de Colombia sobre la mesa. Con música en vivo y ambiente festivo,
+          cada visita es una experiencia completa.
+        </p>
+        <div class="about-feats">
+          <div class="about-feat">
+            <div class="af-icon">🎵</div>
+            <div class="af-text">
+              <strong>Música en vivo</strong>
+              <span>Ambiente festivo y caribeño para hacer tu visita memorable</span>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="af-icon">📍</div>
+            <div class="af-text">
+              <strong>Zona turística segura</strong>
+              <span>En la exclusiva Av. San Martín, Bocagrande — a pasos del mar</span>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="af-icon">🛵</div>
+            <div class="af-text">
+              <strong>Domicilios por Rappi</strong>
+              <span>El sabor paisa llega hasta donde estés en Cartagena</span>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="af-icon">🤝</div>
+            <div class="af-text">
+              <strong>Atención de primera</strong>
+              <span>Un equipo dedicado que te hace sentir en casa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fi">
+        <div class="av-item tall">
+          <img src="assets/instagram/about-main.jpg" alt="Ambiente"
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;\'>🍽️</div>'">
+        </div>
+        <div class="av-item">
+          <img src="assets/instagram/about-2.jpg" alt=""
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;\'>🥩</div>'">
+        </div>
+        <div class="av-item">
+          <img src="assets/instagram/about-3.jpg" alt=""
+               onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;\'>🎵</div>'">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ UBICACIÓN ═══ -->
+<section id="ubicacion">
+  <div class="container">
+    <h2 class="sec-title fi">¿Dónde estamos?</h2>
+    <p class="sec-sub fi">En el corazón de Bocagrande, la zona turística más exclusiva de Cartagena</p>
+
+    <div class="loc-grid">
+      <div class="loc-info fi">
+
+        <div class="loc-item">
+          <div class="loc-icon">📍</div>
+          <div>
+            <h4>Dirección</h4>
+            <p>Cra. 2 (Av. San Martín) #7-61, Local 2<br>Bocagrande, Cartagena de Indias<br>Bolívar, Colombia</p>
+          </div>
+        </div>
+
+        <div class="loc-item">
+          <div class="loc-icon">📱</div>
+          <div>
+            <h4>WhatsApp / Teléfono</h4>
+            <p><a href="https://wa.me/573028581981">+57 302 858 1981</a></p>
+          </div>
+        </div>
+
+        <div class="loc-item">
+          <div class="loc-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:paisaparrilla2021@gmail.com">paisaparrilla2021@gmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="loc-item">
+          <div class="loc-icon">📲</div>
+          <div>
+            <h4>Redes sociales</h4>
+            <p>
+              <a href="https://instagram.com/paisaparrilla21" target="_blank" rel="noopener">Instagram: @paisaparrilla21</a><br>
+              <a href="https://www.facebook.com/PaisaParrillaRes/?locale=es_LA" target="_blank" rel="noopener">Facebook: Paisa Parrilla Restaurante Bar</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="loc-item">
+          <div class="loc-icon">🛵</div>
+          <div>
+            <h4>Pedidos a domicilio</h4>
+            <p>Disponible en <strong>Rappi</strong> — búscanos como Paisa Parrilla</p>
+          </div>
+        </div>
+
+        <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20Paisa%20Parrilla%20%F0%9F%8D%BD%EF%B8%8F"
+           class="btn-y" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:8px;">
+          📲 Reservar por WhatsApp
+        </a>
+
+      </div>
+
+      <div class="map-box fi">
+        <iframe
+          src="https://maps.google.com/maps?q=10.402758,-75.5558217&z=17&output=embed&hl=es"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Paisa Parrilla – Bocagrande, Cartagena">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section id="cta">
+  <div class="container">
+    <h2 class="fi">¿Listo para el mejor<br>sabor colombiano?</h2>
+    <p class="fi">Reserva tu mesa o haz tu pedido a domicilio ahora mismo</p>
+    <div class="cta-btns fi">
+      <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20Paisa%20Parrilla%20%F0%9F%8D%BD%EF%B8%8F"
+         class="btn-wa" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
+      <a href="https://www.rappi.com.co" class="btn-outline-w" target="_blank" rel="noopener">🛵 Pedir en Rappi</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-logo">
+      <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla">
+    </div>
+    <p>Sabor típico colombiano en el corazón de Bocagrande</p>
+    <div class="foot-links">
+      <a href="#galeria">Platos</a>
+      <a href="#menu">Menú</a>
+      <a href="#bar">Bar</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="mailto:paisaparrilla2021@gmail.com">Contacto</a>
+    </div>
+    <div class="foot-social">
+      <a href="https://instagram.com/paisaparrilla21" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      <a href="https://www.facebook.com/PaisaParrillaRes/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+      <a href="https://wa.me/573028581981" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+    </div>
+    <div class="foot-copy">
+      © 2025 Paisa Parrilla Restaurante Bar · Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena · Todos los derechos reservados
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
