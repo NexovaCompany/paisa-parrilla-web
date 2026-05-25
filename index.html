@@ -243,6 +243,40 @@
     .strip-item { display: flex; align-items: center; gap: 10px; color: #fff; font-size: .88rem; font-weight: 500; }
     .strip-item span:first-child { font-size: 1.35rem; }
 
+    /* ── MENUS ── */
+    #menus { background: var(--bg); padding: 72px 16px; }
+    .menus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto; }
+    .menu-card {
+      display: flex; align-items: center; gap: 20px;
+      background: var(--card); border-radius: 18px; padding: 28px 24px;
+      text-decoration: none; color: var(--text);
+      border: 2px solid var(--border); box-shadow: var(--sh);
+      transition: all .25s; position: relative; overflow: hidden;
+    }
+    .menu-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      transition: opacity .25s;
+    }
+    .menu-tipico::before { background: linear-gradient(135deg,rgba(123,58,14,.06),rgba(200,16,46,.06)); }
+    .menu-desayunos::before { background: linear-gradient(135deg,rgba(255,215,0,.08),rgba(123,58,14,.06)); }
+    .menu-card:hover { box-shadow: var(--sh-h); transform: translateY(-4px); border-color: var(--brown-l); }
+    .menu-card:hover::before { opacity: 1; }
+    .menu-card-emoji { font-size: 3rem; flex-shrink: 0; line-height: 1; }
+    .menu-card-body { flex: 1; min-width: 0; }
+    .menu-card-body h3 { font-size: 1.15rem; font-weight: 800; color: var(--brown-d); margin-bottom: 6px; }
+    .menu-card-body p { font-size: .83rem; color: var(--text-m); line-height: 1.45; margin-bottom: 10px; }
+    .menu-card-tag { display: inline-block; background: var(--brown-d); color: var(--yellow);
+      font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
+    .menu-card-arrow { font-size: 1.4rem; color: var(--brown); font-weight: 900; flex-shrink: 0;
+      transition: transform .2s; }
+    .menu-card:hover .menu-card-arrow { transform: translateX(4px); }
+    @media(max-width: 600px) {
+      .menus-grid { grid-template-columns: 1fr; gap: 16px; }
+      .menu-card { padding: 20px 18px; gap: 14px; }
+      .menu-card-emoji { font-size: 2.4rem; }
+      .menu-card-body h3 { font-size: 1.05rem; }
+    }
+
     /* ── GALLERY ── */
     #galeria { background: var(--bg); }
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 20px; }
@@ -401,8 +435,9 @@
       <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla">
     </div>
     <ul class="nav-links">
+      <li><a href="#menus">Menús</a></li>
       <li><a href="#galeria">Platos</a></li>
-      <li><a href="#menu">Menú</a></li>
+      <li><a href="#menu">Ambiente</a></li>
       <li><a href="#bar">Bar</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#ubicacion">Ubicación</a></li>
@@ -495,6 +530,34 @@
     <div class="strip-item"><span>🌊</span><span>Ambiente festivo caribeño</span></div>
   </div>
 </div>
+
+<!-- ═══ MENÚS ═══ -->
+<section id="menus">
+  <div class="container">
+    <h2 class="sec-title fi">Nuestros Menús</h2>
+    <p class="sec-sub fi">Explora nuestra carta completa con precios actualizados</p>
+    <div class="menus-grid fi">
+      <a href="menu-tipico.html" target="_blank" rel="noopener" class="menu-card menu-tipico">
+        <div class="menu-card-emoji">🍱</div>
+        <div class="menu-card-body">
+          <h3>Menú Típico Paisa</h3>
+          <p>Bandejas, calentados, cazuelas, picadas y la mejor cocina paisa</p>
+          <span class="menu-card-tag">206 platos</span>
+        </div>
+        <span class="menu-card-arrow">→</span>
+      </a>
+      <a href="menu-desayunos.html" target="_blank" rel="noopener" class="menu-card menu-desayunos">
+        <div class="menu-card-emoji">☀️</div>
+        <div class="menu-card-body">
+          <h3>Menú Desayunos</h3>
+          <p>Desayunos completos, jugos naturales y bebidas tradicionales</p>
+          <span class="menu-card-tag">87 platos</span>
+        </div>
+        <span class="menu-card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ GALERÍA ═══ -->
 <section id="galeria">

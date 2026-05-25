@@ -1,0 +1,2710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menú Típico Paisa — Paisa Parrilla</title>
+<link rel="icon" href="assets/instagram/LogoPrincipal.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brown:#7B3A0E;--brown-l:#A05020;--brown-d:#3D1800;
+  --yellow:#FFD700;--yellow-d:#E6C200;
+  --red:#C8102E;--red-d:#A00D24;
+  --bg:#FFF8EF;--card:#FFFFFF;
+  --text:#2A1200;--text-l:#6B3A18;--text-m:#9A6040;
+  --border:#F0D8B8;
+  --sh:0 4px 24px rgba(123,58,14,.11);
+  --sh-h:0 10px 44px rgba(123,58,14,.22);
+  --r:14px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--brown-d);box-shadow:0 2px 16px rgba(0,0,0,.35);
+  display:flex;align-items:center;gap:16px;padding:0 24px;height:60px}
+.nav-logo{height:36px;object-fit:contain}
+.nav-title{color:var(--yellow);font-size:1rem;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-back{display:inline-flex;align-items:center;gap:6px;color:var(--yellow);text-decoration:none;
+  font-size:.85rem;font-weight:600;border:1.5px solid var(--yellow);border-radius:8px;
+  padding:5px 12px;white-space:nowrap;transition:all .2s}
+.nav-back:hover{background:var(--yellow);color:var(--brown-d)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--brown-d) 0%,var(--brown) 60%,var(--brown-l) 100%);
+  color:#fff;padding:48px 24px 40px;text-align:center}
+.hero-emoji{font-size:3.5rem;margin-bottom:12px;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+.hero h1{font-size:clamp(1.6rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;
+  color:var(--yellow);text-shadow:0 2px 8px rgba(0,0,0,.4);margin-bottom:8px}
+.hero p{font-size:1rem;opacity:.85;max-width:500px;margin:0 auto 24px;line-height:1.5}
+.hero-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.hero-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;padding:6px 16px;font-size:.85rem;font-weight:600;color:#fff}
+
+/* LAYOUT */
+.layout{display:flex;gap:0;max-width:1200px;margin:0 auto;padding:32px 16px}
+
+/* SIDEBAR */
+.sidebar{width:220px;flex-shrink:0;display:flex;flex-direction:column;gap:4px;
+  position:sticky;top:72px;align-self:flex-start;max-height:calc(100vh - 80px);overflow-y:auto;
+  padding-right:8px}
+.sb-link{display:block;padding:9px 14px;border-radius:10px;color:var(--text-l);
+  text-decoration:none;font-size:.88rem;font-weight:500;transition:all .18s;
+  border:1.5px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-link:hover{background:var(--border);color:var(--brown);border-color:var(--border)}
+.sb-link.active{background:var(--brown-d);color:var(--yellow);font-weight:700}
+
+/* CONTENT */
+.content{flex:1;min-width:0;display:flex;flex-direction:column;gap:40px}
+
+/* CATEGORY SECTION */
+.cat-section{}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;
+  padding-bottom:14px;border-bottom:2px solid var(--border)}
+.cat-icon{font-size:1.8rem}
+.cat-title{font-size:1.4rem;font-weight:800;color:var(--brown-d);flex:1}
+.cat-count{font-size:.8rem;color:var(--text-m);font-weight:600;
+  background:var(--border);border-radius:12px;padding:3px 10px}
+
+/* PRODUCT GRID */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+
+/* PRODUCT CARD */
+.prod-card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);
+  overflow:hidden;transition:all .22s;border:1.5px solid var(--border);display:flex;flex-direction:column}
+.prod-card:hover{box-shadow:var(--sh-h);transform:translateY(-3px);border-color:var(--brown-l)}
+.prod-card.oos{opacity:.55}
+.prod-img-wrap{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#f5e8d8;flex-shrink:0}
+.prod-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.06)}
+.prod-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;background:linear-gradient(135deg,#fdf0e0,#f5dab8)}
+.oos-badge{position:absolute;top:10px;right:10px;background:rgba(200,16,46,.85);
+  color:#fff;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px}
+.prod-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:8px}
+.prod-name{font-size:.95rem;font-weight:700;color:var(--brown-d);line-height:1.3}
+.prod-desc{font-size:.78rem;color:var(--text-m);line-height:1.5;flex:1}
+.prod-price{font-size:1.05rem;font-weight:900;color:var(--brown);
+  background:linear-gradient(90deg,#fff8ef,#fdebd0);
+  border:1.5px solid var(--yellow-d);border-radius:8px;padding:5px 12px;
+  text-align:center;margin-top:auto}
+
+/* CTA BAR */
+.cta-bar{background:linear-gradient(135deg,var(--brown-d),var(--brown));
+  color:#fff;text-align:center;padding:40px 24px;margin-top:24px}
+.cta-bar h2{font-size:1.4rem;font-weight:800;color:var(--yellow);margin-bottom:8px}
+.cta-bar p{font-size:.95rem;opacity:.85;margin-bottom:20px}
+.cta-wa{display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;font-weight:700;font-size:1rem;
+  padding:14px 28px;border-radius:30px;text-decoration:none;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .2s}
+.cta-wa:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.5)}
+.cta-wa svg{width:22px;height:22px;fill:#fff}
+
+/* FOOTER */
+footer{background:var(--brown-d);color:rgba(255,255,255,.6);text-align:center;
+  padding:24px;font-size:.82rem}
+footer a{color:var(--yellow);text-decoration:none}
+footer img{height:36px;margin-bottom:8px;opacity:.9}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .layout{padding:16px}
+  .prod-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .hero{padding:32px 16px 28px}
+}
+@media(max-width:480px){
+  .prod-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .prod-body{padding:10px 12px;gap:6px}
+  .prod-name{font-size:.85rem}
+}
+
+/* SCROLLBAR */
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla" class="nav-logo"
+       onerror="this.style.display='none'">
+  <span class="nav-title">Menú Típico Paisa</span>
+  <a href="index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="hero">
+  <span class="hero-emoji">🍱</span>
+  <h1>Menú Típico Paisa</h1>
+  <p>La mejor cocina paisa de Cartagena. Bandejas, calentados, picadas y platos de tradición colombiana.</p>
+  <div class="hero-meta">
+    <span class="hero-badge">📍 Bocagrande, Cartagena</span>
+    <span class="hero-badge">206 platos</span>
+    <span class="hero-badge">📞 +57 302 858 1981</span>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <a href="#cat-bandejas" class="sb-link">🍱 Bandejas</a>
+<a href="#cat-calentados" class="sb-link">🍳 Calentados</a>
+<a href="#cat-picadas" class="sb-link">🥩 Picadas</a>
+<a href="#cat-con-cerdo" class="sb-link">🐷 Con Cerdo</a>
+<a href="#cat-patac-n" class="sb-link">🌿 Patacón</a>
+<a href="#cat-arroces" class="sb-link">🍚 Arroces</a>
+<a href="#cat-con-carne" class="sb-link">🥩 Con Carne</a>
+<a href="#cat-t-picos" class="sb-link">🍽️ Típicos</a>
+<a href="#cat-entradas" class="sb-link">🥗 Entradas</a>
+<a href="#cat-adicionales" class="sb-link">➕ Adicionales</a>
+<a href="#cat-pescados" class="sb-link">🐠 Pescados</a>
+<a href="#cat-parrilla-y-asados" class="sb-link">🔥 Parrilla y Asados</a>
+<a href="#cat-fritos" class="sb-link">🍟 Fritos</a>
+<a href="#cat-men--infantil" class="sb-link">👶 Menú Infantil</a>
+<a href="#cat-de-tradici-n" class="sb-link">🏔️ De tradición</a>
+<a href="#cat-cazuelas" class="sb-link">🫕 Cazuelas</a>
+<a href="#cat-pa--cucharear" class="sb-link">🥄 Pa' Cucharear</a>
+<a href="#cat-pa-cucharear" class="sb-link">🥄 Pa cucharear</a>
+<a href="#cat-con-pollo" class="sb-link">🍗 Con Pollo</a>
+<a href="#cat-con-pescado" class="sb-link">🐟 Con Pescado</a>
+<a href="#cat-antojos-para-empezar" class="sb-link">😋 Antojos Para Empezar</a>
+<a href="#cat-para-compartir" class="sb-link">👨‍👩‍👧 Para compartir</a>
+<a href="#cat-antojos-para-empezar" class="sb-link">😋 Antojos para Empezar</a>
+  </aside>
+  <main class="content">
+    
+    <section class="cat-section" id="cat-bandejas">
+      <div class="cat-header">
+        <span class="cat-icon">🍱</span>
+        <h2 class="cat-title">Bandejas</h2>
+        <span class="cat-count">5 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/3zWx9CHHFr/w_576_3zWx9CHHFr_img_5259.jpg" alt="Bandeja Campesina con Carne" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍱</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja Campesina con Carne</h3>
+          <p class="prod-desc">Bandeja Campesina con Carne Un plato abundante que sabe a campo y tradición. Nuestra Bandeja Campesina con Carne incluye arroz blanco , frijoles con salsa hogao , carne asada , are…</p>
+          <div class="prod-price">$42.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/c0JKfvs2a7/w_576_c0JKfvs2a7_img_5269.jpg" alt="Bandeja campesina con chicharron " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍱</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja campesina con chicharron </h3>
+          <p class="prod-desc">Un plato que sabe a campo y a hogar. Nuestra Bandeja Campesina con Chicharrón viene con arroz blanco , frijoles con salsa hogao , chicharrón crocante , arepa blanca , aguacate , pl…</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/0FPU1GL10P/w_576_0FPU1GL10P_img_5266.jpg" alt="Bandeja campesina con chorizo santarosano" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍱</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja campesina con chorizo santarosano</h3>
+          <p class="prod-desc">Un plato que reúne el sabor del campo y la tradición paisa. Nuestra Bandeja Campesina con Chorizo Santarosano incluye arroz blanco , frijoles con salsa hogao , chorizo santarosano …</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/BdjY89KyHs/w_576_BdjY89KyHs_img_5262.jpg" alt="Bandeja Campesina con Cerdo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍱</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja Campesina con Cerdo</h3>
+          <p class="prod-desc">Un plato que sabe a campo y tradición. Nuestra Bandeja Campesina con Cerdo incluye arroz blanco , frijoles con salsa hogao , lomo de cerdo bien preparado, arepa blanca , aguacate ,…</p>
+          <div class="prod-price">$37.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/sRCpkAPoPt/w_576_sRCpkAPoPt_img_5272.jpg" alt="Bandeja Campesina Con Pollo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍱</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja Campesina Con Pollo</h3>
+          <p class="prod-desc">Bandeja Campesina con Pollo Un plato que sabe a hogar y tradición. Nuestra Bandeja Campesina con Pollo incluye arroz blanco , frijoles con salsa hogao , filete de pechuga asada , a…</p>
+          <div class="prod-price">$36.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-calentados">
+      <div class="cat-header">
+        <span class="cat-icon">🍳</span>
+        <h2 class="cat-title">Calentados</h2>
+        <span class="cat-count">14 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/b8fTz4FMdv/w_576_b8fTz4FMdv_img_5240.jpg" alt="Calentado Montañero con Cerdo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con Cerdo</h3>
+          <p class="prod-desc">Un desayuno completo con sabor a campo. Arroz con frijoles y hogao , acompañado de lomo de cerdo bien preparado, arepa paisa , aguacate fresco y huevos al gusto . Un plato rendidor…</p>
+          <div class="prod-price">$38.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9FL2OSqJaS/w_576_9FL2OSqJaS_img_5244.jpg" alt="Calentado Montañero con carne" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con carne</h3>
+          <p class="prod-desc">Un plato que sabe a hogar y tradición. Arroz con frijoles y hogao , acompañado de carne asada , arepa paisa , aguacate fresco y huevos al gusto , preparado como se hace en casa par…</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hNm6lGjJ7j/w_576_hNm6lGjJ7j_3-jpg-3.jpeg" alt="Combo Arriero" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Arriero</h3>
+          <p class="prod-desc">🔥 COMBO ARRIERO 🔥 Un desayuno bien berraco, cargado de sabor y tradición paisa, perfecto para compartir 💪🇨🇴 Incluye 2 calentados de fríjol con arroz y hogao , preparados al es…</p>
+          <div class="prod-price">$88.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/6pyubtIdnO/w_576_6pyubtIdnO_img_5256.jpg" alt="Calentado Paisa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Paisa</h3>
+          <p class="prod-desc">El desayuno más completo de la casa. Arroz con frijoles y hogao , acompañado de filete de carne asada , chicharrón crocante , plátano maduro , arepa paisa y huevos al gusto , prepa…</p>
+          <div class="prod-price">$58.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/1DjsTpn8Hn/w_576_1DjsTpn8Hn_img_5247.jpg" alt="Calentado Montañero con Chicharron" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con Chicharron</h3>
+          <p class="prod-desc">El desayuno que reconforta y llena de energía. Arroz con frijoles y hogao , acompañado de chicharrón crocante , arepa paisa , aguacate fresco y huevos al gusto , preparado al estil…</p>
+          <div class="prod-price">$38.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/b8fTz4FMdv/w_576_b8fTz4FMdv_img_5240.jpg" alt="Calentado Montañero con Cerdo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con Cerdo</h3>
+          <p class="prod-desc">Un desayuno completo con sabor a campo. Arroz con frijoles y hogao , acompañado de lomo de cerdo bien preparado, arepa paisa , aguacate fresco y huevos al gusto . Un plato rendidor…</p>
+          <div class="prod-price">$38.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/1DjsTpn8Hn/w_576_1DjsTpn8Hn_img_5247.jpg" alt="Calentado Montañero con Chicharron" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con Chicharron</h3>
+          <p class="prod-desc">El desayuno que reconforta y llena de energía. Arroz con frijoles y hogao , acompañado de chicharrón crocante , arepa paisa , aguacate fresco y huevos al gusto , preparado al estil…</p>
+          <div class="prod-price">$38.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9NTfthCstQ/w_576_9NTfthCstQ_img_5250.jpg" alt="Calentado Montañero con Chorizo Santarosano" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con Chorizo Santarosano</h3>
+          <p class="prod-desc">Un desayuno que sabe a tradición. Arroz con frijoles y hogao , acompañado de chorizo santarosano bien asado , arepa paisa , aguacate fresco y huevos al gusto , preparado como en ca…</p>
+          <div class="prod-price">$38.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/nSX6Q0KF1g/w_576_nSX6Q0KF1g_img_5252.jpg" alt="Calentado Montañero con pollo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con pollo</h3>
+          <p class="prod-desc">Un desayuno casero que reconforta. Arroz con frijoles y hogao , acompañado de pollo bien preparado , arepa paisa , aguacate fresco y huevos al gusto , servido como se disfruta en c…</p>
+          <div class="prod-price">$36.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9NTfthCstQ/w_576_9NTfthCstQ_img_5250.jpg" alt="Calentado Montañero con Chorizo Santarosano" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con Chorizo Santarosano</h3>
+          <p class="prod-desc">Un desayuno que sabe a tradición. Arroz con frijoles y hogao , acompañado de chorizo santarosano bien asado , arepa paisa , aguacate fresco y huevos al gusto , preparado como en ca…</p>
+          <div class="prod-price">$38.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/nSX6Q0KF1g/w_576_nSX6Q0KF1g_img_5252.jpg" alt="Calentado Montañero con pollo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con pollo</h3>
+          <p class="prod-desc">Un desayuno casero que reconforta. Arroz con frijoles y hogao , acompañado de pollo bien preparado , arepa paisa , aguacate fresco y huevos al gusto , servido como se disfruta en c…</p>
+          <div class="prod-price">$36.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/6pyubtIdnO/w_576_6pyubtIdnO_img_5256.jpg" alt="Calentado Paisa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Paisa</h3>
+          <p class="prod-desc">El desayuno más completo de la casa. Arroz con frijoles y hogao , acompañado de filete de carne asada , chicharrón crocante , plátano maduro , arepa paisa y huevos al gusto , prepa…</p>
+          <div class="prod-price">$58.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9FL2OSqJaS/w_576_9FL2OSqJaS_img_5244.jpg" alt="Calentado Montañero con carne" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Calentado Montañero con carne</h3>
+          <p class="prod-desc">Un plato que sabe a hogar y tradición. Arroz con frijoles y hogao , acompañado de carne asada , arepa paisa , aguacate fresco y huevos al gusto , preparado como se hace en casa par…</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hNm6lGjJ7j/w_576_hNm6lGjJ7j_3-jpg-3.jpeg" alt="Combo Arriero" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Arriero</h3>
+          <p class="prod-desc">🔥 COMBO ARRIERO 🔥 Un desayuno bien berraco, cargado de sabor y tradición paisa, perfecto para compartir 💪🇨🇴 Incluye 2 calentados de fríjol con arroz y hogao , preparados al es…</p>
+          <div class="prod-price">$88.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-picadas">
+      <div class="cat-header">
+        <span class="cat-icon">🥩</span>
+        <h2 class="cat-title">Picadas</h2>
+        <span class="cat-count">15 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Picada de la casa x 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Picada de la casa x 2</h3>
+          <p class="prod-desc">La reina de nuestras parrillas y el orgullo de la casa. Una mezcla irresistible de sabores típicos paisas: carne de res jugosa, pechuga asada, lomo de cerdo, chicharrón crujiente, …</p>
+          <div class="prod-price">$180.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/DOmyVj2Img/w_576_DOmyVj2Img_img_2769.jpg" alt="PICADA MAR Y TIERRA (2-3 personas)" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PICADA MAR Y TIERRA (2-3 personas)</h3>
+          <p class="prod-desc">200 gr de Carne de res, 200 gr de pechuga asada, 200 gr de lomo de cerdo, 200 gr de camarones, 50 gr de salmón, 200 gr de anillos de calamar, 130 gr de papas criollas, patacones y …</p>
+          <div class="prod-price">$130.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/tjti5tMVUw/w_576_tjti5tMVUw_img_4209.jpg" alt="PAPAS CHEEDAR" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PAPAS CHEEDAR</h3>
+          <p class="prod-desc">Papas Cheddar con Chorizo Entrada irresistible de papas fritas crocantes, bañadas en salsa cheddar cremosa y acompañadas con carne de chorizo santarosano molida. ¡Ideal para compar…</p>
+          <div class="prod-price">$30.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Picada Colombiana x 4" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Picada Colombiana x 4</h3>
+          <p class="prod-desc">El verdadero sabor colombiano en una picada perfecta para grupos: chicharrón al barril, churrasco, chorizo santarosano, chinchulines, pollo y cerdo. Con arepa, patacón, papa crioll…</p>
+          <div class="prod-price">$360.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/1fzYp3wsmk/w_576_1fzYp3wsmk_img_2779.jpg" alt="ALITAS BBQ" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ALITAS BBQ</h3>
+          <p class="prod-desc">Alitas BBQ x10 Un clásico que nunca falla: 10 alitas de pollo crujientes, cubiertas con salsa BBQ ahumada y acompañadas de papas fritas doradas. ¡Perfectas para compartir o disfrut…</p>
+          <div class="prod-price">$49.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9Vxcnggbg2/w_576_9Vxcnggbg2_img_2764.jpg" alt="PICADA DE LA CASA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PICADA DE LA CASA</h3>
+          <p class="prod-desc">La reina de nuestras parrillas y el orgullo de la casa. Una mezcla irresistible de sabores típicos paisas: carne de res jugosa, pechuga asada, lomo de cerdo, chicharrón crujiente, …</p>
+          <div class="prod-price">$124.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/oksPPqMGpI/w_576_oksPPqMGpI_img_4067.jpg" alt="CHICHARRÓN TÍPICO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHICHARRÓN TÍPICO</h3>
+          <p class="prod-desc">Chicharrón Típico Paisa Una experiencia para los sentidos: chicharrón crocante, jugoso por dentro y ahumado lentamente al barril. Servido con patacones, yuca dorada, limón fresco y…</p>
+          <div class="prod-price">$54.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/xGB2CvTXNX/w_576_xGB2CvTXNX_img_3391.jpg" alt="PICADA COLOMBIANA (4-5 Personas) " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PICADA COLOMBIANA (4-5 Personas) </h3>
+          <p class="prod-desc">Picada Colombiana El verdadero sabor colombiano en una picada perfecta para grupos: chicharrón al barril, churrasco, chorizo santarosano, chinchulines, pollo y cerdo. Con arepa, pa…</p>
+          <div class="prod-price">$180.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/xGB2CvTXNX/w_576_xGB2CvTXNX_img_3391.jpg" alt="PICADA COLOMBIANA (4-5 Personas) " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PICADA COLOMBIANA (4-5 Personas) </h3>
+          <p class="prod-desc">Picada Colombiana El verdadero sabor colombiano en una picada perfecta para grupos: chicharrón al barril, churrasco, chorizo santarosano, chinchulines, pollo y cerdo. Con arepa, pa…</p>
+          <div class="prod-price">$180.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9Vxcnggbg2/w_576_9Vxcnggbg2_img_2764.jpg" alt="PICADA DE LA CASA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PICADA DE LA CASA</h3>
+          <p class="prod-desc">La reina de nuestras parrillas y el orgullo de la casa. Una mezcla irresistible de sabores típicos paisas: carne de res jugosa, pechuga asada, lomo de cerdo, chicharrón crujiente, …</p>
+          <div class="prod-price">$124.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/czr9gifLaO/w_576_czr9gifLaO_img_4237.jpg" alt="PARRILLADA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PARRILLADA</h3>
+          <p class="prod-desc">Filete de carne de res, filete de pechuga asada, costilla de cerdo, chorizo santarosano, morcilla, papas criollas y arepa.</p>
+          <div class="prod-price">$79.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/2IspEr6jA8/w_576_2IspEr6jA8_img_3293.jpg" alt="PICADA TÍPICA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PICADA TÍPICA</h3>
+          <p class="prod-desc">Picada Típica Una combinación llena de sabor paisa: chicharrón crocante al barril, chorizo santarosano y morcilla, servidos con patacones, arepitas, limón y salsas de la casa. 👉 I…</p>
+          <div class="prod-price">$74.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/DOmyVj2Img/w_576_DOmyVj2Img_img_2769.jpg" alt="PICADA MAR Y TIERRA (2-3 personas)" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PICADA MAR Y TIERRA (2-3 personas)</h3>
+          <p class="prod-desc">200 gr de Carne de res, 200 gr de pechuga asada, 200 gr de lomo de cerdo, 200 gr de camarones, 50 gr de salmón, 200 gr de anillos de calamar, 130 gr de papas criollas, patacones y …</p>
+          <div class="prod-price">$130.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ZQiWNcWxuL/w_576_ZQiWNcWxuL_arroz-paisa.jpg" alt="ARROZ PAISA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ PAISA</h3>
+          <p class="prod-desc">Delicioso arroz tipico paisa acompañado de chicharrón, chorizo santarosano, pollo, verduras.</p>
+          <div class="prod-price">$48.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/EIHlmCiqqQ/w_576_EIHlmCiqqQ_arroz-con-pollo.jpg" alt="ARROZ CON POLLO " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ CON POLLO </h3>
+          <p class="prod-desc">Delicioso Arroz acompañado 250 gr de pollo y verduras.</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-con-cerdo">
+      <div class="cat-header">
+        <span class="cat-icon">🐷</span>
+        <h2 class="cat-title">Con Cerdo</h2>
+        <span class="cat-count">5 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Chicharron Tipico" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐷</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chicharron Tipico</h3>
+          <p class="prod-desc">Una experiencia para los sentidos: chicharrón crocante, jugoso por dentro y ahumado lentamente al barril. Servido con patacones, yuca dorada, limón fresco y salsas que realzan su s…</p>
+          <div class="prod-price">$75.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Lomo de Cerdo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐷</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Lomo de Cerdo</h3>
+          <p class="prod-desc">Delicado filete de lomo de cerdo , tierno y jugoso, preparado a la parrilla para resaltar su sabor natural. Un plato suave, balanceado y lleno de tradición, ideal para quienes disf…</p>
+          <div class="prod-price">$68.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Costilla BBQ" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐷</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Costilla BBQ</h3>
+          <p class="prod-desc">Jugosa costilla de cerdo cocinada lentamente hasta quedar suave y llena de sabor, bañada en salsa BBQ dulce y ahumada que la hace irresistible. Un plato contundente, perfecto para …</p>
+          <div class="prod-price">$120.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Chuleta Valluna" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐷</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chuleta Valluna</h3>
+          <p class="prod-desc">Filete de lomo de cerdo apanado , crocante por fuera y jugoso por dentro, preparado al estilo tradicional valluno. Un clásico irresistible, lleno de sabor y textura, perfecto para …</p>
+          <div class="prod-price">$74.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Lomo de Cerdo Napolitano" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐷</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Lomo de Cerdo Napolitano</h3>
+          <p class="prod-desc">Jugoso lomo de cerdo , queso gratinado y rodajas de tomate fresco , logrando una combinación perfecta entre suavidad, cremosidad y sabor. Un plato clásico, reconfortante y lleno de…</p>
+          <div class="prod-price">$74.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-patac-n">
+      <div class="cat-header">
+        <span class="cat-icon">🌿</span>
+        <h2 class="cat-title">Patacón</h2>
+        <span class="cat-count">2 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/sste0BVWFn/w_576_sste0BVWFn_patacon-mixto.jpg" alt="PATACÓN MIXTO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🌿</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PATACÓN MIXTO</h3>
+          <p class="prod-desc">200 gr de pollo, 200 gr de carne de res, guacamole y hogao.</p>
+          <div class="prod-price">$47.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/1juv8Beljm/w_576_1juv8Beljm_img_2758.jpg" alt="PATACÓN BERRACO " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🌿</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PATACÓN BERRACO </h3>
+          <p class="prod-desc">200 gr chicharrón, 200 gr lomo de cerdo, 50 gr chorizo, 50 gr morcilla, papas criollas, hogao, guacamole.</p>
+          <div class="prod-price">$59.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-arroces">
+      <div class="cat-header">
+        <span class="cat-icon">🍚</span>
+        <h2 class="cat-title">Arroces</h2>
+        <span class="cat-count">4 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hAKmwFpwpQ/w_576_hAKmwFpwpQ_arroz-marinero.jpg" alt="ARROZ MARINERO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍚</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ MARINERO</h3>
+          <p class="prod-desc">Delicioso Arroz típico del Caribe acompañado de mariscos y verduras.</p>
+          <div class="prod-price">$62.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/2SauLrtzDW/w_576_2SauLrtzDW_arroz-de-camarones.jpg" alt="ARROZ CON CAMARÓN " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍚</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ CON CAMARÓN </h3>
+          <p class="prod-desc">Arroz con 200 gr de camarón acompañado de verduras.</p>
+          <div class="prod-price">$59.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ZQiWNcWxuL/w_576_ZQiWNcWxuL_arroz-paisa.jpg" alt="ARROZ PAISA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍚</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ PAISA</h3>
+          <p class="prod-desc">Delicioso arroz tipico paisa acompañado de chicharrón, chorizo santarosano, pollo, verduras.</p>
+          <div class="prod-price">$48.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/EIHlmCiqqQ/w_576_EIHlmCiqqQ_arroz-con-pollo.jpg" alt="ARROZ CON POLLO " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍚</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ CON POLLO </h3>
+          <p class="prod-desc">Delicioso Arroz acompañado 250 gr de pollo y verduras.</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-con-carne">
+      <div class="cat-header">
+        <span class="cat-icon">🥩</span>
+        <h2 class="cat-title">Con Carne</h2>
+        <span class="cat-count">3 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Baby Beef" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Baby Beef</h3>
+          <p class="prod-desc">Exquisito lomo fino a la parrilla, tierno, jugoso y de sabor suave, preparado al punto perfecto para resaltar la calidad de la carne. Un clásico de la parrilla, ideal para quienes …</p>
+          <div class="prod-price">$99.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Punta de Anca con Chorizo santarosano" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Punta de Anca con Chorizo santarosano</h3>
+          <p class="prod-desc">Jugosa punta de anca a la parrilla , asada a la perfección para resaltar todo su sabor, acompañada de chorizo santarosano dorado y lleno de tradición. Un plato fuerte, auténtico y …</p>
+          <div class="prod-price">$104.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Churrasco con Chorizo Santarosano" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥩</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Churrasco con Chorizo Santarosano</h3>
+          <p class="prod-desc">Jugoso churrasco a la parrilla , asado al punto perfecto para conservar todo su sabor, acompañado de chorizo santarosano dorado y lleno de tradición. Un plato fuerte, clásico y con…</p>
+          <div class="prod-price">$104.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-t-picos">
+      <div class="cat-header">
+        <span class="cat-icon">🍽️</span>
+        <h2 class="cat-title">Típicos</h2>
+        <span class="cat-count">31 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/gqPBPj1oGS/w_576_gqPBPj1oGS_img_3381.jpg" alt="BANDEJA PAISA PREMIUM" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">BANDEJA PAISA PREMIUM</h3>
+          <p class="prod-desc">La Bandeja Estrella. ¡Una explosión de sabor para disfrutar en pareja! Incluye frijoles, arroz, chicharrón crocante, chorizo santarosano, morcilla, carne molida, filete de carne as…</p>
+          <div class="prod-price">$96.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Dk2XT2ktBM/w_576_Dk2XT2ktBM_img_5361.jpg" alt="Bandeja Paisa Tradicional*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja Paisa Tradicional*</h3>
+          <p class="prod-desc">La Auténtica Bandeja Paisa Un plato que lo tiene todo y sabe a tradición. Nuestra Auténtica Bandeja Paisa reúne los sabores que representan a Antioquia: fríjoles bien cargados , ar…</p>
+          <div class="prod-price">$64.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Patacón Berraco" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Patacón Berraco</h3>
+          <p class="prod-desc">Un patacón bien crocante y generoso , coronado con lo mejor del sabor paisa: chicharrón dorado , costilla de cerdo jugosa , chorizo artesanal y morcilla tradicional . Acompañado de…</p>
+          <div class="prod-price">$69.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Patacón Mixto" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Patacón Mixto</h3>
+          <p class="prod-desc">Patacón bien crocante servido con una deliciosa combinación de pollo jugoso y carne de res a la parrilla , acompañado de hogao casero y guacamole fresco . Un plato equilibrado, lle…</p>
+          <div class="prod-price">$64.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/afS6HOFlpV/w_576_afS6HOFlpV_w_1200_gqpbpj1ogs_img_3381-2.jpg" alt="Bandeja Paisa Premium*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja Paisa Premium*</h3>
+          <p class="prod-desc">La Bandeja Estrella (Bandeja Paisa Premium) El orgullo de la casa y el sueño de todo buen apetito. Nuestra Bandeja Estrella es una experiencia completa para compartir en pareja: fr…</p>
+          <div class="prod-price">$96.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/mYs8NAmY3A/w_576_mYs8NAmY3A_bandeja-paisa.jpg" alt="BANDEJA PAISA TRADICIONAL" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">BANDEJA PAISA TRADICIONAL</h3>
+          <p class="prod-desc">La Auténtica Bandeja Paisa Una explosión de sabores paisas en un solo plato: fríjoles, arroz, huevo, chorizo, morcilla, carne molida, chicharrón, plátano maduro y aguacate. ¡El org…</p>
+          <div class="prod-price">$64.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Patacón Carne Desmechada" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Patacón Carne Desmechada</h3>
+          <p class="prod-desc">La combinación perfecta: patacón crujiente, carne desmechada en su punto, hogao de la casa y guacamole cremoso. ¡Un clásico irresistible de Paisa Parrilla!</p>
+          <div class="prod-price">$64.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/XdmMrBw9Ek/w_576_XdmMrBw9Ek_w_1200_qcw8b6ig6v_img_1388.jpeg" alt="Bandeja Caribeña" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja Caribeña</h3>
+          <p class="prod-desc">🌴🔥 Bandeja Caribeña 🔥🌴 Un viaje directo a la costa en un solo plato. Nuestra Bandeja Caribeña está pensada para compartir y disfrutar sin afán: mojarra frita bien crocante , ar…</p>
+          <div class="prod-price">$110.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9Q7ErheRdm/w_576_9Q7ErheRdm_calentado-paisa.jpg" alt="CALENTADO PAISA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CALENTADO PAISA</h3>
+          <p class="prod-desc">Calentado Paisa Fríjoles con arroz revueltos al estilo tradicional, acompañados de huevo frito, carne, chicharrón, plátano maduro y arepa. ¡Un verdadero levantamuertos!</p>
+          <div class="prod-price">$58.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/yXJNToZJ5Q/w_576_yXJNToZJ5Q_casaito.jpg" alt="Casaito de la abuela" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Casaito de la abuela</h3>
+          <p class="prod-desc">Casaito de la Abuela Como en casa de la abuela: fríjoles con chicharrón, arroz, huevo frito, plátano maduro y mazamorra con bocadillo beleño. ¡Un clásico paisa que enamora paladar …</p>
+          <div class="prod-price">$37.800</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/UNO5ktiLKw/w_576_UNO5ktiLKw_img_5376.jpg" alt="Mojarra Frita" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Mojarra Frita</h3>
+          <p class="prod-desc">Mojarra Frita – Plato Típico Costeño Un clásico que sabe a mar y tradición. Mojarra fresca , frita al punto perfecto para lograr una piel crocante por fuera y carne jugosa por dent…</p>
+          <div class="prod-price">$56.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/caooll4ZUB/w_576_caooll4ZUB_img_5311.jpg" alt="Mojarra Criolla " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Mojarra Criolla </h3>
+          <p class="prod-desc">Mojarra Criolla Un plato lleno de tradición y sabor criollo. Mojarra fresca , preparada al estilo tradicional y servida sobre bijao , que realza su aroma y autenticidad. Se acompañ…</p>
+          <div class="prod-price">$66.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/az06mMgcmr/w_576_az06mMgcmr_img_4062.jpg" alt="Sancocho Trifásico " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sancocho Trifásico </h3>
+          <p class="prod-desc">Sancocho Trifásico (Pollo, carne y cerdo), arroz blanco y aguacate.</p>
+          <div class="prod-price">$46.800</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/AA81pCR8OX/w_576_AA81pCR8OX_combo-tipico-1-op-3.jpg" alt="Combo Tipico Paisa " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Tipico Paisa </h3>
+          <p class="prod-desc">🔥 COMBO TÍPICO PAISA 🔥 Disfruta el verdadero sabor de nuestra tierra con este completo y contundente combo pensado para los amantes de la tradición. Incluye nuestra icónica Bande…</p>
+          <div class="prod-price">$69.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/1juv8Beljm/w_576_1juv8Beljm_img_2758.jpg" alt="PATACÓN BERRACO " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PATACÓN BERRACO </h3>
+          <p class="prod-desc">200 gr chicharrón, 200 gr lomo de cerdo, 50 gr chorizo, 50 gr morcilla, papas criollas, hogao, guacamole.</p>
+          <div class="prod-price">$59.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/sste0BVWFn/w_576_sste0BVWFn_patacon-mixto.jpg" alt="PATACÓN MIXTO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PATACÓN MIXTO</h3>
+          <p class="prod-desc">200 gr de pollo, 200 gr de carne de res, guacamole y hogao.</p>
+          <div class="prod-price">$47.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hWIsUuubm6/w_576_hWIsUuubm6_2-jpg.jpeg" alt="Combo Tipico Paisa Premium" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Tipico Paisa Premium</h3>
+          <p class="prod-desc">🔥 COMBO TÍPICO PAISA PREMIUM 🔥 Para los que comen bien… ¡y en buena compañía! Este combo está pensado para compartir y disfrutar a lo grande lo mejor de nuestra tradición. Incluy…</p>
+          <div class="prod-price">$102.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/loHmdvmQqr/w_576_loHmdvmQqr_caldo-de-costilla.jpg" alt="CALDO DE COSTILLA " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CALDO DE COSTILLA </h3>
+          <p class="prod-desc">Caldo Especial de la Casa Costilla de res suave y jugosa, cocinada lentamente con papas y especias, servida en un caldo humeante lleno de sabor. ¡El preferido para recargar energía…</p>
+          <div class="prod-price">$30.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ISIdMiFrqC/w_576_ISIdMiFrqC_img_4005.jpg" alt="PATACÓN CARNE DESMECHADA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PATACÓN CARNE DESMECHADA</h3>
+          <p class="prod-desc">Patacón con Carne Desmechada La combinación perfecta: patacón crujiente, carne desmechada en su punto, hogao de la casa y guacamole cremoso. ¡Un clásico irresistible de Paisa Parri…</p>
+          <div class="prod-price">$48.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CQ4JRA49KA/w_576_CQ4JRA49KA_ajiaco.jpg" alt="AJIACO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">AJIACO</h3>
+          <p class="prod-desc">Ajiaco de la Casa Un plato que abraza el alma: pollo desmechado en caldo espeso con papas criollas, pastusas y sabaneras, más mazorca y guascas. Servido con arroz, aguacate y pechu…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/FB4Ua3l8tu/w_576_FB4Ua3l8tu_img_4225.jpg" alt="SANCOCHO DE PESCADO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">SANCOCHO DE PESCADO</h3>
+          <p class="prod-desc">Sancocho de Pescado El sabor del mar en tu mesa: sancocho de pescado fresco con yuca, plátano y verduras, acompañado de arroz con coco y una posta de sierra crocante y dorada. ¡Un …</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/AHNYgsYpMN/w_576_AHNYgsYpMN_mondongo-completo.jpg" alt="MONDONGO COMPLETO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">MONDONGO COMPLETO</h3>
+          <p class="prod-desc">Mondongo Paisa Un clásico lleno de sabor: callo de res y cerdo en un caldo espeso con papa, yuca y verduras. Acompañado de arroz blanco y aguacate. ¡La tradición paisa en cada cuch…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/oksPPqMGpI/w_576_oksPPqMGpI_img_4067.jpg" alt="CHICHARRÓN TÍPICO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHICHARRÓN TÍPICO</h3>
+          <p class="prod-desc">Chicharrón Típico Paisa Una experiencia para los sentidos: chicharrón crocante, jugoso por dentro y ahumado lentamente al barril. Servido con patacones, yuca dorada, limón fresco y…</p>
+          <div class="prod-price">$54.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Geyqed7Akp/w_576_Geyqed7Akp_sopa-de-lentejas.jpg" alt="SOPA DE LENTEJAS" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">SOPA DE LENTEJAS</h3>
+          <p class="prod-desc">400 gr de sopa de lentejas.</p>
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/7uOJkaIzyi/w_576_7uOJkaIzyi_sopa-de-pescado.jpg" alt="SOPA DE PESCADO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">SOPA DE PESCADO</h3>
+          <p class="prod-desc">400 gr de sopa de pescado.</p>
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/s5zHRdgFy1/w_576_s5zHRdgFy1_sopa-de-frijoles.jpg" alt="SOPA DE FRIJOL" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">SOPA DE FRIJOL</h3>
+          <p class="prod-desc">400 gr de sopa de frijol.</p>
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/q181bSrDTC/w_576_q181bSrDTC_ajiaquito.jpg" alt="AJIAQUITO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">AJIAQUITO</h3>
+          <p class="prod-desc">400 gr de ajiaco.</p>
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/IB63UI3qiJ/w_576_IB63UI3qiJ_chuleta-valluna.jpg" alt="CHULETA VALLUNA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHULETA VALLUNA</h3>
+          <p class="prod-desc">Filete de Lomo de cerdo apanado de 280 gr a 320 gr aprox. acompañado de ensalada.</p>
+          <div class="prod-price">$52.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/WB0jkwdkim/w_576_WB0jkwdkim_sopa-de-mondongo.jpg" alt="SOPA DE MONDONGO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">SOPA DE MONDONGO</h3>
+          
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/IL7UjgKt6V/w_576_IL7UjgKt6V_cazuela-de-frijoles.jpg" alt="FRIJOLADA O CAZUELA DE LENTEJAS" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">FRIJOLADA O CAZUELA DE LENTEJAS</h3>
+          <p class="prod-desc">400 gr frijol/Lenteja, arroz blanco, 50 gr chorizo santarosano, 100 gr chicharrón al barril, 1 huevo frito, aguacate y tajada de plátano maduro.</p>
+          <div class="prod-price">$37.800</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9e30C4IpBC/w_576_9e30C4IpBC_cazuela-paisa.jpg" alt="CAZUELA PAISA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍽️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CAZUELA PAISA</h3>
+          <p class="prod-desc">400 gr frijol / lenteja, arroz blanco, 100 gr carne desmechada, 50 gr chorizo santarrosano, tajadas de plátano maduro, aguacate, huevo frito, 80 gr maíz tierno y hogao.</p>
+          <div class="prod-price">$37.800</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-entradas">
+      <div class="cat-header">
+        <span class="cat-icon">🥗</span>
+        <h2 class="cat-title">Entradas</h2>
+        <span class="cat-count">21 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Q3e7eYtXuu/w_576_Q3e7eYtXuu_img_2600.jpg" alt="ENTRADA DE CHICHARRÓN " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ENTRADA DE CHICHARRÓN </h3>
+          <p class="prod-desc">La joya de la casa: chicharrón único, primero ahumado lentamente al barril y luego dorado en aceite. Crujiente, jugoso y lleno de sabor. Servido con arepitas, yuca y limón. ¡Un imp…</p>
+          <div class="prod-price">$31.120</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Entrada de chicharrón" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Entrada de chicharrón</h3>
+          <p class="prod-desc">200 gr de chicharrón ahumado al barril con arepa y porción de yuca frita 200 g of barrel-smoked pork crackling served with arepa and a side of fried cassava.</p>
+          <div class="prod-price">$48.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Ceviche de chicharrón" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Ceviche de chicharrón</h3>
+          <p class="prod-desc">El crocante del chicharrón se fusiona con la frescura del ceviche: cebolla morada, maíz, aguacate y limón. ¡Una entrada única que combina lo mejor de la tradición paisa con un toqu…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/R6PKBqEFCR/w_576_R6PKBqEFCR_img_4218.jpg" alt="CEVICHE DE CHICHARRON" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CEVICHE DE CHICHARRON</h3>
+          <p class="prod-desc">Ceviche Paisa de Chicharrón El crocante del chicharrón se fusiona con la frescura del ceviche: cebolla morada, maíz, aguacate y limón. ¡Una entrada única que combina lo mejor de la…</p>
+          <div class="prod-price">$33.600</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/iuIg9mOZef/w_576_iuIg9mOZef_img_2778.jpg" alt="CHINCHULINES (Camarones Paisas)" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHINCHULINES (Camarones Paisas)</h3>
+          <p class="prod-desc">Chinchulines (Camarones Paisas) Entrada ideal para compartir: 200 g de chunchurria crocante, servida con papas criollas doradas o yuca frita y arepa. ¡Un clásico paisa para disfrut…</p>
+          <div class="prod-price">$28.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Chinchulines" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chinchulines</h3>
+          <p class="prod-desc">Entrada ideal para compartir: 200 g de chunchurria crocante, servida con papas criollas doradas o yuca frita y arepa. ¡Un clásico paisa para disfrutar en compañía!</p>
+          <div class="prod-price">$44.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/tjti5tMVUw/w_576_tjti5tMVUw_img_4209.jpg" alt="PAPAS CHEEDAR" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PAPAS CHEEDAR</h3>
+          <p class="prod-desc">Papas Cheddar con Chorizo Entrada irresistible de papas fritas crocantes, bañadas en salsa cheddar cremosa y acompañadas con carne de chorizo santarosano molida. ¡Ideal para compar…</p>
+          <div class="prod-price">$30.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Papas Cheedar" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Papas Cheedar</h3>
+          <p class="prod-desc">Entrada irresistible de papas fritas crocantes, bañadas en salsa cheddar cremosa y acompañadas con carne de chorizo santarosano molida. ¡Ideal para compartir y empezar con todo el …</p>
+          <div class="prod-price">$42.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Empanadas" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Empanadas</h3>
+          <p class="prod-desc">La entrada favorita: 8 empanadas doradas y crocantes, con relleno tradicional y ají picante al estilo paisa. ¡Un antojo ideal para abrir el apetito en grupo!</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/IfqSMRZxgd/w_576_IfqSMRZxgd_img_3010.jpg" alt="ENTRADA DE EMPANADAS" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ENTRADA DE EMPANADAS</h3>
+          <p class="prod-desc">Empanadas de la Casa (x8) La entrada favorita: 8 empanadas doradas y crocantes, con relleno tradicional y ají picante al estilo paisa. ¡Un antojo ideal para abrir el apetito en gru…</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/4Y2T5k8mXR/w_576_4Y2T5k8mXR_3.jpg" alt="CÓCTEL O CEVICHE DE CAMARONES" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CÓCTEL O CEVICHE DE CAMARONES</h3>
+          <p class="prod-desc">Cocktail de Camarón Un clásico del Caribe: camarones jugosos en salsa rosada cremosa con un toque cítrico, servidos con aguacate y galletas. ¡Refrescante y lleno de sabor!</p>
+          <div class="prod-price">$44.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Cóctel o ceviche de camarones" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Cóctel o ceviche de camarones</h3>
+          <p class="prod-desc">Un clásico del Caribe: camarones jugosos en salsa rosada cremosa con un toque cítrico, servidos con aguacate y galletas. ¡Refrescante y lleno de sabor!.</p>
+          <div class="prod-price">$56.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Anillos de calamar" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Anillos de calamar</h3>
+          <p class="prod-desc">Una deliciosa entrada del mar: calamares frescos apanados, dorados al punto y acompañados con papas fritas y limón.</p>
+          <div class="prod-price">$54.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/xHE6b9Wyh6/w_576_xHE6b9Wyh6_anillos-de-calamar.jpg" alt="ANILLOS DE CALAMAR" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ANILLOS DE CALAMAR</h3>
+          <p class="prod-desc">Anillos de Calamar Crocantes Una deliciosa entrada del mar: calamares frescos apanados, dorados al punto y acompañados con papas fritas y limón.</p>
+          <div class="prod-price">$39.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/1fzYp3wsmk/w_576_1fzYp3wsmk_img_2779.jpg" alt="ALITAS BBQ" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ALITAS BBQ</h3>
+          <p class="prod-desc">Alitas BBQ x10 Un clásico que nunca falla: 10 alitas de pollo crujientes, cubiertas con salsa BBQ ahumada y acompañadas de papas fritas doradas. ¡Perfectas para compartir o disfrut…</p>
+          <div class="prod-price">$49.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Alitas BBQ" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Alitas BBQ</h3>
+          <p class="prod-desc">Un clásico que nunca falla: 10 alitas de pollo crujientes, cubiertas con salsa BBQ ahumada y acompañadas de papas fritas doradas. ¡Perfectas para compartir o disfrutar solo!</p>
+          <div class="prod-price">$62.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Camarones salteados" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Camarones salteados</h3>
+          
+          <div class="prod-price">$58.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/UAFJUBsnNs/w_576_UAFJUBsnNs_camarones-salteados.jpg" alt="CAMARONES SALTEADOS" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CAMARONES SALTEADOS</h3>
+          
+          <div class="prod-price">$44.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Arepa de chocolo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arepa de chocolo</h3>
+          <p class="prod-desc">Deliciosa arepa de chocolo con queso.</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9H1Z5A2RhF/w_576_9H1Z5A2RhF_img_4207.jpg" alt="AREPA DE CHOCOLO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">AREPA DE CHOCOLO</h3>
+          <p class="prod-desc">Deliciosa arepa de chocolo con queso.</p>
+          <div class="prod-price">$12.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Nuggets de Pollo " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Nuggets de Pollo </h3>
+          <p class="prod-desc">Nuggets de Pollo Acompañado de papa a la francesa</p>
+          <div class="prod-price">$42.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-adicionales">
+      <div class="cat-header">
+        <span class="cat-icon">➕</span>
+        <h2 class="cat-title">Adicionales</h2>
+        <span class="cat-count">14 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ BLANCO</h3>
+          
+          <div class="prod-price">$10.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ DE COCO</h3>
+          
+          <div class="prod-price">$11.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ENSALADA</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PAPAS CRIOLLAS</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PATACONES</h3>
+          
+          <div class="prod-price">$12.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">YUCA FRITA</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">AREPA PINCHO X 5 UND </h3>
+          
+          <div class="prod-price">$6.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CARNE DE HAMBURGUESA</h3>
+          
+          <div class="prod-price">$18.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">TOCINETA</h3>
+          
+          <div class="prod-price">$12.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHORIZO SANTARROSANO X 100 GR</h3>
+          
+          <div class="prod-price">$15.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">AGUACATE</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">HUEVO FRITO</h3>
+          
+          <div class="prod-price">$4.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">GUACAMOLE</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">➕</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">SALSA DE CAMARÓN</h3>
+          
+          <div class="prod-price">$30.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-pescados">
+      <div class="cat-header">
+        <span class="cat-icon">🐠</span>
+        <h2 class="cat-title">Pescados</h2>
+        <span class="cat-count">8 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/mpzikX11GM/w_576_mpzikX11GM_1.jpg" alt="MOJARRA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐠</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">MOJARRA</h3>
+          <p class="prod-desc">Mojarra Frita – Plato Típico Costeño Mojarra fresca, dorada al punto ideal para lograr crocancia por fuera y jugosidad por dentro. Acompañada de arroz con coco, patacones con hogao…</p>
+          <div class="prod-price">$54.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/b8aZpiYWEJ/w_576_b8aZpiYWEJ_21.jpg" alt="SALMÓN DE LA CASA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐠</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">SALMÓN DE LA CASA</h3>
+          <p class="prod-desc">Filete de salmón de 280gr a 320 gr aprox. bañado en salsa de camarón acompañado de arroz de coco o blanco y patacón.</p>
+          <div class="prod-price">$85.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/rmi11rdsCY/w_576_rmi11rdsCY_img_2670-3.jpg" alt="SALMÓN ASADO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐠</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">SALMÓN ASADO</h3>
+          <p class="prod-desc">Filete de Salmon de 280gr a 320 gr aprox acompañado de ensalada.</p>
+          <div class="prod-price">$74.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/bankG2Ie6o/w_576_bankG2Ie6o_cazuela-de-mariscos.jpg" alt="CAZUELA DE MARISCOS " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐠</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CAZUELA DE MARISCOS </h3>
+          <p class="prod-desc">Deliciosa cazuela a base mariscos acompañada de queso mozzarella, arroz de coco y patacón con hogao.</p>
+          <div class="prod-price">$66.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/bQmaj345vK/w_576_bQmaj345vK_cazuela-costena.jpg" alt="CAZUELA COSTEÑA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐠</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CAZUELA COSTEÑA</h3>
+          <p class="prod-desc">Base de cazuela, acompañada de camarones, salmón, arroz de coco, patacones y aguacate.</p>
+          <div class="prod-price">$47.200</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hAKmwFpwpQ/w_576_hAKmwFpwpQ_arroz-marinero.jpg" alt="ARROZ MARINERO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐠</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ MARINERO</h3>
+          <p class="prod-desc">Delicioso Arroz típico del Caribe acompañado de mariscos y verduras.</p>
+          <div class="prod-price">$62.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/2SauLrtzDW/w_576_2SauLrtzDW_arroz-de-camarones.jpg" alt="ARROZ CON CAMARÓN " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐠</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ARROZ CON CAMARÓN </h3>
+          <p class="prod-desc">Arroz con 200 gr de camarón acompañado de verduras.</p>
+          <div class="prod-price">$59.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/QCw8b6iG6V/w_576_QCw8b6iG6V_img_1388.jpeg" alt="Bandeja Caribeña" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐠</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Bandeja Caribeña</h3>
+          <p class="prod-desc">🌴🔥 Bandeja Caribeña 🔥🌴 ¡El plato estrella para compartir sabor y abundancia! Deléitate con una mojarra frita crujiente , arroz con coco cremoso , anillos de calamar , camarones…</p>
+          <div class="prod-price">$110.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-parrilla-y-asados">
+      <div class="cat-header">
+        <span class="cat-icon">🔥</span>
+        <h2 class="cat-title">Parrilla y Asados</h2>
+        <span class="cat-count">16 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/NSaRhO0qST/w_576_NSaRhO0qST_6-jpg-2.jpeg" alt="Combo Parrillada Duo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Parrillada Duo</h3>
+          <p class="prod-desc">🔥 COMBO PARRILLADA DÚO 🔥 El plan perfecto para compartir y disfrutar lo mejor de la parrilla en buena compañía 🤝🔥 Incluye una parrillada completa para dos , con una explosión d…</p>
+          <div class="prod-price">$90.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CoKKxW1aXu/w_576_CoKKxW1aXu_5-jpg-2.jpeg" alt="Combo Antojo Berraco" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Antojo Berraco</h3>
+          <p class="prod-desc">🔥 COMBO ANTOJO BERRACO 🔥 Un combo bien berraco, cargado de sabor y puro ADN paisa 🇨🇴 Disfruta un chuzo irresistible de chicharrón crocante y chorizo santarosano , acompañado de…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/FZAkAIh70J/w_576_FZAkAIh70J_img_5339.jpg" alt="Parrillada" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Parrillada</h3>
+          <p class="prod-desc">Parrillada Un festín de la parrilla para disfrutar sin afán. Nuestra Parrillada reúne filete de pechuga , filete de carne asada , chorizo santarosano , morcilla y chicharrón , acom…</p>
+          <div class="prod-price">$69.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ybgiTXdLVx/w_576_ybgiTXdLVx_img_5321.jpg" alt="Plato Mixto" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Plato Mixto</h3>
+          <p class="prod-desc">Plato Mixto Una combinación perfecta para los que quieren un poco de todo. Nuestro Plato Mixto incluye filete de pechuga jugoso y filete de lomo de cerdo , acompañados de arroz bla…</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/D4U41fFbVp/w_576_D4U41fFbVp_img_5327.jpg" alt="Plato mixto con carne" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Plato mixto con carne</h3>
+          <p class="prod-desc">Plato Mixto con Carne La combinación perfecta para los que disfrutan de un buen plato bien servido. Nuestro Plato Mixto con Carne trae filete de pechuga jugoso y filete de carne as…</p>
+          <div class="prod-price">$44.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/A0XcDwzbG1/w_576_A0XcDwzbG1_img_5450.jpg" alt="Chuzo de Pollo " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chuzo de Pollo </h3>
+          <p class="prod-desc">Chuzo de Pollo Un plato lleno de color y sabor a parrilla. Nuestro Chuzo de Pollo se prepara con trozos de pollo jugosos , pimentón rojo y verde , cebolla morada y tomate cherry , …</p>
+          <div class="prod-price">$34.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/NtOMoHJu5C/w_576_NtOMoHJu5C_img_5341.jpg" alt="Chuzo De Carne" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chuzo De Carne</h3>
+          <p class="prod-desc">Chuzo de Carne Sabor a parrilla en cada bocado. Nuestro Chuzo de Carne se prepara con lomo de res , ensartado con pimentón rojo y verde y cebolla morada, asados al punto perfecto p…</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hbihFx2Ack/w_576_hbihFx2Ack_img_5348.jpg" alt="Chuzo de Solomito" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chuzo de Solomito</h3>
+          <p class="prod-desc">Chuzo de Solomito Un corte fino llevado a la parrilla. Nuestro Chuzo de Solomito se prepara con solomito tierno y jugoso , ensartado con pimentón rojo y verde y cebolla morada , as…</p>
+          <div class="prod-price">$64.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/zp3v4q03CJ/w_576_zp3v4q03CJ_img_5324.jpg" alt="Chuzo De Chicharrón" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chuzo De Chicharrón</h3>
+          <p class="prod-desc">Chuzo de Chicharrón Un plato para los amantes de los sabores intensos. Nuestro Chuzo de Chicharrón combina chicharrón crocante con pimentón rojo y verde y cebolla morada , asados a…</p>
+          <div class="prod-price">$46.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Yh0v7daVK0/w_576_Yh0v7daVK0_img_5285.jpg" alt="Baby Beef" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Baby Beef</h3>
+          <p class="prod-desc">Baby Beef Un clásico de la parrilla para los amantes de la buena carne. Nuestro Baby Beef se prepara con lomo de res tierno y jugoso, asado al punto perfecto para resaltar todo su …</p>
+          <div class="prod-price">$71.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/iYhZ5Yu3De/w_576_iYhZ5Yu3De_img_5283.jpg" alt="Churrasco" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Churrasco</h3>
+          <p class="prod-desc">Churrasco Un clásico de la parrilla que nunca falla. Nuestro Churrasco se asa al punto ideal para quedar jugoso y lleno de sabor , acompañado de papa , plátano maduro y chorizo san…</p>
+          <div class="prod-price">$64.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Nh83xBlBy9/w_576_Nh83xBlBy9_img_5290.jpg" alt="Punta De Anca" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Punta De Anca</h3>
+          <p class="prod-desc">Punta de Anca Un corte clásico para los amantes de la buena parrilla. Nuestra Punta de Anca se asa al punto ideal para resaltar su jugosidad y sabor , acompañada de papa , plátano …</p>
+          <div class="prod-price">$64.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/5umMQuM5WD/w_576_5umMQuM5WD_img_5278.jpg" alt="Pechuga" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Pechuga</h3>
+          <p class="prod-desc">Pechuga de Pollo Un plato clásico, ligero y lleno de sabor. Nuestra Pechuga de Pollo se prepara jugosa y bien asada, acompañada de papa pastusa , plátano maduro y servida con salsa…</p>
+          <div class="prod-price">$44.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Z3NoIQIOUD/w_576_Z3NoIQIOUD_img_5276.jpg" alt="Lomo De Cerdo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Lomo De Cerdo</h3>
+          <p class="prod-desc">Nuestro filete de lomo de cerdo se prepara jugoso y bien asado, acompañado de papa al vapor , plátano maduro y arepa tradicional . Se sirve con chimichurri y salsa especial de la c…</p>
+          <div class="prod-price">$44.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/YbGe8PL9lg/w_576_YbGe8PL9lg_img_5293.jpg" alt="Costilla BBQ" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Costilla BBQ</h3>
+          <p class="prod-desc">Costilla BBQ Un clásico irresistible para los amantes del sabor ahumado. Nuestra Costilla BBQ de cerdo se cocina lentamente hasta quedar suave y jugosa , bañada en una salsa BBQ ll…</p>
+          <div class="prod-price">$72.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/biuZNIUkpm/w_576_biuZNIUkpm_img_5346.jpg" alt="Salmón" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🔥</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Salmón</h3>
+          <p class="prod-desc">Salmón Una opción suave y llena de sabor. Nuestro Salmón se prepara al punto perfecto para conservar su jugosidad y textura , acompañado de papa y plátano maduro , que aportan el e…</p>
+          <div class="prod-price">$74.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-fritos">
+      <div class="cat-header">
+        <span class="cat-icon">🍟</span>
+        <h2 class="cat-title">Fritos</h2>
+        <span class="cat-count">5 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/NP4H1PFZBt/w_576_NP4H1PFZBt_img_2990.jpg" alt="Combo Mío" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍟</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Mío</h3>
+          
+          <div class="prod-price">$18.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/YS0YJIUnDv/w_576_YS0YJIUnDv_img_2996.jpg" alt="Empanada De Carne Y Pollo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍟</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Empanada De Carne Y Pollo</h3>
+          
+          <div class="prod-price">$3.500</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/18jLrMqYVF/w_576_18jLrMqYVF_img_2995.jpg" alt="Arepa De Huevo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍟</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arepa De Huevo</h3>
+          
+          <div class="prod-price">$5.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/TtnIQhMHkS/w_576_TtnIQhMHkS_img_3004.jpg" alt="Arepa Trifásica " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍟</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arepa Trifásica </h3>
+          
+          <div class="prod-price">$8.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <div class="prod-img-ph">🍟</div>
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Buñuelo</h3>
+          
+          <div class="prod-price">$3.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-men--infantil">
+      <div class="cat-header">
+        <span class="cat-icon">👶</span>
+        <h2 class="cat-title">Menú Infantil</h2>
+        <span class="cat-count">4 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/8obWnhCX4k/w_576_8obWnhCX4k_img_5439.jpg" alt="Nuggets De Pollo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>👶</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Nuggets De Pollo</h3>
+          
+          <div class="prod-price">$32.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/7NRa9DebM9/w_576_7NRa9DebM9_1.jpg" alt="HAMBURGUESA INFANTIL" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>👶</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">HAMBURGUESA INFANTIL</h3>
+          <p class="prod-desc">Carne de hamburguesa o filete de pollo, queso mozzarella, jugo de cajita.</p>
+          <div class="prod-price">$28.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/PBMNWSgbwb/w_576_PBMNWSgbwb_img_5442.jpg" alt="Hamburguesa Infantil" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>👶</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Hamburguesa Infantil</h3>
+          
+          <div class="prod-price">$32.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/5N7IOPbA0a/w_576_5N7IOPbA0a_2.jpg" alt="NUGGETS DE POLLO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>👶</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">NUGGETS DE POLLO</h3>
+          <p class="prod-desc">Trozos de Pechuga apanada acompañado de un jugo en caja.</p>
+          <div class="prod-price">$29.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-de-tradici-n">
+      <div class="cat-header">
+        <span class="cat-icon">🏔️</span>
+        <h2 class="cat-title">De tradición</h2>
+        <span class="cat-count">10 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/5xFnSc3ntK/w_576_5xFnSc3ntK_img_5308.jpg" alt="Sobrebarriga Criolla " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sobrebarriga Criolla </h3>
+          <p class="prod-desc">Sobrebarriga Criolla Un clásico de la cocina colombiana que nunca falla. Nuestra Sobrebarriga Criolla se cocina lentamente hasta quedar suave y jugosa , bañada en salsa hogao que r…</p>
+          <div class="prod-price">$54.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/C7MtlGZIxI/w_576_C7MtlGZIxI_img_5315.jpg" alt="Lengua en Salsa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Lengua en Salsa</h3>
+          <p class="prod-desc">Lengua en Salsa Criolla Lengua de res suave y jugosa, cocinada lentamente y bañada en salsa criolla tradicional con hogao. Acompañada de arroz blanco, papa, yuca, ensalada fresca, …</p>
+          <div class="prod-price">$58.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/21orgHuzbF/w_576_21orgHuzbF_img_5359.jpg" alt="Chuleta Valluna" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chuleta Valluna</h3>
+          <p class="prod-desc">Chuleta Valluna Un clásico irresistible del suroccidente colombiano. Nuestra Chuleta Valluna se prepara con lomo de cerdo y un apanado premium fino , dorado y crocante por fuera, j…</p>
+          <div class="prod-price">$52.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/iCxxaxst21/w_576_iCxxaxst21_img_5354.jpg" alt="Patacón Berraco" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Patacón Berraco</h3>
+          <p class="prod-desc">Un plato sin miedo y lleno de sabor. Nuestro Patacón Berraco tiene una base de patacón crocante , cargado con chicharrón , lomo de cerdo , morcilla y chorizo santarosano , acompaña…</p>
+          <div class="prod-price">$59.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ISIdMiFrqC/w_576_ISIdMiFrqC_img_4005.jpg" alt="Patacón con carne desmechada" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Patacón con carne desmechada</h3>
+          <p class="prod-desc">Patacón con Carne Desmechada Un clásico que siempre provoca. Nuestro Patacón con Carne Desmechada parte de una base de patacón crocante , cubierto con carne desmechada jugosa , hog…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Ztm5OVVLWe/w_576_Ztm5OVVLWe_img_5388.jpg" alt="Arroz con Pollo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arroz con Pollo</h3>
+          <p class="prod-desc">Arroz con Pollo Un plato que nunca falla en la mesa. Nuestro Arroz con Pollo se prepara con arroz blanco suelto , trozos de pechuga de pollo , pimentón rojo y una mezcla de vegetal…</p>
+          <div class="prod-price">$34.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/RDjePhfnOL/w_576_RDjePhfnOL_img_5385.jpg" alt="Arroz Paisa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arroz Paisa</h3>
+          <p class="prod-desc">Arroz Paisa Un plato cargado de sabor y tradición. Nuestro Arroz Paisa combina arroz suelto con chicharrón crocante , trozos de pechuga de pollo , chorizo santarosano , una mezcla …</p>
+          <div class="prod-price">$48.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ETrx8a5uJd/w_576_ETrx8a5uJd_img_5381.jpg" alt="Arroz con Camarones" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arroz con Camarones</h3>
+          <p class="prod-desc">Arroz con Camarón Un plato sencillo y lleno de sabor a mar. Nuestro Arroz con Camarón se prepara con arroz suelto , camarones jugosos y un mix de verduras , logrando una combinació…</p>
+          <div class="prod-price">$54.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/OWMCQBJcAc/w_576_OWMCQBJcAc_4-jpg.jpeg" alt="Combo Valluno" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Valluno</h3>
+          <p class="prod-desc">🔥 COMBO VALLUNO 🔥 Un combo poderoso inspirado en uno de los platos más icónicos del Valle del Cauca 🇨🇴 Disfruta 2 deliciosas chuletas vallunas , crujientes por fuera y jugosas …</p>
+          <div class="prod-price">$86.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/LFLFuOoRVW/w_576_LFLFuOoRVW_mix.jpg" alt="Cocktail o Ceviche de Camarón" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🏔️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Cocktail o Ceviche de Camarón</h3>
+          <p class="prod-desc">Cóctel o Ceviche de Camarón Una preparación fresca y llena de sabor a mar. Nuestro Cóctel (o Ceviche) de Camarón se elabora con camarones jugosos , marinados en una mezcla fresca y…</p>
+          <div class="prod-price">$48.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-cazuelas">
+      <div class="cat-header">
+        <span class="cat-icon">🫕</span>
+        <h2 class="cat-title">Cazuelas</h2>
+        <span class="cat-count">6 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/0JT9qUA1it/w_576_0JT9qUA1it_w_1200_9e30c4ipbc_cazuela-paisa.jpg" alt="Cazuela Campesina*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🫕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Cazuela Campesina*</h3>
+          <p class="prod-desc">Cazuela Campesina Un plato que reconforta y llena el corazón. Nuestra Cazuela Campesina se prepara con fríjoles bien cargados (con arroz blanco como acompañante), carne desmechada …</p>
+          <div class="prod-price">$46.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/zRsLfftbLQ/w_576_zRsLfftbLQ_w_1200_il7ujgkt6v_cazuela-de-frijoles.jpg" alt="Frijolada" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🫕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Frijolada</h3>
+          <p class="prod-desc">Un plato que representa lo mejor de la mesa paisa. Nuestra Frijolada viene bien completa con fríjoles cargados de sabor , arroz blanco , chicharrón crocante , chorizo santarosano ,…</p>
+          <div class="prod-price">$46.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/lq5bYYr9ry/w_576_lq5bYYr9ry_img_5379.jpg" alt="Cazuela Vegetariana" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🫕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Cazuela Vegetariana</h3>
+          <p class="prod-desc">Cazuela Vegetariana Una opción llena de sabor y tradición, preparada sin carnes pero con todo el cariño de la cocina casera. Nuestra Cazuela Vegetariana combina fríjoles bien prepa…</p>
+          <div class="prod-price">$41.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/TzPBXH9Afh/w_576_TzPBXH9Afh_w_1200_bankg2ie6o_cazuela-de-mariscos.jpg" alt="Cazuela de Mariscos*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🫕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Cazuela de Mariscos*</h3>
+          <p class="prod-desc">Cazuela de Mariscos Un plato lleno de sabor a mar y tradición caribeña. Nuestra Cazuela de Mariscos es cremosa y bien cargada, preparada con una deliciosa mezcla de mariscos , serv…</p>
+          <div class="prod-price">$66.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/O2pkjj2bHK/w_576_O2pkjj2bHK_w_1200_bqmaj345vk_cazuela-costena.jpg" alt="Cazuela Costeña." loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🫕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Cazuela Costeña.</h3>
+          <p class="prod-desc">Cazuela Costeña Un plato que sabe a mar y tradición. Nuestra Cazuela Costeña es una deliciosa cazuela de mariscos bien cargados , cremosa y llena de sabor, acompañada de queso mozz…</p>
+          <div class="prod-price">$62.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/qOpULkNq6s/w_576_qOpULkNq6s_w_1200_yxjntozj5q_casaito-2.jpg" alt="Casadito de la Abuela" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🫕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Casadito de la Abuela</h3>
+          <p class="prod-desc">Casadito de la Abuela Un plato que sabe a hogar y a recuerdos felices. Nuestro Casadito de la Abuela trae fríjoles bien cargados con chicharrón , arroz blanco , huevo frito , pláta…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-pa--cucharear">
+      <div class="cat-header">
+        <span class="cat-icon">🥄</span>
+        <h2 class="cat-title">Pa' Cucharear</h2>
+        <span class="cat-count">2 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ZNyMxZ5Wux/w_576_ZNyMxZ5Wux_w_1200_lohmdvmqqr_caldo-de-costilla-2.jpg" alt="Caldo Costilla" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Caldo Costilla</h3>
+          <p class="prod-desc">Caldo Especial de la Casa (Caldo de Costilla) El sabor que reconforta desde el primer sorbo. Costilla de res suave y jugosa , cocinada lentamente con papas y especias tradicionales…</p>
+          <div class="prod-price">$30.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/kV4wnu17hB/w_576_kV4wnu17hB_w_1200_fb4ua3l8tu_img_4225.jpg" alt="Sancocho de Pescado" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sancocho de Pescado</h3>
+          <p class="prod-desc">Sancocho de Pescado Un plato que trae el sabor del mar directo a la mesa. Nuestro Sancocho de Pescado se prepara con pescado fresco , cocinado lentamente en un caldo lleno de sabor…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-pa-cucharear">
+      <div class="cat-header">
+        <span class="cat-icon">🥄</span>
+        <h2 class="cat-title">Pa cucharear</h2>
+        <span class="cat-count">11 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ZNyMxZ5Wux/w_576_ZNyMxZ5Wux_w_1200_lohmdvmqqr_caldo-de-costilla-2.jpg" alt="Caldo Costilla" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Caldo Costilla</h3>
+          <p class="prod-desc">Caldo Especial de la Casa (Caldo de Costilla) El sabor que reconforta desde el primer sorbo. Costilla de res suave y jugosa , cocinada lentamente con papas y especias tradicionales…</p>
+          <div class="prod-price">$30.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/M4eT2c8OcD/w_576_M4eT2c8OcD_img_5371.jpg" alt="Sancocho de Pollo y Res" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sancocho de Pollo y Res</h3>
+          <p class="prod-desc">Sancocho de Pollo y Res Un plato que sabe a hogar y a reunión familiar. Nuestro Sancocho de Pollo y Res se sirve bien completo: plato de sancocho con yuca, papa, plátano y mazorca …</p>
+          <div class="prod-price">$54.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/iu5BSwWEEp/w_576_iu5BSwWEEp_w_1200_cq4jra49ka_ajiaco.jpg" alt="Ajiaco " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Ajiaco </h3>
+          <p class="prod-desc">Ajiaco de la Casa Un plato que reconforta desde la primera cucharada. Nuestro Ajiaco de la Casa se prepara con pollo desmechado , cocinado lentamente en un caldo espeso con papa cr…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/EIHIlB2hQ7/w_576_EIHIlB2hQ7_img_5353.jpg" alt="Mondogo Completo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Mondogo Completo</h3>
+          <p class="prod-desc">Mondongo Paisa Un plato que sabe a tradición y hogar. Nuestro Mondongo Paisa se prepara con callo de res y cerdo , cocinados lentamente en un caldo espeso y bien sazonado con papa,…</p>
+          <div class="prod-price">$51.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/kV4wnu17hB/w_576_kV4wnu17hB_w_1200_fb4ua3l8tu_img_4225.jpg" alt="Sancocho de Pescado" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sancocho de Pescado</h3>
+          <p class="prod-desc">Sancocho de Pescado Un plato que trae el sabor del mar directo a la mesa. Nuestro Sancocho de Pescado se prepara con pescado fresco , cocinado lentamente en un caldo lleno de sabor…</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/VzS1xQtFtE/w_576_VzS1xQtFtE_img_5306.jpg" alt="Ajiaquito" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Ajiaquito</h3>
+          <p class="prod-desc">Ajiaquito Una sopita de entrada que reconforta desde la primera cucharada. Nuestro Ajiaquito es ligero, suave y lleno de sabor, preparado al estilo tradicional, ideal para abrir el…</p>
+          <div class="prod-price">$19.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/K4xvU1BrOb/w_576_K4xvU1BrOb_img_5438.jpg" alt="Sopita de pescado" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sopita de pescado</h3>
+          <p class="prod-desc">Sopita de Pescado Una entrada ligera y reconfortante con sabor a mar. Nuestra Sopita de Pescado se prepara con pescado fresco , cocinado suavemente en un caldo casero y aromático, …</p>
+          <div class="prod-price">$19.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/rIza5iK8tH/w_576_rIza5iK8tH_img_5332.jpg" alt="Sopita de lentejas" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sopita de lentejas</h3>
+          <p class="prod-desc">Sopita de Lentejas Una entrada calientica y casera que reconforta. Nuestra Sopita de Lentejas es suave, bien preparada y llena de sabor, ideal para abrir el apetito y empezar la co…</p>
+          <div class="prod-price">$19.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/xHQPX5pbCe/w_576_xHQPX5pbCe_img_5329.jpg" alt="Sopita de frijol" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sopita de frijol</h3>
+          <p class="prod-desc">Sopita de Frijol Una entrada calientica y reconfortante con todo el sabor de casa. Nuestra Sopita de Frijol es suave, bien preparada y llena de tradición, perfecta para abrir el ap…</p>
+          <div class="prod-price">$19.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/t5fN2o0YSN/w_576_t5fN2o0YSN_3-jpg-2.jpeg" alt="Combo Campesino " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Campesino </h3>
+          <p class="prod-desc">🔥 COMBO CAMPESINO 🔥 Un homenaje a los sabores de nuestra tierra, perfecto para reconfortar el alma y llenar el corazón de tradición. Incluye una sopa completa a tu elección : 🥣 …</p>
+          <div class="prod-price">$49.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/R3uZiyUkb4/w_576_R3uZiyUkb4_img_5302.jpg" alt="Sopita de Mondongo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥄</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Sopita de Mondongo</h3>
+          <p class="prod-desc">Sopita de Mondongo Una entrada calientica y llena de tradición . Nuestra Sopita de Mondongo es suave, bien preparada y con ese sabor casero que abre el apetito y reconforta desde l…</p>
+          <div class="prod-price">$19.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-con-pollo">
+      <div class="cat-header">
+        <span class="cat-icon">🍗</span>
+        <h2 class="cat-title">Con Pollo</h2>
+        <span class="cat-count">3 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Pechuga a la parrilla" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Pechuga a la parrilla</h3>
+          <p class="prod-desc">Jugosa pechuga de pollo a la parrilla , preparada al punto perfecto para conservar su suavidad y sabor natural. Una opción ligera, saludable y deliciosa, ideal para quienes disfrut…</p>
+          <div class="prod-price">$62.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Pechuga Ranchera" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Pechuga Ranchera</h3>
+          <p class="prod-desc">Jugoso filete de pechuga de pollo , cubierto con queso gratinado , tocineta crocante y chorizo santarosano , logrando una combinación intensa y llena de sabor. Acompañado de ensala…</p>
+          <div class="prod-price">$69.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Pechuga de la Casa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍗</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Pechuga de la Casa</h3>
+          <p class="prod-desc">Jugoso filete de pechuga asada , bañado en una suave y cremosa salsa de camarón que realza su sabor y le da un toque especial. Un plato elegante y delicioso, ideal para quienes bus…</p>
+          <div class="prod-price">$76.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-con-pescado">
+      <div class="cat-header">
+        <span class="cat-icon">🐟</span>
+        <h2 class="cat-title">Con Pescado</h2>
+        <span class="cat-count">2 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Salmón de la Casa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐟</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Salmón de la Casa</h3>
+          <p class="prod-desc">Delicado filete de salmón , jugoso y lleno de sabor, bañado en una suave y cremosa salsa de camarón que realza su textura y le aporta un toque gourmet. Un plato elegante, balancead…</p>
+          <div class="prod-price">$124.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/fXsu11QNKl/w_576_fXsu11QNKl_foto-fin-de-ano.jpg" alt="Salmón Asado" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🐟</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Salmón Asado</h3>
+          <p class="prod-desc">Delicado filete de salmón asado , jugoso y lleno de sabor, preparado al punto perfecto para resaltar su textura y frescura natural. Una opción saludable, elegante y deliciosa, idea…</p>
+          <div class="prod-price">$102.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-antojos-para-empezar">
+      <div class="cat-header">
+        <span class="cat-icon">😋</span>
+        <h2 class="cat-title">Antojos Para Empezar</h2>
+        <span class="cat-count">11 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/NLr8r0JzWh/w_576_NLr8r0JzWh_img_5167.jpg" alt="Chicharron con Arepa*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chicharron con Arepa*</h3>
+          <p class="prod-desc">Chicharrón con Arepa Una entrada que reúne a todos alrededor de la mesa. Chicharrón crocante y dorado , servido con arepa en pincho y hogao casero , preparado como en casa, con el …</p>
+          <div class="prod-price">$29.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/kSXhvS15ZS/w_576_kSXhvS15ZS_img_5177.jpg" alt="Chorizo Santarosano*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chorizo Santarosano*</h3>
+          <p class="prod-desc">Un clásico que nunca falla en la mesa. Chorizo santarosano jugoso y bien asado , acompañado de arepa tradicional , plátano maduro , papa al vapor y su infaltable casco de limón par…</p>
+          <div class="prod-price">$26.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CTHGF7YHAi/w_576_CTHGF7YHAi_img_5228.jpg" alt="Patacones con Hogao*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Patacones con Hogao*</h3>
+          <p class="prod-desc">Una entrada perfecta para compartir en la mesa. Ocho patacones crocantes , acompañados de hogao casero , guacamole fresco y queso mozzarella , que juntos crean una mezcla deliciosa…</p>
+          <div class="prod-price">$19.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/jrycJhpxoY/w_576_jrycJhpxoY_img_5205.jpg" alt="Empanadas Típicas*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Empanadas Típicas*</h3>
+          <p class="prod-desc">Un clásico que nos reúne en la mesa. Siete empanadas doradas y crocantes , rellenas de carne desmechada bien sazonada , preparadas al estilo tradicional y acompañadas de ají casero…</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zp0CkVOyQR/w_576_Zp0CkVOyQR_img_5174.jpg" alt="Arepa Con Queso" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arepa Con Queso</h3>
+          <p class="prod-desc">El sabor sencillo de todos los días. Arepa típica paisa , asada y servida con mantequilla , un toque de sal y queso quajada , como se disfruta en casa. Perfecta para acompañar cual…</p>
+          <div class="prod-price">$13.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CzeDuxXqd6/w_576_CzeDuxXqd6_img_5219.jpg" alt="Morcilla con arepa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Morcilla con arepa</h3>
+          <p class="prod-desc">Morcilla con Arepa Un sabor tradicional que no puede faltar. Morcilla en trozos , bien preparada y llena de sabor, acompañada de arepa en pincho , hogao casero y cascos de limón pa…</p>
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/NCejBvTeGe/w_576_NCejBvTeGe_img_5170.jpg" alt="Arepa de Chocolo con queso" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arepa de Chocolo con queso</h3>
+          <p class="prod-desc">Un sabor dulce y casero que encanta a todos. Arepa de choclo recién asada, acompañada de mantequilla y queso quajada , logrando ese equilibrio perfecto entre lo suave, lo dulce y l…</p>
+          <div class="prod-price">$14.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/XFqa2DXiCE/w_576_XFqa2DXiCE_img_5201.jpg" alt="Chinchulines con Arepa*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chinchulines con Arepa*</h3>
+          <p class="prod-desc">Chinchulines con Arepa Un sabor tradicional que muchos aman. Chunchurria frita, bien dorada y crocante , servida con arepa en pincho , hogao casero y limón , para disfrutarla como …</p>
+          <div class="prod-price">$26.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CuwhEGzYzr/w_576_CuwhEGzYzr_img_5193-2.jpg" alt="Entrada Campesina*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Entrada Campesina*</h3>
+          <p class="prod-desc">Una entrada pensada para compartir y disfrutar en familia. Chicharrón crocante , chorizo tradicional , tres empanadas rellenas de carne desmechada , patacón , arepa en pincho y hog…</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/pvww4zdEhV/w_576_pvww4zdEhV_img_5211.jpg" alt="Ceviche de Chicharron*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Ceviche de Chicharron*</h3>
+          <p class="prod-desc">Una forma diferente y deliciosa de disfrutar un clásico paisa. Chicharrón crocante en trozos , preparado tipo ceviche, fresco y lleno de sabor, acompañado de arepa en pincho para c…</p>
+          <div class="prod-price">$32.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/DFFk4rkbYd/w_576_DFFk4rkbYd_img_5214.jpg" alt="Papas Cheddar" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Papas Cheddar</h3>
+          <p class="prod-desc">Un plato que gusta a todos. Papas a la francesa doradas y crocantes , bañadas en queso cheddar fundido y acompañadas de carne de chorizo santarosano , que le da ese sabor irresisti…</p>
+          <div class="prod-price">$32.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-para-compartir">
+      <div class="cat-header">
+        <span class="cat-icon">👨‍👩‍👧</span>
+        <h2 class="cat-title">Para compartir</h2>
+        <span class="cat-count">3 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/oBGJKMonhx/w_576_oBGJKMonhx_img_5230.jpg" alt="Picada de la casa*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>👨‍👩‍👧</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Picada de la casa*</h3>
+          <p class="prod-desc">El plato ideal para compartir y disfrutar en familia. Nuestra Picada de la Casa reúne lo mejor de la parrilla y la fritura: recorte de pollo, carne y cerdo , chinchulín , chicharró…</p>
+          <div class="prod-price">$110.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/B9OJl2w6cB/w_576_B9OJl2w6cB_img_5235.jpg" alt="Picada de mar y tierra" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>👨‍👩‍👧</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Picada de mar y tierra</h3>
+          <p class="prod-desc">Un plato para todos los gustos. Nuestra Picada de Mar y Tierra combina recorte de pollo, carne y cerdo con camarón y mixtura de mariscos , acompañados de chorizo santarosano , arep…</p>
+          <div class="prod-price">$140.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/1mXDKXbWNc/w_576_1mXDKXbWNc_img_5238.jpg" alt="Picada Colombiana *" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>👨‍👩‍👧</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Picada Colombiana *</h3>
+          <p class="prod-desc">Una picada pensada para compartir y disfrutar en familia. Recorte de pollo, carne y cerdo , chinchulín , chicharrón crocante y chorizo santarosano , acompañados de arepa en pincho …</p>
+          <div class="prod-price">$220.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-antojos-para-empezar">
+      <div class="cat-header">
+        <span class="cat-icon">😋</span>
+        <h2 class="cat-title">Antojos para Empezar</h2>
+        <span class="cat-count">11 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/NLr8r0JzWh/w_576_NLr8r0JzWh_img_5167.jpg" alt="Chicharron con Arepa*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chicharron con Arepa*</h3>
+          <p class="prod-desc">Chicharrón con Arepa Una entrada que reúne a todos alrededor de la mesa. Chicharrón crocante y dorado , servido con arepa en pincho y hogao casero , preparado como en casa, con el …</p>
+          <div class="prod-price">$29.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/kSXhvS15ZS/w_576_kSXhvS15ZS_img_5177.jpg" alt="Chorizo Santarosano*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chorizo Santarosano*</h3>
+          <p class="prod-desc">Un clásico que nunca falla en la mesa. Chorizo santarosano jugoso y bien asado , acompañado de arepa tradicional , plátano maduro , papa al vapor y su infaltable casco de limón par…</p>
+          <div class="prod-price">$26.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CTHGF7YHAi/w_576_CTHGF7YHAi_img_5228.jpg" alt="Patacones con Hogao*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Patacones con Hogao*</h3>
+          <p class="prod-desc">Una entrada perfecta para compartir en la mesa. Ocho patacones crocantes , acompañados de hogao casero , guacamole fresco y queso mozzarella , que juntos crean una mezcla deliciosa…</p>
+          <div class="prod-price">$19.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/jrycJhpxoY/w_576_jrycJhpxoY_img_5205.jpg" alt="Empanadas Típicas*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Empanadas Típicas*</h3>
+          <p class="prod-desc">Un clásico que nos reúne en la mesa. Siete empanadas doradas y crocantes , rellenas de carne desmechada bien sazonada , preparadas al estilo tradicional y acompañadas de ají casero…</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CzeDuxXqd6/w_576_CzeDuxXqd6_img_5219.jpg" alt="Morcilla con arepa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Morcilla con arepa</h3>
+          <p class="prod-desc">Morcilla con Arepa Un sabor tradicional que no puede faltar. Morcilla en trozos , bien preparada y llena de sabor, acompañada de arepa en pincho , hogao casero y cascos de limón pa…</p>
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zp0CkVOyQR/w_576_Zp0CkVOyQR_img_5174.jpg" alt="Arepa Con Queso" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arepa Con Queso</h3>
+          <p class="prod-desc">El sabor sencillo de todos los días. Arepa típica paisa , asada y servida con mantequilla , un toque de sal y queso quajada , como se disfruta en casa. Perfecta para acompañar cual…</p>
+          <div class="prod-price">$13.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/NCejBvTeGe/w_576_NCejBvTeGe_img_5170.jpg" alt="Arepa de Chocolo con queso" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Arepa de Chocolo con queso</h3>
+          <p class="prod-desc">Un sabor dulce y casero que encanta a todos. Arepa de choclo recién asada, acompañada de mantequilla y queso quajada , logrando ese equilibrio perfecto entre lo suave, lo dulce y l…</p>
+          <div class="prod-price">$14.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/XFqa2DXiCE/w_576_XFqa2DXiCE_img_5201.jpg" alt="Chinchulines con Arepa*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chinchulines con Arepa*</h3>
+          <p class="prod-desc">Chinchulines con Arepa Un sabor tradicional que muchos aman. Chunchurria frita, bien dorada y crocante , servida con arepa en pincho , hogao casero y limón , para disfrutarla como …</p>
+          <div class="prod-price">$26.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CuwhEGzYzr/w_576_CuwhEGzYzr_img_5193-2.jpg" alt="Entrada Campesina*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Entrada Campesina*</h3>
+          <p class="prod-desc">Una entrada pensada para compartir y disfrutar en familia. Chicharrón crocante , chorizo tradicional , tres empanadas rellenas de carne desmechada , patacón , arepa en pincho y hog…</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/pvww4zdEhV/w_576_pvww4zdEhV_img_5211.jpg" alt="Ceviche de Chicharron*" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Ceviche de Chicharron*</h3>
+          <p class="prod-desc">Una forma diferente y deliciosa de disfrutar un clásico paisa. Chicharrón crocante en trozos , preparado tipo ceviche, fresco y lleno de sabor, acompañado de arepa en pincho para c…</p>
+          <div class="prod-price">$32.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/DFFk4rkbYd/w_576_DFFk4rkbYd_img_5214.jpg" alt="Papas Cheddar" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>😋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Papas Cheddar</h3>
+          <p class="prod-desc">Un plato que gusta a todos. Papas a la francesa doradas y crocantes , bañadas en queso cheddar fundido y acompañadas de carne de chorizo santarosano , que le da ese sabor irresisti…</p>
+          <div class="prod-price">$32.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="cta-bar">
+  <h2>¿Listo para pedir?</h2>
+  <p>Escríbenos al WhatsApp y te atendemos de inmediato</p>
+  <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20un%20pedido%20del%20Men%C3%BA%20T%C3%ADpico%20Paisa" class="cta-wa" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Pedir por WhatsApp
+  </a>
+</div>
+
+<footer>
+  <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla" onerror="this.style.display='none'"><br>
+  Paisa Parrilla Restaurante Bar · Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena<br>
+  <a href="tel:+573028581981">+57 302 858 1981</a> · <a href="index.html">← Volver al inicio</a>
+</footer>
+
+<script>
+// Highlight active sidebar link on scroll
+const links = document.querySelectorAll('.sb-link');
+const sections = document.querySelectorAll('.cat-section');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.sb-link[href="#' + e.target.id + '"]');
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

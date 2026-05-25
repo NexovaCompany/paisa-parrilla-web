@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menú Desayunos — Paisa Parrilla</title>
+<link rel="icon" href="assets/instagram/LogoPrincipal.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brown:#7B3A0E;--brown-l:#A05020;--brown-d:#3D1800;
+  --yellow:#FFD700;--yellow-d:#E6C200;
+  --red:#C8102E;--red-d:#A00D24;
+  --bg:#FFF8EF;--card:#FFFFFF;
+  --text:#2A1200;--text-l:#6B3A18;--text-m:#9A6040;
+  --border:#F0D8B8;
+  --sh:0 4px 24px rgba(123,58,14,.11);
+  --sh-h:0 10px 44px rgba(123,58,14,.22);
+  --r:14px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--brown-d);box-shadow:0 2px 16px rgba(0,0,0,.35);
+  display:flex;align-items:center;gap:16px;padding:0 24px;height:60px}
+.nav-logo{height:36px;object-fit:contain}
+.nav-title{color:var(--yellow);font-size:1rem;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-back{display:inline-flex;align-items:center;gap:6px;color:var(--yellow);text-decoration:none;
+  font-size:.85rem;font-weight:600;border:1.5px solid var(--yellow);border-radius:8px;
+  padding:5px 12px;white-space:nowrap;transition:all .2s}
+.nav-back:hover{background:var(--yellow);color:var(--brown-d)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--brown-d) 0%,var(--brown) 60%,var(--brown-l) 100%);
+  color:#fff;padding:48px 24px 40px;text-align:center}
+.hero-emoji{font-size:3.5rem;margin-bottom:12px;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+.hero h1{font-size:clamp(1.6rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;
+  color:var(--yellow);text-shadow:0 2px 8px rgba(0,0,0,.4);margin-bottom:8px}
+.hero p{font-size:1rem;opacity:.85;max-width:500px;margin:0 auto 24px;line-height:1.5}
+.hero-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.hero-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;padding:6px 16px;font-size:.85rem;font-weight:600;color:#fff}
+
+/* LAYOUT */
+.layout{display:flex;gap:0;max-width:1200px;margin:0 auto;padding:32px 16px}
+
+/* SIDEBAR */
+.sidebar{width:220px;flex-shrink:0;display:flex;flex-direction:column;gap:4px;
+  position:sticky;top:72px;align-self:flex-start;max-height:calc(100vh - 80px);overflow-y:auto;
+  padding-right:8px}
+.sb-link{display:block;padding:9px 14px;border-radius:10px;color:var(--text-l);
+  text-decoration:none;font-size:.88rem;font-weight:500;transition:all .18s;
+  border:1.5px solid transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-link:hover{background:var(--border);color:var(--brown);border-color:var(--border)}
+.sb-link.active{background:var(--brown-d);color:var(--yellow);font-weight:700}
+
+/* CONTENT */
+.content{flex:1;min-width:0;display:flex;flex-direction:column;gap:40px}
+
+/* CATEGORY SECTION */
+.cat-section{}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;
+  padding-bottom:14px;border-bottom:2px solid var(--border)}
+.cat-icon{font-size:1.8rem}
+.cat-title{font-size:1.4rem;font-weight:800;color:var(--brown-d);flex:1}
+.cat-count{font-size:.8rem;color:var(--text-m);font-weight:600;
+  background:var(--border);border-radius:12px;padding:3px 10px}
+
+/* PRODUCT GRID */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+
+/* PRODUCT CARD */
+.prod-card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);
+  overflow:hidden;transition:all .22s;border:1.5px solid var(--border);display:flex;flex-direction:column}
+.prod-card:hover{box-shadow:var(--sh-h);transform:translateY(-3px);border-color:var(--brown-l)}
+.prod-card.oos{opacity:.55}
+.prod-img-wrap{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#f5e8d8;flex-shrink:0}
+.prod-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.06)}
+.prod-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;background:linear-gradient(135deg,#fdf0e0,#f5dab8)}
+.oos-badge{position:absolute;top:10px;right:10px;background:rgba(200,16,46,.85);
+  color:#fff;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px}
+.prod-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:8px}
+.prod-name{font-size:.95rem;font-weight:700;color:var(--brown-d);line-height:1.3}
+.prod-desc{font-size:.78rem;color:var(--text-m);line-height:1.5;flex:1}
+.prod-price{font-size:1.05rem;font-weight:900;color:var(--brown);
+  background:linear-gradient(90deg,#fff8ef,#fdebd0);
+  border:1.5px solid var(--yellow-d);border-radius:8px;padding:5px 12px;
+  text-align:center;margin-top:auto}
+
+/* CTA BAR */
+.cta-bar{background:linear-gradient(135deg,var(--brown-d),var(--brown));
+  color:#fff;text-align:center;padding:40px 24px;margin-top:24px}
+.cta-bar h2{font-size:1.4rem;font-weight:800;color:var(--yellow);margin-bottom:8px}
+.cta-bar p{font-size:.95rem;opacity:.85;margin-bottom:20px}
+.cta-wa{display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;font-weight:700;font-size:1rem;
+  padding:14px 28px;border-radius:30px;text-decoration:none;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .2s}
+.cta-wa:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.5)}
+.cta-wa svg{width:22px;height:22px;fill:#fff}
+
+/* FOOTER */
+footer{background:var(--brown-d);color:rgba(255,255,255,.6);text-align:center;
+  padding:24px;font-size:.82rem}
+footer a{color:var(--yellow);text-decoration:none}
+footer img{height:36px;margin-bottom:8px;opacity:.9}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .layout{padding:16px}
+  .prod-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .hero{padding:32px 16px 28px}
+}
+@media(max-width:480px){
+  .prod-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .prod-body{padding:10px 12px;gap:6px}
+  .prod-name{font-size:.85rem}
+}
+
+/* SCROLLBAR */
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla" class="nav-logo"
+       onerror="this.style.display='none'">
+  <span class="nav-title">Menú Desayunos</span>
+  <a href="index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="hero">
+  <span class="hero-emoji">☀️</span>
+  <h1>Menú Desayunos</h1>
+  <p>Arranca el día con energía. Desayunos completos, jugos naturales y bebidas de tradición paisa.</p>
+  <div class="hero-meta">
+    <span class="hero-badge">📍 Bocagrande, Cartagena</span>
+    <span class="hero-badge">87 platos</span>
+    <span class="hero-badge">📞 +57 302 858 1981</span>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <a href="#cat-desayunos" class="sb-link">☀️ Desayunos</a>
+<a href="#cat-otras-bebidas-calientes" class="sb-link">🍵 Otras Bebidas Calientes</a>
+<a href="#cat-bebidas-calientes-con-caf-" class="sb-link">☕ Bebidas Calientes con Café</a>
+<a href="#cat-bebidas-fr-as-con-caf-" class="sb-link">🧋 Bebidas Frías con Café</a>
+<a href="#cat-desayunos-con-huevo" class="sb-link">🍳 Desayunos Con Huevo</a>
+<a href="#cat-jugos-naturales" class="sb-link">🍊 Jugos Naturales</a>
+<a href="#cat-otras-bebidas" class="sb-link">🥛 Otras bebidas</a>
+<a href="#cat-bebidas-tradicionales" class="sb-link">🥤 Bebidas Tradicionales</a>
+<a href="#cat-otras-bebidas" class="sb-link">🥛 Otras Bebidas</a>
+  </aside>
+  <main class="content">
+    
+    <section class="cat-section" id="cat-desayunos">
+      <div class="cat-header">
+        <span class="cat-icon">☀️</span>
+        <h2 class="cat-title">Desayunos</h2>
+        <span class="cat-count">14 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9Q7ErheRdm/w_576_9Q7ErheRdm_calentado-paisa.jpg" alt="CALENTADO PAISA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CALENTADO PAISA</h3>
+          <p class="prod-desc">Calentado Paisa Fríjoles con arroz revueltos al estilo tradicional, acompañados de huevo frito, carne, chicharrón, plátano maduro y arepa. ¡Un verdadero levantamuertos!</p>
+          <div class="prod-price">$58.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/IfqSMRZxgd/w_576_IfqSMRZxgd_img_3010.jpg" alt="ENTRADA DE EMPANADAS" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">ENTRADA DE EMPANADAS</h3>
+          <p class="prod-desc">Empanadas de la Casa (x8) La entrada favorita: 8 empanadas doradas y crocantes, con relleno tradicional y ají picante al estilo paisa. ¡Un antojo ideal para abrir el apetito en gru…</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/2IspEr6jA8/w_576_2IspEr6jA8_img_3293.jpg" alt="PICADA TÍPICA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">PICADA TÍPICA</h3>
+          <p class="prod-desc">Picada Típica Una combinación llena de sabor paisa: chicharrón crocante al barril, chorizo santarosano y morcilla, servidos con patacones, arepitas, limón y salsas de la casa. 👉 I…</p>
+          <div class="prod-price">$74.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/oksPPqMGpI/w_576_oksPPqMGpI_img_4067.jpg" alt="CHICHARRÓN TÍPICO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHICHARRÓN TÍPICO</h3>
+          <p class="prod-desc">Chicharrón Típico Paisa Una experiencia para los sentidos: chicharrón crocante, jugoso por dentro y ahumado lentamente al barril. Servido con patacones, yuca dorada, limón fresco y…</p>
+          <div class="prod-price">$54.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/aberCU2iDq/w_576_aberCU2iDq_img_3043.jpg" alt="MIGADO PAISA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">MIGADO PAISA</h3>
+          <p class="prod-desc">Delicioso migado típico paisa con buñuelo, pandebono, galletas ducales, queso campesino, achiras.</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/loHmdvmQqr/w_576_loHmdvmQqr_caldo-de-costilla.jpg" alt="CALDO DE COSTILLA " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CALDO DE COSTILLA </h3>
+          <p class="prod-desc">Caldo Especial de la Casa Costilla de res suave y jugosa, cocinada lentamente con papas y especias, servida en un caldo humeante lleno de sabor. ¡El preferido para recargar energía…</p>
+          <div class="prod-price">$30.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/PhuG9txTzO/w_576_PhuG9txTzO_img_2987.jpg" alt="CHORIZO SANTAROSANO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHORIZO SANTAROSANO</h3>
+          <p class="prod-desc">Delicioso chorizo típico santaronsano acompañado de Arepa con queso + rodajas de tomate + limón</p>
+          <div class="prod-price">$21.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/lQK9Z5mWpW/w_576_lQK9Z5mWpW_img_9766.jpeg" alt="CACEROLA CAMPESINA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CACEROLA CAMPESINA</h3>
+          <p class="prod-desc">Cacerola con huevo frito, carne desmechada, carne de chorizo santarosano, acompañado de papa en casco y arepa con queso campesino.</p>
+          <div class="prod-price">$44.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/vIKr76ufY2/w_576_vIKr76ufY2_img_9764.jpeg" alt="BISTEC A CABALLO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">BISTEC A CABALLO</h3>
+          <p class="prod-desc">Solomito de res a la parrilla con salsa criolla, coronado huevo frito, sobre una cama de papa criolla y arepa con queso</p>
+          <div class="prod-price">$59.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/SRemBmfO7c/w_576_SRemBmfO7c_img_2976.jpg" alt="DESAYUNO AMERICANO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">DESAYUNO AMERICANO</h3>
+          <p class="prod-desc">Huevos fritos en cacerola con tocineta, papa rustica, queso, hogao. Acompañado de jugo de naranja. Con canasta de pan, mantequilla, mermelada y bebida caliente.</p>
+          <div class="prod-price">$39.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/2tjW31FVDG/w_576_2tjW31FVDG_img_2601.jpg" alt="CALENTADO DE FRIJOLES CON HUEVOS AL GUSTO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CALENTADO DE FRIJOLES CON HUEVOS AL GUSTO</h3>
+          <p class="prod-desc">Calentado de frijoles con huevos al gusto y arepa con queso.</p>
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/pL8iKxMop1/w_576_pL8iKxMop1_img_2982.jpg" alt="HUEVOS AL GUSTO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">HUEVOS AL GUSTO</h3>
+          <p class="prod-desc">Deliciosos Huevos Al gusto con Arepa con Queso</p>
+          <div class="prod-price">$18.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/mKE7Iwn8wE/w_576_mKE7Iwn8wE_img_2979.jpg" alt="HUEVOS RANCHEROS" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">HUEVOS RANCHEROS</h3>
+          <p class="prod-desc">Huevos revueltos con salchicha ranchera o chorizo.</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/sRdl8VhQJD/w_576_sRdl8VhQJD_5.jpg" alt="OMELET" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☀️</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">OMELET</h3>
+          <p class="prod-desc">Omelet de jamón y queso acompañado con una canasta de pan junto con mermelada y mantequilla.</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-otras-bebidas-calientes">
+      <div class="cat-header">
+        <span class="cat-icon">🍵</span>
+        <h2 class="cat-title">Otras Bebidas Calientes</h2>
+        <span class="cat-count">10 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/aberCU2iDq/w_576_aberCU2iDq_img_3043.jpg" alt="MIGADO PAISA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">MIGADO PAISA</h3>
+          <p class="prod-desc">Delicioso migado típico paisa con buñuelo, pandebono, galletas ducales, queso campesino, achiras.</p>
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/mIocB18oPL/w_576_mIocB18oPL_img_3928-3.jpg" alt="MIGAITO PAISA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">MIGAITO PAISA</h3>
+          
+          <div class="prod-price">$14.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/AlwnE4PrJE/w_576_AlwnE4PrJE_img_e7783.jpg" alt="MIGAO TRADICIÓN DULCE" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">MIGAO TRADICIÓN DULCE</h3>
+          <p class="prod-desc">Galletas Ducales (el toque crocante y clásico). Chocolate Corona (la base tradicional paisa). Espresso sencillo (para darle carácter de mocaccino). Achiras (suaves y auténticos). M…</p>
+          <div class="prod-price">$32.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/X2DyxSsP3g/w_576_X2DyxSsP3g_96e0c476-079f-4b57-b7eb-6eda3b491836.png" alt="AGUAPANELA CON QUESO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">AGUAPANELA CON QUESO</h3>
+          
+          <div class="prod-price">$11.400</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/GHC3alZLrW/w_576_GHC3alZLrW_c7740d5e-53f8-46a2-8b42-51cf2626bd9c.png" alt="CHOCOLATE EN AGUA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHOCOLATE EN AGUA</h3>
+          <p class="prod-desc">Chocolate en Agua con Queso Campesino</p>
+          <div class="prod-price">$11.400</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/0t3uMOB9Qb/w_576_0t3uMOB9Qb_img_3935.jpg" alt="CHOCOLATE EN LECHE" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CHOCOLATE EN LECHE</h3>
+          <p class="prod-desc">Chocolate con leche acompañado de queso campesino.</p>
+          <div class="prod-price">$12.500</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/WbGj8Rg2iX/w_576_WbGj8Rg2iX_img_3933.jpg" alt="MILO CALIENTE" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">MILO CALIENTE</h3>
+          
+          <div class="prod-price">$12.400</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/41PQBwd345/w_576_41PQBwd345_5.jpg" alt="TE CHAI EN LECHE" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">TE CHAI EN LECHE</h3>
+          
+          <div class="prod-price">$14.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/cnAnm4JYRR/w_576_cnAnm4JYRR_6.jpg" alt="TE CHAI " loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">TE CHAI </h3>
+          
+          <div class="prod-price">$12.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/o7CkzIpuMR/w_576_o7CkzIpuMR_f4861314-ee76-4632-b27a-cf90acd80e2b.png" alt="AROMÁTICA" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍵</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">AROMÁTICA</h3>
+          
+          <div class="prod-price">$6.900</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-bebidas-calientes-con-caf-">
+      <div class="cat-header">
+        <span class="cat-icon">☕</span>
+        <h2 class="cat-title">Bebidas Calientes con Café</h2>
+        <span class="cat-count">11 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/oWcdGHtQZc/w_576_oWcdGHtQZc_img_3157.jpg" alt="CAFE IRLANDES" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CAFE IRLANDES</h3>
+          
+          <div class="prod-price">$22.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/FJ4cfDSt6M/w_576_FJ4cfDSt6M_img_3167.jpg" alt="CARAJILLO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CARAJILLO</h3>
+          
+          <div class="prod-price">$28.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/js4CAc5FbD/w_576_js4CAc5FbD_img_3144.jpg" alt="CAFE FOSFORITO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CAFE FOSFORITO</h3>
+          
+          <div class="prod-price">$24.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hiP0D96UzN/w_576_hiP0D96UzN_img_3878.jpg" alt="EXPRESSO SENCILLO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">EXPRESSO SENCILLO</h3>
+          
+          <div class="prod-price">$5.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/vxXQLwYz7B/w_576_vxXQLwYz7B_img_3879.jpg" alt="EXPRESSO DOBLE" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">EXPRESSO DOBLE</h3>
+          
+          <div class="prod-price">$6.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/visJm5JVhE/w_576_visJm5JVhE_img_3873.jpg" alt="AMERICANO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">AMERICANO</h3>
+          
+          <div class="prod-price">$7.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/cCLOMOIgmm/w_576_cCLOMOIgmm_img_3851.jpg" alt="TINTO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">TINTO</h3>
+          
+          <div class="prod-price">$6.500</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CnPliq3pCP/w_576_CnPliq3pCP_img_3868.jpg" alt="CAPUCCINO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CAPUCCINO</h3>
+          
+          <div class="prod-price">$10.500</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hA14GrmAwf/w_576_hA14GrmAwf_img_3864.jpg" alt="LATTE" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">LATTE</h3>
+          
+          <div class="prod-price">$8.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/NiAHe3IOFe/w_576_NiAHe3IOFe_img_3896.jpg" alt="CAFÉ BOMBÓN" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">CAFÉ BOMBÓN</h3>
+          
+          <div class="prod-price">$10.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/UR1njtDzpT/w_576_UR1njtDzpT_4d3a16af-5b4d-4649-8a2f-447ae4d0031b.png" alt="MACCHIATO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>☕</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">MACCHIATO</h3>
+          
+          <div class="prod-price">$10.900</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-bebidas-fr-as-con-caf-">
+      <div class="cat-header">
+        <span class="cat-icon">🧋</span>
+        <h2 class="cat-title">Bebidas Frías con Café</h2>
+        <span class="cat-count">4 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/5XkdKMSMBK/w_576_5XkdKMSMBK_img_3182.jpg" alt="EXPRESSO MARTINI" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🧋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">EXPRESSO MARTINI</h3>
+          
+          <div class="prod-price">$28.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Xhyt9RSZDA/w_576_Xhyt9RSZDA_img_3261-1.jpg" alt="NEVADO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🧋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">NEVADO</h3>
+          <p class="prod-desc">Nevado de Café Un antojo helado con todo el poder del café. Frappé cremoso, crema chantilly y caramelo irresistible. ¡Refrescante, dulce y cargado de energía!</p>
+          <div class="prod-price">$17.400</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/WQhWvDYUeE/w_576_WQhWvDYUeE_img_3253-1.jpg" alt="GRANIZADO DE CAFÉ" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🧋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">GRANIZADO DE CAFÉ</h3>
+          
+          <div class="prod-price">$15.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ryXj94p5XW/w_576_ryXj94p5XW_22bc666e-e1c7-4e23-9ad6-425853a527a9.png" alt="LATTE FRÍO" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🧋</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">LATTE FRÍO</h3>
+          
+          <div class="prod-price">$10.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-desayunos-con-huevo">
+      <div class="cat-header">
+        <span class="cat-icon">🍳</span>
+        <h2 class="cat-title">Desayunos Con Huevo</h2>
+        <span class="cat-count">6 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/9UGFFRTa70/w_576_9UGFFRTa70_img_5434.jpg" alt="Huevos Al Gusto" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Huevos Al Gusto</h3>
+          
+          <div class="prod-price">$14.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/oTJf9Aw1Rb/w_576_oTJf9Aw1Rb_img_5432.jpg" alt="Huevos Rancheros" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Huevos Rancheros</h3>
+          
+          <div class="prod-price">$25.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/A8DXMPPQvO/w_576_A8DXMPPQvO_img_5431.jpg" alt="Omelet" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Omelet</h3>
+          
+          <div class="prod-price">$26.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/JFjApHGiUE/w_576_JFjApHGiUE_img_5446.jpg" alt="Cacerola Campesina" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Cacerola Campesina</h3>
+          
+          <div class="prod-price">$44.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/pNW9Mi1ed0/w_576_pNW9Mi1ed0_1-jpg-4.jpeg" alt="Combo Desayuno" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Desayuno</h3>
+          <p class="prod-desc">🔥 COMBO DESAYUNO Empieza el día como se debe 🤠☀️ Huevos al gusto (revueltos, pericos o fritos) + 1/4 de panchocho + arepa calientica con mantequilla 🧈 🥤 Incluye bebida a elecci…</p>
+          <div class="prod-price">$19.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/65WBL6jJs8/w_576_65WBL6jJs8_2-jpg-3.jpeg" alt="Combo Desayuno Ranchero" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍳</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Combo Desayuno Ranchero</h3>
+          <p class="prod-desc">🔥 COMBO DESAYUNO RANCHERO ¡Para los que arrancan el día con toda! 🤠💪 Huevos revueltos con salchicha ranchera bien doradita + 1/4 de panchocho + arepa calientica con mantequilla …</p>
+          <div class="prod-price">$28.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-jugos-naturales">
+      <div class="cat-header">
+        <span class="cat-icon">🍊</span>
+        <h2 class="cat-title">Jugos Naturales</h2>
+        <span class="cat-count">12 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Jugo Natural En Agua" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Jugo Natural En Agua</h3>
+          
+          <div class="prod-price">$13.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Limonada Natural" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Limonada Natural</h3>
+          
+          <div class="prod-price">$12.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Limonada De Coco" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Limonada De Coco</h3>
+          
+          <div class="prod-price">$16.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Jugo Natural En Leche" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Jugo Natural En Leche</h3>
+          
+          <div class="prod-price">$14.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Limonada Natural" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Limonada Natural</h3>
+          
+          <div class="prod-price">$12.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Jugo Natural En Agua" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Jugo Natural En Agua</h3>
+          
+          <div class="prod-price">$13.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Limonada Cherry" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Limonada Cherry</h3>
+          
+          <div class="prod-price">$16.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Jugo Natural En Leche" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Jugo Natural En Leche</h3>
+          
+          <div class="prod-price">$14.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Limonada Cherry" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Limonada Cherry</h3>
+          
+          <div class="prod-price">$16.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Limonada De Coco" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Limonada De Coco</h3>
+          
+          <div class="prod-price">$16.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Limonada De Café" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Limonada De Café</h3>
+          
+          <div class="prod-price">$16.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Zu7nHWoW9j/w_576_Zu7nHWoW9j_img_3247.jpg" alt="Limonada De Café" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🍊</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Limonada De Café</h3>
+          
+          <div class="prod-price">$16.900</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-otras-bebidas">
+      <div class="cat-header">
+        <span class="cat-icon">🥛</span>
+        <h2 class="cat-title">Otras bebidas</h2>
+        <span class="cat-count">5 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ZCwJ4x254o/w_576_ZCwJ4x254o_9.jpg" alt="Gaseosa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Gaseosa</h3>
+          
+          <div class="prod-price">$9.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/uycBUR3tIm/w_576_uycBUR3tIm_6.jpg" alt="Botella Agua Manantial" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Botella Agua Manantial</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/XHpUgNJc7j/w_576_XHpUgNJc7j_7.jpg" alt="Botella Agua Con Gas Manantial" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Botella Agua Con Gas Manantial</h3>
+          
+          <div class="prod-price">$9.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/GRhSjlzev9/w_576_GRhSjlzev9_0004335_schweppes-club-soda-250-ml-1000x798-1.jpeg" alt="Soda" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Soda</h3>
+          
+          <div class="prod-price">$8.500</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/3dyF9AQpgt/w_576_3dyF9AQpgt_gigner.jpg" alt="Ginger" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Ginger</h3>
+          
+          <div class="prod-price">$9.500</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-bebidas-tradicionales">
+      <div class="cat-header">
+        <span class="cat-icon">🥤</span>
+        <h2 class="cat-title">Bebidas Tradicionales</h2>
+        <span class="cat-count">20 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Xka0q47nnf/w_576_Xka0q47nnf_img_5448.jpg" alt="Aguapanela Con Queso" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Aguapanela Con Queso</h3>
+          
+          <div class="prod-price">$14.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/2rqM0j8D4T/w_576_2rqM0j8D4T_img_5453.jpg" alt="Mazamorra Con Leche" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Mazamorra Con Leche</h3>
+          
+          <div class="prod-price">$12.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/Xka0q47nnf/w_576_Xka0q47nnf_img_5448.jpg" alt="Aguapanela Con Queso" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Aguapanela Con Queso</h3>
+          
+          <div class="prod-price">$14.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/visJm5JVhE/w_576_visJm5JVhE_img_3873.jpg" alt="Americano" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Americano</h3>
+          
+          <div class="prod-price">$7.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hA14GrmAwf/w_576_hA14GrmAwf_img_3864.jpg" alt="Capuccino" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Capuccino</h3>
+          
+          <div class="prod-price">$11.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/SaAua1X1MC/w_576_SaAua1X1MC_foto-te.jpg" alt="Aromática" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Aromática</h3>
+          
+          <div class="prod-price">$6.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/784mZPFZ5Y/w_576_784mZPFZ5Y_img_3937.jpg" alt="Milo Frío o Caliente" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Milo Frío o Caliente</h3>
+          
+          <div class="prod-price">$16.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/cCLOMOIgmm/w_576_cCLOMOIgmm_img_3851.jpg" alt="Tinto" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Tinto</h3>
+          
+          <div class="prod-price">$5.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CnPliq3pCP/w_576_CnPliq3pCP_img_3868.jpg" alt="Latte" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Latte</h3>
+          
+          <div class="prod-price">$8.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/CnPliq3pCP/w_576_CnPliq3pCP_img_3868.jpg" alt="Latte" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Latte</h3>
+          
+          <div class="prod-price">$8.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/0t3uMOB9Qb/w_576_0t3uMOB9Qb_img_3935.jpg" alt="Chocolate Con Leche" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chocolate Con Leche</h3>
+          
+          <div class="prod-price">$13.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/0t3uMOB9Qb/w_576_0t3uMOB9Qb_img_3935.jpg" alt="Chocolate Con Leche" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chocolate Con Leche</h3>
+          
+          <div class="prod-price">$13.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/784mZPFZ5Y/w_576_784mZPFZ5Y_img_3937.jpg" alt="Milo Frío o Caliente" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Milo Frío o Caliente</h3>
+          
+          <div class="prod-price">$16.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/hA14GrmAwf/w_576_hA14GrmAwf_img_3864.jpg" alt="Capuccino" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Capuccino</h3>
+          
+          <div class="prod-price">$11.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/cCLOMOIgmm/w_576_cCLOMOIgmm_img_3851.jpg" alt="Tinto" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Tinto</h3>
+          
+          <div class="prod-price">$5.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/0t3uMOB9Qb/w_576_0t3uMOB9Qb_img_3935.jpg" alt="Chocolate Negro" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chocolate Negro</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/visJm5JVhE/w_576_visJm5JVhE_img_3873.jpg" alt="Americano" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Americano</h3>
+          
+          <div class="prod-price">$7.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/SaAua1X1MC/w_576_SaAua1X1MC_foto-te.jpg" alt="Aromática" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Aromática</h3>
+          
+          <div class="prod-price">$6.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/0t3uMOB9Qb/w_576_0t3uMOB9Qb_img_3935.jpg" alt="Chocolate Negro" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Chocolate Negro</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/2rqM0j8D4T/w_576_2rqM0j8D4T_img_5453.jpg" alt="Mazamorra Con Leche" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥤</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Mazamorra Con Leche</h3>
+          
+          <div class="prod-price">$12.000</div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="cat-section" id="cat-otras-bebidas">
+      <div class="cat-header">
+        <span class="cat-icon">🥛</span>
+        <h2 class="cat-title">Otras Bebidas</h2>
+        <span class="cat-count">5 platos</span>
+      </div>
+      <div class="prod-grid">
+        
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/uycBUR3tIm/w_576_uycBUR3tIm_6.jpg" alt="Botella Agua Manantial" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Botella Agua Manantial</h3>
+          
+          <div class="prod-price">$9.000</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/XHpUgNJc7j/w_576_XHpUgNJc7j_7.jpg" alt="Botella Agua Con Gas Manantial" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Botella Agua Con Gas Manantial</h3>
+          
+          <div class="prod-price">$9.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/3dyF9AQpgt/w_576_3dyF9AQpgt_gigner.jpg" alt="Ginger" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Ginger</h3>
+          
+          <div class="prod-price">$9.500</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/ZCwJ4x254o/w_576_ZCwJ4x254o_9.jpg" alt="Gaseosa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Gaseosa</h3>
+          
+          <div class="prod-price">$9.900</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.cluvi.com/GRhSjlzev9/w_576_GRhSjlzev9_0004335_schweppes-club-soda-250-ml-1000x798-1.jpeg" alt="Soda" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'prod-img-ph\'>🥛</div>'">
+          
+        </div>
+        <div class="prod-body">
+          <h3 class="prod-name">Soda</h3>
+          
+          <div class="prod-price">$8.500</div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="cta-bar">
+  <h2>¿Listo para pedir?</h2>
+  <p>Escríbenos al WhatsApp y te atendemos de inmediato</p>
+  <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20un%20pedido%20del%20Men%C3%BA%20Desayunos" class="cta-wa" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Pedir por WhatsApp
+  </a>
+</div>
+
+<footer>
+  <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla" onerror="this.style.display='none'"><br>
+  Paisa Parrilla Restaurante Bar · Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena<br>
+  <a href="tel:+573028581981">+57 302 858 1981</a> · <a href="index.html">← Volver al inicio</a>
+</footer>
+
+<script>
+// Highlight active sidebar link on scroll
+const links = document.querySelectorAll('.sb-link');
+const sections = document.querySelectorAll('.cat-section');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.sb-link[href="#' + e.target.id + '"]');
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
