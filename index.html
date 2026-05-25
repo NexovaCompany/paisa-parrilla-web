@@ -464,6 +464,15 @@
       50%      { box-shadow: 0 4px 34px rgba(37,211,102,.78); }
     }
 
+
+    /* ── LANG SWITCH ── */
+    .lang-sw{display:flex;align-items:center;background:rgba(255,255,255,.1);
+      border:1.5px solid rgba(255,255,255,.2);border-radius:20px;overflow:hidden;flex-shrink:0;margin-left:8px}
+    .lang-btn{padding:5px 11px;font-size:.72rem;font-weight:700;letter-spacing:.05em;
+      color:rgba(255,255,255,.5);cursor:pointer;border:none;background:transparent;transition:all .2s}
+    .lang-btn.active{background:var(--yellow);color:var(--brown-d);border-radius:18px}
+    .lang-btn:hover:not(.active){color:#fff}
+
     /* ── FADE IN ── */
     .fi { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .fi.vis { opacity: 1; transform: translateY(0); }
@@ -482,13 +491,17 @@
       <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla">
     </div>
     <ul class="nav-links">
-      <li><a href="#menus">Menús</a></li>
-      <li><a href="#galeria">Platos</a></li>
+      <li><a href="#menus" data-i18n="nav-menus">Menús</a></li>
+      <li><a href="#galeria" data-i18n="nav-platos">Platos</a></li>
       <li><a href="#bar">Bar</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#ubicacion">Ubicación</a></li>
-      <li><a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva" target="_blank" rel="noopener" class="nav-cta">📲 Reservar</a></li>
+      <li><a href="#nosotros" data-i18n="nav-nosotros">Nosotros</a></li>
+      <li><a href="#ubicacion" data-i18n="nav-ubicacion">Ubicación</a></li>
+      <li><a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav-cta">📲 Reservar</a></li>
     </ul>
+    <div class="lang-sw" id="langSw">
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 </nav>
 
@@ -498,15 +511,13 @@
 
     <!-- Text -->
     <div class="hero-text">
-      <div class="hero-badge">🇨🇴 Bocagrande · Cartagena de Indias</div>
-      <h1 class="hero-title">
-        Sabor típico<br><em>colombiano</em><br>en el corazón del Caribe
-      </h1>
-      <p class="hero-slogan">Comida auténtica, música en vivo y el mejor ambiente paisa a pasos del mar</p>
+      <div class="hero-badge" data-i18n="hero-badge">🇨🇴 Bocagrande · Cartagena de Indias</div>
+      <h1 class="hero-title" data-i18n="hero-title">Sabor típico<br><em>colombiano</em><br>en el corazón del Caribe</h1>
+      <p class="hero-slogan" data-i18n="hero-slogan">Comida auténtica, música en vivo y el mejor ambiente paisa a pasos del mar</p>
       <div class="hero-btns">
         <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20Paisa%20Parrilla%20%F0%9F%8D%BD%EF%B8%8F"
-           class="btn-y" target="_blank" rel="noopener">📲 Reservar mesa</a>
-        <a href="#galeria" class="btn-ghost">Ver platos ↓</a>
+           class="btn-y" target="_blank" rel="noopener" data-i18n="hero-btn1">📲 Reservar mesa</a>
+        <a href="#galeria" class="btn-ghost" data-i18n="hero-btn2">Ver platos ↓</a>
       </div>
     </div>
 
@@ -569,35 +580,35 @@
 <!-- ═══ STRIP ═══ -->
 <div id="strip">
   <div class="strip-in">
-    <div class="strip-item"><span>🎵</span><span>Música en vivo</span></div>
-    <div class="strip-item"><span>🇨🇴</span><span>Cocina típica auténtica</span></div>
+    <div class="strip-item"><span>🎵</span><span data-i18n="strip-1">Música en vivo</span></div>
+    <div class="strip-item"><span>🇨🇴</span><span data-i18n="strip-2">Cocina típica auténtica</span></div>
     <div class="strip-item"><span>📍</span><span>Bocagrande, Cartagena</span></div>
-    <div class="strip-item"><span>🛵</span><span>Domicilios por Rappi</span></div>
-    <div class="strip-item"><span>🌊</span><span>Ambiente festivo caribeño</span></div>
+    <div class="strip-item"><span>🛵</span><span data-i18n="strip-4">Domicilios por Rappi</span></div>
+    <div class="strip-item"><span>🌊</span><span data-i18n="strip-5">Ambiente festivo caribeño</span></div>
   </div>
 </div>
 
 <!-- ═══ MENÚS ═══ -->
 <section id="menus">
   <div class="container">
-    <h2 class="sec-title fi">Nuestros Menús</h2>
-    <p class="sec-sub fi">Explora nuestra carta completa con precios actualizados</p>
+    <h2 class="sec-title fi" data-i18n="menus-title">Nuestros Menús</h2>
+    <p class="sec-sub fi" data-i18n="menus-sub">Explora nuestra carta completa con precios actualizados</p>
     <div class="menus-grid fi">
       <a href="menu-tipico.html" target="_blank" rel="noopener" class="menu-card menu-tipico">
         <div class="menu-card-emoji">🍱</div>
         <div class="menu-card-body">
-          <h3>Menú Típico Paisa</h3>
-          <p>Bandejas, calentados, cazuelas, picadas y la mejor cocina paisa</p>
-          <span class="menu-card-tag">135 platos</span>
+          <h3 data-i18n="tipico-h3">Menú Típico Paisa</h3>
+          <p data-i18n="tipico-p">Bandejas, calentados, cazuelas, picadas y la mejor cocina paisa</p>
+          <span class="menu-card-tag" data-i18n="tipico-tag">135 platos</span>
         </div>
         <span class="menu-card-arrow">→</span>
       </a>
       <a href="menu-desayunos.html" target="_blank" rel="noopener" class="menu-card menu-desayunos">
         <div class="menu-card-emoji">☀️</div>
         <div class="menu-card-body">
-          <h3>Menú Desayunos</h3>
-          <p>Desayunos completos, jugos naturales y bebidas tradicionales</p>
-          <span class="menu-card-tag">70 platos</span>
+          <h3 data-i18n="desayunos-h3">Menú Desayunos</h3>
+          <p data-i18n="desayunos-p">Desayunos completos, jugos naturales y bebidas tradicionales</p>
+          <span class="menu-card-tag" data-i18n="desayunos-tag">70 platos</span>
         </div>
         <span class="menu-card-arrow">→</span>
       </a>
@@ -608,8 +619,8 @@
 <!-- ═══ GALERÍA ═══ -->
 <section id="galeria">
   <div class="container">
-    <h2 class="sec-title fi">Nuestros platos estrella</h2>
-    <p class="sec-sub fi">Lo mejor de la cocina paisa y del Caribe colombiano</p>
+    <h2 class="sec-title fi" data-i18n="galeria-title">Nuestros platos estrella</h2>
+    <p class="sec-sub fi" data-i18n="galeria-sub">Lo mejor de la cocina paisa y del Caribe colombiano</p>
 
     <div class="gallery-grid">
 
@@ -619,7 +630,7 @@
         </div>
         <div class="g-info">
           <h3 class="g-name">Bandeja Campesina con Carne</h3>
-          <p class="g-desc">Un plato abundante que sabe a campo y tradición. Arroz blanco, frijoles con hogao, carne asada, arepa, aguacate, plátano maduro y ensalada.</p>
+          <p class="g-desc" data-i18n="g1-desc">Un plato abundante que sabe a campo y tradición. Arroz blanco, frijoles con hogao, carne asada, arepa, aguacate, plátano maduro y ensalada.</p>
           <div class="g-footer"><span class="g-price">$42.000</span><span class="g-badge">🍱 Bandeja</span></div>
         </div>
       </div>
@@ -630,7 +641,7 @@
         </div>
         <div class="g-info">
           <h3 class="g-name">Bandeja Campesina con Chicharrón</h3>
-          <p class="g-desc">Un plato que sabe a campo y a hogar. Con arroz blanco, frijoles con hogao, chicharrón crocante, arepa paisa y aguacate fresco.</p>
+          <p class="g-desc" data-i18n="g2-desc">Un plato que sabe a campo y a hogar. Con arroz blanco, frijoles con hogao, chicharrón crocante, arepa paisa y aguacate fresco.</p>
           <div class="g-footer"><span class="g-price">$39.000</span><span class="g-badge">🍱 Bandeja</span></div>
         </div>
       </div>
@@ -641,7 +652,7 @@
         </div>
         <div class="g-info">
           <h3 class="g-name">Picada de la Casa</h3>
-          <p class="g-desc">La combinación perfecta para compartir. Chicharrón al barril, chorizo, morcilla, pollo, papa criolla, patacón, arepa y guacamole.</p>
+          <p class="g-desc" data-i18n="g3-desc">La combinación perfecta para compartir. Chicharrón al barril, chorizo, morcilla, pollo, papa criolla, patacón, arepa y guacamole.</p>
           <div class="g-footer"><span class="g-price">$110.000</span><span class="g-badge">👥 Para compartir</span></div>
         </div>
       </div>
@@ -652,7 +663,7 @@
         </div>
         <div class="g-info">
           <h3 class="g-name">Picada de Mar y Tierra</h3>
-          <p class="g-desc">Lo mejor del mar y la tierra en un solo plato. Camarones, pulpo, calamar, carne, cerdo y patacón. Una explosión de sabores caribeños.</p>
+          <p class="g-desc" data-i18n="g4-desc">Lo mejor del mar y la tierra en un solo plato. Camarones, pulpo, calamar, carne, cerdo y patacón. Una explosión de sabores caribeños.</p>
           <div class="g-footer"><span class="g-price">$140.000</span><span class="g-badge">👥 Para compartir</span></div>
         </div>
       </div>
@@ -663,7 +674,7 @@
         </div>
         <div class="g-info">
           <h3 class="g-name">Calentado Montañero con Carne</h3>
-          <p class="g-desc">Un plato que sabe a hogar y tradición. Arroz con frijoles y hogao, carne asada, arepa paisa y aguacate fresco.</p>
+          <p class="g-desc" data-i18n="g5-desc">Un plato que sabe a hogar y tradición. Arroz con frijoles y hogao, carne asada, arepa paisa y aguacate fresco.</p>
           <div class="g-footer"><span class="g-price">$39.000</span><span class="g-badge">🍳 Calentado</span></div>
         </div>
       </div>
@@ -674,7 +685,7 @@
         </div>
         <div class="g-info">
           <h3 class="g-name">Calentado Montañero con Chicharrón</h3>
-          <p class="g-desc">El desayuno que reconforta y llena de energía. Arroz con frijoles y hogao, chicharrón crocante, arepa paisa y aguacate.</p>
+          <p class="g-desc" data-i18n="g6-desc">El desayuno que reconforta y llena de energía. Arroz con frijoles y hogao, chicharrón crocante, arepa paisa y aguacate.</p>
           <div class="g-footer"><span class="g-price">$38.000</span><span class="g-badge">🍳 Calentado</span></div>
         </div>
       </div>
@@ -685,7 +696,7 @@
         </div>
         <div class="g-info">
           <h3 class="g-name">Combo Parrillada Dúo</h3>
-          <p class="g-desc">Para dos personas: lo mejor de la parrilla con cortes seleccionados, guarniciones típicas y sazón caribeña. Un festín completo.</p>
+          <p class="g-desc" data-i18n="g7-desc">Para dos personas: lo mejor de la parrilla con cortes seleccionados, guarniciones típicas y sazón caribeña. Un festín completo.</p>
           <div class="g-footer"><span class="g-price">$90.000</span><span class="g-badge">🔥 Parrilla</span></div>
         </div>
       </div>
@@ -696,14 +707,14 @@
         </div>
         <div class="g-info">
           <h3 class="g-name">Combo Antojo Berraco</h3>
-          <p class="g-desc">El antojo que te pone berraco. Un combo completo de parrilla con todo lo que necesitas para quedar feliz.</p>
+          <p class="g-desc" data-i18n="g8-desc">El antojo que te pone berraco. Un combo completo de parrilla con todo lo que necesitas para quedar feliz.</p>
           <div class="g-footer"><span class="g-price">$49.000</span><span class="g-badge">🔥 Parrilla</span></div>
         </div>
       </div>
 
     </div>
     <div style="text-align:center;margin-top:32px">
-      <a href="menu-tipico.html" target="_blank" rel="noopener" class="btn-brown">Ver carta completa →</a>
+      <a href="menu-tipico.html" target="_blank" rel="noopener" class="btn-brown" data-i18n="galeria-more">Ver carta completa →</a>
     </div>
   </div>
 </section>
@@ -711,89 +722,89 @@
 <!-- ═══ MENÚ ═══ -->
 <section id="menu">
   <div class="container">
-    <h2 class="sec-title fi">Nuestra carta</h2>
+    <h2 class="sec-title fi" data-i18n="menu-title">Nuestra carta</h2>
     <p class="sec-sub fi">Menú ejecutivo de almuerzo desde <strong>$28.000 COP</strong> · Carta completa en el local</p>
 
     <div class="menu-grid">
 
       <div class="m-card fi">
         <div class="m-icon">😋</div>
-        <div class="m-name">Antojos para Empezar</div>
-        <div class="m-desc">Entradas ligeras para abrir el apetito al estilo paisa.</div>
+        <div class="m-name" data-i18n="mcat-antojos-n">Antojos para Empezar</div>
+        <div class="m-desc" data-i18n="mcat-antojos-d">Entradas ligeras para abrir el apetito al estilo paisa.</div>
         <div class="m-price">11 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">👥</div>
-        <div class="m-name">Para compartir</div>
-        <div class="m-desc">Picadas y platos grandes perfectos para toda la mesa.</div>
+        <div class="m-name" data-i18n="mcat-compartir-n">Para compartir</div>
+        <div class="m-desc" data-i18n="mcat-compartir-d">Picadas y platos grandes perfectos para toda la mesa.</div>
         <div class="m-price">11 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🍳</div>
-        <div class="m-name">Calentados</div>
-        <div class="m-desc">La tradición del calentado montañero con carne, cerdo o chicharrón.</div>
+        <div class="m-name" data-i18n="mcat-calentados-n">Calentados</div>
+        <div class="m-desc" data-i18n="mcat-calentados-d">La tradición del calentado montañero con carne, cerdo o chicharrón.</div>
         <div class="m-price">6 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🍱</div>
-        <div class="m-name">Bandejas</div>
-        <div class="m-desc">Bandejas campesinas completas con carne, cerdo, pollo o chicharrón.</div>
+        <div class="m-name" data-i18n="mcat-bandejas-n">Bandejas</div>
+        <div class="m-desc" data-i18n="mcat-bandejas-d">Bandejas campesinas completas con carne, cerdo, pollo o chicharrón.</div>
         <div class="m-price">5 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🇨🇴</div>
-        <div class="m-name">Típicos</div>
-        <div class="m-desc">Los grandes clásicos de la cocina colombiana auténtica.</div>
+        <div class="m-name" data-i18n="mcat-tipicos-n">Típicos</div>
+        <div class="m-desc" data-i18n="mcat-tipicos-d">Los grandes clásicos de la cocina colombiana auténtica.</div>
         <div class="m-price">17 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🥄</div>
-        <div class="m-name">Pa cucharear</div>
-        <div class="m-desc">Sopas y guisos de cuchara para reconfortar el alma.</div>
+        <div class="m-name" data-i18n="mcat-cucharear-n">Pa cucharear</div>
+        <div class="m-desc" data-i18n="mcat-cucharear-d">Sopas y guisos de cuchara para reconfortar el alma.</div>
         <div class="m-price">11 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🫕</div>
-        <div class="m-name">Cazuelas</div>
-        <div class="m-desc">Cazuelas humeantes con la sazón paisa de siempre.</div>
+        <div class="m-name" data-i18n="mcat-cazuelas-n">Cazuelas</div>
+        <div class="m-desc" data-i18n="mcat-cazuelas-d">Cazuelas humeantes con la sazón paisa de siempre.</div>
         <div class="m-price">10 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🔥</div>
-        <div class="m-name">Parrilla y Asados</div>
-        <div class="m-desc">Combos y cortes a la brasa con guarniciones típicas.</div>
+        <div class="m-name" data-i18n="mcat-parrilla-n">Parrilla y Asados</div>
+        <div class="m-desc" data-i18n="mcat-parrilla-d">Combos y cortes a la brasa con guarniciones típicas.</div>
         <div class="m-price">6 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🍔</div>
-        <div class="m-name">Hamburguesas</div>
-        <div class="m-desc">Hamburguesas artesanales al estilo de la casa.</div>
+        <div class="m-name" data-i18n="mcat-hambur-n">Hamburguesas</div>
+        <div class="m-desc" data-i18n="mcat-hambur-d">Hamburguesas artesanales al estilo de la casa.</div>
         <div class="m-price">9 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">☀️</div>
-        <div class="m-name">Desayunos</div>
-        <div class="m-desc">Calentados, huevos, arepas y más — disponibles en Menú Desayunos.</div>
-        <div class="m-price">Ver desayunos</div>
+        <div class="m-name" data-i18n="mcat-desayunos-n">Desayunos</div>
+        <div class="m-desc" data-i18n="mcat-desayunos-d">Calentados, huevos, arepas y más — disponibles en Menú Desayunos.</div>
+        <div class="m-price" data-i18n="mcat-desayunos-price">Ver desayunos</div>
       </div>
 
       <div class="m-cta-box fi">
         <div>
-          <h3>Carta completa con fotos y precios</h3>
-          <p>Explora cada categoría, ve los precios y pide directamente</p>
+          <h3 data-i18n="carta-cta-title">Carta completa con fotos y precios</h3>
+          <p data-i18n="carta-cta-sub">Explora cada categoría, ve los precios y pide directamente</p>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
-          <a href="menu-tipico.html" target="_blank" rel="noopener" class="btn-y">🍱 Menú Típico</a>
-          <a href="menu-desayunos.html" target="_blank" rel="noopener" class="btn-white-glow">☀️ Desayunos</a>
+          <a href="menu-tipico.html" target="_blank" rel="noopener" class="btn-y" data-i18n="btn-tipico">🍱 Menú Típico</a>
+          <a href="menu-desayunos.html" target="_blank" rel="noopener" class="btn-white-glow" data-i18n="btn-desayunos">☀️ Desayunos</a>
         </div>
       </div>
 
@@ -804,15 +815,15 @@
 <!-- ═══ BAR ═══ -->
 <section id="bar">
   <div class="container">
-    <h2 class="sec-title fi">Bar &amp; Cócteles</h2>
-    <p class="sec-sub fi">Brinda con el mejor ambiente caribeño — selección completa en el local</p>
+    <h2 class="sec-title fi" data-i18n="bar-title">Bar &amp; Cócteles</h2>
+    <p class="sec-sub fi" data-i18n="bar-sub">Brinda con el mejor ambiente caribeño — selección completa en el local</p>
     <div class="bar-grid">
-      <div class="bar-item fi"><div class="bar-icon">🍹</div><div class="bar-name">Cócteles</div><div class="bar-sub">Daiquiri, Mojito y más</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🍷</div><div class="bar-name">Sangría</div><div class="bar-sub">Sangría artesanal de la casa</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🍺</div><div class="bar-name">Cervezas</div><div class="bar-sub">Artesanales y comerciales</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🥃</div><div class="bar-name">Aguardiente</div><div class="bar-sub">Amarillo y otras referencias</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🍾</div><div class="bar-name">Vinos y Espumosos</div><div class="bar-sub">Tintos, blancos y cava</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🫙</div><div class="bar-name">Ron</div><div class="bar-sub">Zacapa y selección premium</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍹</div><div class="bar-name">Cócteles</div><div class="bar-sub" data-i18n="bar-coctel-sub">Daiquiri, Mojito y más</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍷</div><div class="bar-name">Sangría</div><div class="bar-sub" data-i18n="bar-sangria-sub">Sangría artesanal de la casa</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍺</div><div class="bar-name">Cervezas</div><div class="bar-sub" data-i18n="bar-cerveza-sub">Artesanales y comerciales</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🥃</div><div class="bar-name">Aguardiente</div><div class="bar-sub" data-i18n="bar-aguardiente-sub">Amarillo y otras referencias</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍾</div><div class="bar-name">Vinos y Espumosos</div><div class="bar-sub" data-i18n="bar-vinos-sub">Tintos, blancos y cava</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🫙</div><div class="bar-name">Ron</div><div class="bar-sub" data-i18n="bar-ron-sub">Zacapa y selección premium</div></div>
     </div>
   </div>
 </section>
@@ -822,36 +833,33 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text fi">
-        <h2>Como en casa de la abuela,<br>en plena Cartagena</h2>
+        <h2 data-i18n="nosotros-title">Como en casa de la abuela,<br>en plena Cartagena</h2>
         <p>
-          En Paisa Parrilla llevamos los sabores más auténticos de la cocina colombiana al corazón de Bocagrande.
-          Cada plato es una celebración de nuestra herencia culinaria, preparado con los ingredientes más frescos y la sazón que nos distingue.
+          <span data-i18n="nosotros-p1">En Paisa Parrilla llevamos los sabores más auténticos de la cocina colombiana al corazón de Bocagrande. Cada plato es una celebración de nuestra herencia culinaria, preparado con los ingredientes más frescos y la sazón que nos distingue.</span>
         </p>
         <p>
-          Más que un restaurante, somos un punto de encuentro: donde la familia se reúne, los amigos celebran
-          y los visitantes descubren lo mejor de Colombia sobre la mesa. Con música en vivo y ambiente festivo,
-          cada visita es una experiencia completa.
+          <span data-i18n="nosotros-p2">Más que un restaurante, somos un punto de encuentro: donde la familia se reúne, los amigos celebran y los visitantes descubren lo mejor de Colombia sobre la mesa. Con música en vivo y ambiente festivo, cada visita es una experiencia completa.</span>
         </p>
         <div class="about-feats">
           <div class="about-feat">
             <div class="af-icon">🎵</div>
             <div class="af-text">
-              <strong>Música en vivo</strong>
-              <span>Ambiente festivo y caribeño para hacer tu visita memorable</span>
+              <strong data-i18n="feat1-t">Música en vivo</strong>
+              <span data-i18n="feat1-s">Ambiente festivo y caribeño para hacer tu visita memorable</span>
             </div>
           </div>
           <div class="about-feat">
             <div class="af-icon">📍</div>
             <div class="af-text">
-              <strong>Zona turística segura</strong>
-              <span>En la exclusiva Av. San Martín, Bocagrande — a pasos del mar</span>
+              <strong data-i18n="feat2-t">Zona turística segura</strong>
+              <span data-i18n="feat2-s">En la exclusiva Av. San Martín, Bocagrande — a pasos del mar</span>
             </div>
           </div>
           <div class="about-feat">
             <div class="af-icon">🛵</div>
             <div class="af-text">
-              <strong>Domicilios por Rappi</strong>
-              <span>El sabor paisa llega hasta donde estés en Cartagena</span>
+              <strong data-i18n="feat3-t">Domicilios por Rappi</strong>
+              <span data-i18n="feat3-s">El sabor paisa llega hasta donde estés en Cartagena</span>
             </div>
           </div>
           <div class="about-feat">
@@ -893,7 +901,7 @@
         <div class="loc-item">
           <div class="loc-icon">📍</div>
           <div>
-            <h4>Dirección</h4>
+            <h4 data-i18n="loc-addr-t">Dirección</h4>
             <p>Cra. 2 (Av. San Martín) #7-61, Local 2<br>Bocagrande, Cartagena de Indias<br>Bolívar, Colombia</p>
           </div>
         </div>
@@ -901,7 +909,7 @@
         <div class="loc-item">
           <div class="loc-icon">📱</div>
           <div>
-            <h4>WhatsApp / Teléfono</h4>
+            <h4 data-i18n="loc-phone-t">WhatsApp / Teléfono</h4>
             <p><a href="https://wa.me/573028581981">+57 302 858 1981</a></p>
           </div>
         </div>
@@ -960,8 +968,8 @@
     <p class="fi">Reserva tu mesa o haz tu pedido a domicilio ahora mismo</p>
     <div class="cta-btns fi">
       <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20Paisa%20Parrilla%20%F0%9F%8D%BD%EF%B8%8F"
-         class="btn-wa" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-      <a href="https://www.rappi.com.co/restaurantes/900370648-paisa-parrilla-restaurante" class="btn-outline-w" target="_blank" rel="noopener">🛵 Pedir en Rappi</a>
+         class="btn-wa" data-i18n="cta-btn1" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
+      <a href="https://www.rappi.com.co/restaurantes/900370648-paisa-parrilla-restaurante" class="btn-outline-w" data-i18n="cta-btn2" target="_blank" rel="noopener">🛵 Pedir en Rappi</a>
     </div>
   </div>
 </section>
@@ -972,13 +980,13 @@
     <div class="foot-logo">
       <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla">
     </div>
-    <p>Sabor típico colombiano en el corazón de Bocagrande</p>
+    <p data-i18n="foot-sub">Sabor típico colombiano en el corazón de Bocagrande</p>
     <div class="foot-links">
-      <a href="#galeria">Platos</a>
-      <a href="#menu">Menú</a>
+      <a href="#galeria" data-i18n="foot-platos">Platos</a>
+      <a href="#menu" data-i18n="foot-menu">Menú</a>
       <a href="#bar">Bar</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#ubicacion">Ubicación</a>
+      <a href="#nosotros" data-i18n="foot-nosotros">Nosotros</a>
+      <a href="#ubicacion" data-i18n="foot-ubicacion">Ubicación</a>
       <a href="mailto:paisaparrilla2021@gmail.com">Contacto</a>
     </div>
     <div class="foot-social">
@@ -999,5 +1007,214 @@
   document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
 
+
+<script>
+// ── i18n ──
+const _TR = {
+  "es": {
+    "nav-menus": "Menús",
+    "nav-platos": "Platos",
+    "nav-nosotros": "Nosotros",
+    "nav-ubicacion": "Ubicación",
+    "nav-cta": "📲 Reservar",
+    "hero-badge": "🇨🇴 Bocagrande · Cartagena de Indias",
+    "hero-title": "Sabor típico<br><em>colombiano</em><br>en el corazón del Caribe",
+    "hero-slogan": "Comida auténtica, música en vivo y el mejor ambiente paisa a pasos del mar",
+    "hero-btn1": "📲 Reservar mesa",
+    "hero-btn2": "Ver platos ↓",
+    "strip-1": "Música en vivo",
+    "strip-2": "Cocina típica auténtica",
+    "strip-4": "Domicilios por Rappi",
+    "strip-5": "Ambiente festivo caribeño",
+    "menus-title": "Nuestros Menús",
+    "menus-sub": "Explora nuestra carta completa con precios actualizados",
+    "tipico-h3": "Menú Típico Paisa",
+    "tipico-p": "Bandejas, calentados, cazuelas, picadas y la mejor cocina paisa",
+    "tipico-tag": "135 platos",
+    "desayunos-h3": "Menú Desayunos",
+    "desayunos-p": "Desayunos completos, jugos naturales y bebidas tradicionales",
+    "desayunos-tag": "70 platos",
+    "galeria-title": "Nuestros platos estrella",
+    "galeria-sub": "Lo mejor de la cocina paisa y del Caribe colombiano",
+    "g1-desc": "Un plato abundante que sabe a campo y tradición. Arroz blanco, frijoles con hogao, carne asada, arepa, aguacate, plátano maduro y ensalada.",
+    "g2-desc": "Un plato que sabe a campo y a hogar. Con arroz blanco, frijoles con hogao, chicharrón crocante, arepa paisa y aguacate fresco.",
+    "g3-desc": "La combinación perfecta para compartir. Chicharrón al barril, chorizo, morcilla, pollo, papa criolla, patacón, arepa y guacamole.",
+    "g4-desc": "Lo mejor del mar y la tierra en un solo plato. Camarones, pulpo, calamar, carne, cerdo y patacón. Una explosión de sabores caribeños.",
+    "g5-desc": "Un plato que sabe a hogar y tradición. Arroz con frijoles y hogao, carne asada, arepa paisa y aguacate fresco.",
+    "g6-desc": "El desayuno que reconforta y llena de energía. Arroz con frijoles y hogao, chicharrón crocante, arepa paisa y aguacate.",
+    "g7-desc": "Para dos personas: lo mejor de la parrilla con cortes seleccionados, guarniciones típicas y sazón caribeña. Un festín completo.",
+    "g8-desc": "El antojo que te pone berraco. Un combo completo de parrilla con todo lo que necesitas para quedar feliz.",
+    "galeria-more": "Ver carta completa →",
+    "menu-title": "Nuestra carta",
+    "menu-sub": "Menú ejecutivo de almuerzo desde <strong>$28.000 COP</strong> · Carta completa en el local",
+    "mcat-antojos-n": "Antojos para Empezar",
+    "mcat-antojos-d": "Entradas ligeras para abrir el apetito al estilo paisa.",
+    "mcat-compartir-n": "Para compartir",
+    "mcat-compartir-d": "Picadas y platos grandes perfectos para toda la mesa.",
+    "mcat-calentados-n": "Calentados",
+    "mcat-calentados-d": "La tradición del calentado montañero con carne, cerdo o chicharrón.",
+    "mcat-bandejas-n": "Bandejas",
+    "mcat-bandejas-d": "Bandejas campesinas completas con carne, cerdo, pollo o chicharrón.",
+    "mcat-tipicos-n": "Típicos",
+    "mcat-tipicos-d": "Los grandes clásicos de la cocina colombiana auténtica.",
+    "mcat-cucharear-n": "Pa cucharear",
+    "mcat-cucharear-d": "Sopas y guisos de cuchara para reconfortar el alma.",
+    "mcat-cazuelas-n": "Cazuelas",
+    "mcat-cazuelas-d": "Cazuelas humeantes con la sazón paisa de siempre.",
+    "mcat-parrilla-n": "Parrilla y Asados",
+    "mcat-parrilla-d": "Combos y cortes a la brasa con guarniciones típicas.",
+    "mcat-hambur-n": "Hamburguesas",
+    "mcat-hambur-d": "Hamburguesas artesanales al estilo de la casa.",
+    "mcat-desayunos-n": "Desayunos",
+    "mcat-desayunos-d": "Calentados, huevos, arepas y más — disponibles en Menú Desayunos.",
+    "mcat-desayunos-price": "Ver desayunos",
+    "carta-cta-title": "Carta completa con fotos y precios",
+    "carta-cta-sub": "Explora cada categoría, ve los precios y pide directamente",
+    "btn-tipico": "🍱 Menú Típico",
+    "btn-desayunos": "☀️ Desayunos",
+    "bar-title": "Bar &amp; Cócteles",
+    "bar-sub": "Brinda con el mejor ambiente caribeño — selección completa en el local",
+    "bar-coctel-sub": "Daiquiri, Mojito y más",
+    "bar-sangria-sub": "Sangría artesanal de la casa",
+    "bar-cerveza-sub": "Artesanales y comerciales",
+    "bar-aguardiente-sub": "Amarillo y otras referencias",
+    "bar-vinos-sub": "Tintos, blancos y cava",
+    "bar-ron-sub": "Zacapa y selección premium",
+    "nosotros-title": "Como en casa de la abuela,<br>en plena Cartagena",
+    "nosotros-p1": "En Paisa Parrilla llevamos los sabores más auténticos de la cocina colombiana al corazón de Bocagrande. Cada plato es una celebración de nuestra herencia culinaria, preparado con los ingredientes más frescos y la sazón que nos distingue.",
+    "nosotros-p2": "Más que un restaurante, somos un punto de encuentro: donde la familia se reúne, los amigos celebran y los visitantes descubren lo mejor de Colombia sobre la mesa. Con música en vivo y ambiente festivo, cada visita es una experiencia completa.",
+    "feat1-t": "Música en vivo",
+    "feat1-s": "Ambiente festivo y caribeño para hacer tu visita memorable",
+    "feat2-t": "Zona turística segura",
+    "feat2-s": "En la exclusiva Av. San Martín, Bocagrande — a pasos del mar",
+    "feat3-t": "Domicilios por Rappi",
+    "feat3-s": "El sabor paisa llega hasta donde estés en Cartagena",
+    "ubicacion-title": "Encuéntranos",
+    "ubicacion-sub": "En el corazón de Bocagrande, frente al mar Caribe",
+    "loc-addr-t": "Dirección",
+    "loc-hours-t": "Horario",
+    "loc-phone-t": "WhatsApp / Teléfono",
+    "cta-title": "Ven y prueba el sabor paisa",
+    "cta-sub": "Música, sabor y ambiente caribeño te esperan en Bocagrande. ¡Reserva tu mesa ahora!",
+    "cta-btn1": "💬 Reservar por WhatsApp",
+    "cta-btn2": "🛵 Pedir en Rappi",
+    "foot-sub": "Sabor típico colombiano en el corazón de Bocagrande",
+    "foot-platos": "Platos",
+    "foot-menu": "Menú",
+    "foot-nosotros": "Nosotros",
+    "foot-ubicacion": "Ubicación",
+    "foot-copy": "© 2025 Paisa Parrilla Restaurante Bar · Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena · Todos los derechos reservados"
+  },
+  "en": {
+    "nav-menus": "Menus",
+    "nav-platos": "Dishes",
+    "nav-nosotros": "About",
+    "nav-ubicacion": "Location",
+    "nav-cta": "📲 Reserve",
+    "hero-badge": "🇨🇴 Bocagrande · Cartagena de Indias",
+    "hero-title": "Authentic<br><em>Colombian</em><br>flavor in the heart of the Caribbean",
+    "hero-slogan": "Authentic food, live music and the best paisa atmosphere steps from the sea",
+    "hero-btn1": "📲 Reserve a table",
+    "hero-btn2": "See dishes ↓",
+    "strip-1": "Live Music",
+    "strip-2": "Authentic Colombian Cuisine",
+    "strip-4": "Delivery via Rappi",
+    "strip-5": "Festive Caribbean Atmosphere",
+    "menus-title": "Our Menus",
+    "menus-sub": "Explore our full menu with updated prices",
+    "tipico-h3": "Traditional Paisa Menu",
+    "tipico-p": "Bandejas, calentados, cazuelas, picadas and the best paisa cuisine",
+    "tipico-tag": "135 dishes",
+    "desayunos-h3": "Breakfast Menu",
+    "desayunos-p": "Full breakfasts, fresh juices and traditional drinks",
+    "desayunos-tag": "70 dishes",
+    "galeria-title": "Our Star Dishes",
+    "galeria-sub": "The best of paisa cuisine and the Colombian Caribbean",
+    "g1-desc": "An abundant dish with countryside flavor. White rice, beans with hogao, grilled beef, arepa, avocado, sweet plantain and salad.",
+    "g2-desc": "A dish that tastes of countryside and home. White rice, beans with hogao, crunchy chicharrón, paisa arepa and fresh avocado.",
+    "g3-desc": "The perfect sharing platter. Barrel chicharrón, chorizo, blood sausage, chicken, criolla potato, patacón, arepa and guacamole.",
+    "g4-desc": "The best of sea and land on one plate. Shrimp, octopus, squid, beef, pork and patacón. An explosion of Caribbean flavors.",
+    "g5-desc": "A dish with the taste of home and tradition. Rice with beans and hogao, grilled beef, paisa arepa and fresh avocado.",
+    "g6-desc": "The breakfast that comforts and energizes. Rice with beans and hogao, crunchy chicharrón, paisa arepa and avocado.",
+    "g7-desc": "For two: the best of the grill with selected cuts, typical sides and Caribbean seasoning. A complete feast.",
+    "g8-desc": "The craving that hits the spot. A complete grill combo with everything you need to leave fully satisfied.",
+    "galeria-more": "See full menu →",
+    "menu-title": "Our Menu",
+    "menu-sub": "Executive lunch menu from <strong>$28,000 COP</strong> · Full menu at the restaurant",
+    "mcat-antojos-n": "Starters",
+    "mcat-antojos-d": "Light starters to whet your appetite paisa style.",
+    "mcat-compartir-n": "To Share",
+    "mcat-compartir-d": "Sharing platters and large dishes perfect for the whole table.",
+    "mcat-calentados-n": "Calentados",
+    "mcat-calentados-d": "The tradition of the mountain calentado with beef, pork or chicharrón.",
+    "mcat-bandejas-n": "Bandejas",
+    "mcat-bandejas-d": "Complete countryside bandejas with beef, pork, chicken or chicharrón.",
+    "mcat-tipicos-n": "Traditional Dishes",
+    "mcat-tipicos-d": "The great classics of authentic Colombian cuisine.",
+    "mcat-cucharear-n": "Soups &amp; Stews",
+    "mcat-cucharear-d": "Hearty soups and stews to warm the soul.",
+    "mcat-cazuelas-n": "Cazuelas",
+    "mcat-cazuelas-d": "Steaming cazuelas with the classic paisa seasoning.",
+    "mcat-parrilla-n": "Grill &amp; BBQ",
+    "mcat-parrilla-d": "Grilled combos and cuts with typical sides.",
+    "mcat-hambur-n": "Burgers",
+    "mcat-hambur-d": "House-style artisan burgers.",
+    "mcat-desayunos-n": "Breakfasts",
+    "mcat-desayunos-d": "Calentados, eggs, arepas and more — see Breakfast Menu.",
+    "mcat-desayunos-price": "See breakfasts",
+    "carta-cta-title": "Full menu with photos and prices",
+    "carta-cta-sub": "Explore each category, check prices and order directly",
+    "btn-tipico": "🍱 Típico Menu",
+    "btn-desayunos": "☀️ Breakfasts",
+    "bar-title": "Bar &amp; Cocktails",
+    "bar-sub": "Toast to the best Caribbean atmosphere — full selection at the restaurant",
+    "bar-coctel-sub": "Daiquiri, Mojito and more",
+    "bar-sangria-sub": "House artisan sangria",
+    "bar-cerveza-sub": "Craft and commercial beers",
+    "bar-aguardiente-sub": "Amarillo and other references",
+    "bar-vinos-sub": "Reds, whites and sparkling",
+    "bar-ron-sub": "Zacapa and premium selection",
+    "nosotros-title": "Like grandma's cooking,<br>right in Cartagena",
+    "nosotros-p1": "At Paisa Parrilla we bring the most authentic flavors of Colombian cuisine to the heart of Bocagrande. Each dish is a celebration of our culinary heritage, prepared with the freshest ingredients and the seasoning that sets us apart.",
+    "nosotros-p2": "More than a restaurant, we are a gathering place: where families meet, friends celebrate and visitors discover the best of Colombia at the table. With live music and a festive atmosphere, every visit is a complete experience.",
+    "feat1-t": "Live Music",
+    "feat1-s": "Festive Caribbean atmosphere to make your visit unforgettable",
+    "feat2-t": "Safe Tourist Area",
+    "feat2-s": "On the exclusive Av. San Martín, Bocagrande — steps from the sea",
+    "feat3-t": "Delivery via Rappi",
+    "feat3-s": "Paisa flavor delivered wherever you are in Cartagena",
+    "ubicacion-title": "Find Us",
+    "ubicacion-sub": "In the heart of Bocagrande, facing the Caribbean Sea",
+    "loc-addr-t": "Address",
+    "loc-hours-t": "Hours",
+    "loc-phone-t": "WhatsApp / Phone",
+    "cta-title": "Come and taste the paisa flavor",
+    "cta-sub": "Music, flavor and Caribbean atmosphere await you in Bocagrande. Reserve your table now!",
+    "cta-btn1": "💬 Reserve via WhatsApp",
+    "cta-btn2": "🛵 Order on Rappi",
+    "foot-sub": "Authentic Colombian flavor in the heart of Bocagrande",
+    "foot-platos": "Dishes",
+    "foot-menu": "Menu",
+    "foot-nosotros": "About",
+    "foot-ubicacion": "Location",
+    "foot-copy": "© 2025 Paisa Parrilla Restaurante Bar · Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena · All rights reserved"
+  }
+};
+function applyLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(_TR[lang]&&_TR[lang][k]!==undefined) el.innerHTML=_TR[lang][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>
+    b.classList.toggle('active',b.dataset.lang===lang));
+  localStorage.setItem('pp_lang',lang);
+  document.documentElement.lang=lang;
+}
+function setLang(lang){ applyLang(lang); }
+(function initLang(){
+  const saved=localStorage.getItem('pp_lang')||'es';
+  applyLang(saved);
+})();
+</script>
 </body>
 </html>

@@ -177,6 +177,15 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
   50%{box-shadow:0 4px 34px rgba(37,211,102,.78)}
 }
 
+
+    /* ── LANG SWITCH ── */
+    .lang-sw{display:flex;align-items:center;background:rgba(255,255,255,.1);
+      border:1.5px solid rgba(255,255,255,.2);border-radius:20px;overflow:hidden;flex-shrink:0;margin-left:8px}
+    .lang-btn{padding:5px 11px;font-size:.72rem;font-weight:700;letter-spacing:.05em;
+      color:rgba(255,255,255,.5);cursor:pointer;border:none;background:transparent;transition:all .2s}
+    .lang-btn.active{background:var(--yellow);color:var(--brown-d);border-radius:18px}
+    .lang-btn:hover:not(.active){color:#fff}
+
 /* ── FOOTER ── */
 footer{background:var(--brown-d);color:rgba(255,255,255,.55);text-align:center;
   padding:28px 20px;font-size:.82rem;line-height:1.7}
@@ -211,17 +220,21 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
 <nav class="nav">
   <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla" class="nav-logo"
        onerror="this.style.display='none'">
-  <span class="nav-title">Menú Desayunos</span>
-  <a href="index.html" class="nav-back">← Inicio</a>
+  <span class="nav-title" data-i18n="page-title">Menú Desayunos</span>
+  <a href="index.html" class="nav-back" data-i18n="nav-back">← Inicio</a>
+  <div class="lang-sw" id="langSw">
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
 </nav>
 
 <div class="hero">
   <div class="hero-content">
     <span class="hero-emoji">☀️</span>
-    <h1>Menú Desayunos</h1>
-    <p>Empieza el día con sabor. Desayunos completos, jugos naturales y bebidas de tradición paisa.</p>
+    <h1 data-i18n="page-title">Menú Desayunos</h1>
+    <p data-i18n="hero-sub">Empieza el día con sabor. Desayunos completos, jugos naturales y bebidas de tradición paisa.</p>
     <div class="hero-meta">
-      <span class="hero-badge">📍 Bocagrande, Cartagena</span>
+      <span class="hero-badge" data-i18n="hero-badge1">📍 Bocagrande, Cartagena</span>
       <span class="hero-badge">70 platos · 10 categorías</span>
       <span class="hero-badge">📞 +57 302 858 1981</span>
     </div>
@@ -230,55 +243,55 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
 
 <div class="layout">
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-title">Categorías</div>
+    <div class="sidebar-title" data-i18n="sb-label">Categorías</div>
     <a href="#cat-162431" class="sb-link">
       <span class="sb-icon">😋</span>
-      <span class="sb-name">Antojos Para Empezar</span>
+      <span class="sb-name" data-i18n="cat-Antojos Para Empezar">Antojos Para Empezar</span>
       <span class="sb-cnt">11</span>
     </a>
 <a href="#cat-162433" class="sb-link">
       <span class="sb-icon">🍳</span>
-      <span class="sb-name">Desayunos Con Huevo</span>
+      <span class="sb-name" data-i18n="cat-Desayunos Con Huevo">Desayunos Con Huevo</span>
       <span class="sb-cnt">6</span>
     </a>
 <a href="#cat-162432" class="sb-link">
       <span class="sb-icon">🍳</span>
-      <span class="sb-name">Calentados</span>
+      <span class="sb-name" data-i18n="cat-Calentados">Calentados</span>
       <span class="sb-cnt">7</span>
     </a>
 <a href="#cat-162434" class="sb-link">
       <span class="sb-icon">🥄</span>
-      <span class="sb-name">Pa' Cucharear</span>
+      <span class="sb-name" data-i18n="cat-Pa' Cucharear">Pa' Cucharear</span>
       <span class="sb-cnt">2</span>
     </a>
 <a href="#cat-162435" class="sb-link">
       <span class="sb-icon">🍟</span>
-      <span class="sb-name">Fritos</span>
+      <span class="sb-name" data-i18n="cat-Fritos">Fritos</span>
       <span class="sb-cnt">5</span>
     </a>
 <a href="#cat-162436" class="sb-link">
       <span class="sb-icon">🥤</span>
-      <span class="sb-name">Bebidas Tradicionales</span>
+      <span class="sb-name" data-i18n="cat-Bebidas Tradicionales">Bebidas Tradicionales</span>
       <span class="sb-cnt">10</span>
     </a>
 <a href="#cat-162437" class="sb-link">
       <span class="sb-icon">🥛</span>
-      <span class="sb-name">Otras Bebidas</span>
+      <span class="sb-name" data-i18n="cat-Otras Bebidas">Otras Bebidas</span>
       <span class="sb-cnt">5</span>
     </a>
 <a href="#cat-162438" class="sb-link">
       <span class="sb-icon">🍊</span>
-      <span class="sb-name">Jugos Naturales</span>
+      <span class="sb-name" data-i18n="cat-Jugos Naturales">Jugos Naturales</span>
       <span class="sb-cnt">6</span>
     </a>
 <a href="#cat-162439" class="sb-link">
       <span class="sb-icon">🍺</span>
-      <span class="sb-name">Cervezas</span>
+      <span class="sb-name" data-i18n="cat-Cervezas">Cervezas</span>
       <span class="sb-cnt">12</span>
     </a>
 <a href="#cat-162440" class="sb-link">
       <span class="sb-icon">🍮</span>
-      <span class="sb-name">Postres</span>
+      <span class="sb-name" data-i18n="cat-Postres">Postres</span>
       <span class="sb-cnt">6</span>
     </a>
   </aside>
@@ -286,7 +299,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     
     <section class="cat-section" id="cat-162431">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/lrcBdaT1Da/w_576_lrcBdaT1Da_1.jpg" alt="Antojos Para Empezar" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">😋</span><h2 class="cat-title-big">Antojos Para Empezar</h2><span class="cat-count-badge">11 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/lrcBdaT1Da/w_576_lrcBdaT1Da_1.jpg" alt="Antojos Para Empezar" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">😋</span><h2 class="cat-title-big" data-i18n="cat-Antojos Para Empezar">Antojos Para Empezar</h2><span class="cat-count-badge">11 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -415,7 +428,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162433">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/bIDZMSigsY/w_576_bIDZMSigsY_desayunos.jpg" alt="Desayunos Con Huevo" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍳</span><h2 class="cat-title-big">Desayunos Con Huevo</h2><span class="cat-count-badge">6 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/bIDZMSigsY/w_576_bIDZMSigsY_desayunos.jpg" alt="Desayunos Con Huevo" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍳</span><h2 class="cat-title-big" data-i18n="cat-Desayunos Con Huevo">Desayunos Con Huevo</h2><span class="cat-count-badge">6 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -489,7 +502,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162432">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/yF7vY2BVBp/w_576_yF7vY2BVBp_3.jpg" alt="Calentados" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍳</span><h2 class="cat-title-big">Calentados</h2><span class="cat-count-badge">7 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/yF7vY2BVBp/w_576_yF7vY2BVBp_3.jpg" alt="Calentados" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍳</span><h2 class="cat-title-big" data-i18n="cat-Calentados">Calentados</h2><span class="cat-count-badge">7 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -574,7 +587,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162434">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/kpB4agk43b/w_576_kpB4agk43b_6.jpg" alt="Pa' Cucharear" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🥄</span><h2 class="cat-title-big">Pa' Cucharear</h2><span class="cat-count-badge">2 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/kpB4agk43b/w_576_kpB4agk43b_6.jpg" alt="Pa' Cucharear" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🥄</span><h2 class="cat-title-big" data-i18n="cat-Pa' Cucharear">Pa' Cucharear</h2><span class="cat-count-badge">2 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -604,7 +617,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162435">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/x1Ym2GBM5t/w_576_x1Ym2GBM5t_fritos.jpg" alt="Fritos" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍟</span><h2 class="cat-title-big">Fritos</h2><span class="cat-count-badge">5 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/x1Ym2GBM5t/w_576_x1Ym2GBM5t_fritos.jpg" alt="Fritos" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍟</span><h2 class="cat-title-big" data-i18n="cat-Fritos">Fritos</h2><span class="cat-count-badge">5 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -667,7 +680,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162436">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/FohvfHPBFL/w_576_FohvfHPBFL_12.jpg" alt="Bebidas Tradicionales" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🥤</span><h2 class="cat-title-big">Bebidas Tradicionales</h2><span class="cat-count-badge">10 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/FohvfHPBFL/w_576_FohvfHPBFL_12.jpg" alt="Bebidas Tradicionales" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🥤</span><h2 class="cat-title-big" data-i18n="cat-Bebidas Tradicionales">Bebidas Tradicionales</h2><span class="cat-count-badge">10 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -785,7 +798,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162437">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/sz2oTedun9/w_576_sz2oTedun9_13.jpg" alt="Otras Bebidas" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🥛</span><h2 class="cat-title-big">Otras Bebidas</h2><span class="cat-count-badge">5 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/sz2oTedun9/w_576_sz2oTedun9_13.jpg" alt="Otras Bebidas" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🥛</span><h2 class="cat-title-big" data-i18n="cat-Otras Bebidas">Otras Bebidas</h2><span class="cat-count-badge">5 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -848,7 +861,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162438">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/43F4lw7zj9/w_576_43F4lw7zj9_14.jpg" alt="Jugos Naturales" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍊</span><h2 class="cat-title-big">Jugos Naturales</h2><span class="cat-count-badge">6 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/43F4lw7zj9/w_576_43F4lw7zj9_14.jpg" alt="Jugos Naturales" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍊</span><h2 class="cat-title-big" data-i18n="cat-Jugos Naturales">Jugos Naturales</h2><span class="cat-count-badge">6 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -922,7 +935,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162439">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/oWuf8DjHp4/w_576_oWuf8DjHp4_15.jpg" alt="Cervezas" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍺</span><h2 class="cat-title-big">Cervezas</h2><span class="cat-count-badge">12 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/oWuf8DjHp4/w_576_oWuf8DjHp4_15.jpg" alt="Cervezas" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍺</span><h2 class="cat-title-big" data-i18n="cat-Cervezas">Cervezas</h2><span class="cat-count-badge">12 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -1062,7 +1075,7 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
     </section>
     <section class="cat-section" id="cat-162440">
       <div class="cat-header">
-        <div class="cat-banner"><img src="https://images.cluvi.com/4xgKpJUGxY/w_576_4xgKpJUGxY_11.jpg" alt="Postres" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍮</span><h2 class="cat-title-big">Postres</h2><span class="cat-count-badge">6 platos</span></div></div>
+        <div class="cat-banner"><img src="https://images.cluvi.com/4xgKpJUGxY/w_576_4xgKpJUGxY_11.jpg" alt="Postres" loading="lazy"><div class="cat-banner-overlay"><span class="cat-icon-big">🍮</span><h2 class="cat-title-big" data-i18n="cat-Postres">Postres</h2><span class="cat-count-badge">6 <span data-i18n="count-suffix">platos</span></span></div></div>
       </div>
       <div class="prod-grid">
         
@@ -1145,22 +1158,20 @@ footer img{height:36px;margin-bottom:10px;opacity:.9;display:block;margin-left:a
 <div class="scroll-nav">
   <button class="scroll-btn scroll-up" id="prevCat" title="Categoría anterior">↑</button>
   <button class="scroll-btn scroll-dn" id="nextCat" title="Siguiente categoría">↓</button>
-  <button class="scroll-top" id="scrollTop">▲ Inicio</button>
+  <button class="scroll-top" id="scrollTop"><span data-i18n="scroll-top">▲ Inicio</span></button>
 </div>
 
 <div class="cta-bar">
-  <h2>¿Listo para pedir?</h2>
-  <p>Escríbenos al WhatsApp y te atendemos de inmediato</p>
-  <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20un%20pedido%20del%20Men%C3%BA%20Desayunos" class="cta-wa" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Pedir por WhatsApp
+  <h2 data-i18n="cta-title">¿Listo para pedir?</h2>
+  <p data-i18n="cta-sub">Escríbenos al WhatsApp y te atendemos de inmediato</p>
+  <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20un%20pedido%20del%20Men%C3%BA%20Desayunos" class="cta-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="cta-btn">Pedir por WhatsApp</span>
   </a>
 </div>
 
 <footer>
   <img src="assets/instagram/LogoPrincipal.png" alt="Paisa Parrilla" onerror="this.style.display='none'">
-  Paisa Parrilla Restaurante Bar · Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena<br>
-  <a href="tel:+573028581981">+57 302 858 1981</a> · <a href="mailto:paisaparrilla2021@gmail.com">paisaparrilla2021@gmail.com</a> · <a href="index.html">← Volver al inicio</a>
+  Paisa Parrilla Restaurante Bar · <span data-i18n="foot-addr">Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena</span><br>
+  <a href="tel:+573028581981">+57 302 858 1981</a> · <a href="mailto:paisaparrilla2021@gmail.com">paisaparrilla2021@gmail.com</a> · <a href="index.html"><span data-i18n="foot-back">← Volver al inicio</span></a>
 </footer>
 
 <script>
@@ -1213,6 +1224,103 @@ window.addEventListener('scroll', () => {
   scrollTopBtn.classList.toggle('show', window.scrollY > 600);
 });
 scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+<script>
+// ── i18n ──
+const _TR = {
+  "es": {
+    "page-title": "Menú Desayunos",
+    "nav-back": "← Inicio",
+    "hero-sub": "Empieza el día con sabor. Desayunos completos, jugos naturales y bebidas de tradición paisa.",
+    "hero-badge1": "📍 Bocagrande, Cartagena",
+    "sb-label": "Categorías",
+    "cta-title": "¿Listo para pedir?",
+    "cta-sub": "Escríbenos al WhatsApp y te atendemos de inmediato",
+    "cta-btn": "Pedir por WhatsApp",
+    "foot-addr": "Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena",
+    "foot-back": "← Volver al inicio",
+    "count-suffix": "platos",
+    "scroll-top": "▲ Inicio",
+    "cat-Antojos para Empezar": "Antojos para Empezar",
+    "cat-Para compartir": "Para compartir",
+    "cat-Calentados": "Calentados",
+    "cat-Bandejas": "Bandejas",
+    "cat-Típicos": "Típicos",
+    "cat-Pa cucharear": "Pa cucharear",
+    "cat-Cazuelas": "Cazuelas",
+    "cat-Parrilla y Asados": "Parrilla y Asados",
+    "cat-Hamburguesas": "Hamburguesas",
+    "cat-Menú Infantil": "Menú Infantil",
+    "cat-Postres": "Postres",
+    "cat-Bebidas Tradicionales": "Bebidas Tradicionales",
+    "cat-Otras bebidas": "Otras bebidas",
+    "cat-Otras Bebidas": "Otras Bebidas",
+    "cat-Jugos Naturales": "Jugos Naturales",
+    "cat-Cervezas": "Cervezas",
+    "cat-Sangría": "Sangría",
+    "cat-Cocktail": "Cocktail",
+    "cat-Aguardiente": "Aguardiente",
+    "cat-De tradición": "De tradición",
+    "cat-Desayunos Con Huevo": "Desayunos Con Huevo",
+    "cat-Pa' Cucharear": "Pa' Cucharear",
+    "cat-Fritos": "Fritos",
+    "cat-Antojos Para Empezar": "Antojos Para Empezar"
+  },
+  "en": {
+    "page-title": "Breakfast Menu",
+    "nav-back": "← Home",
+    "hero-sub": "Start the day with flavor. Full breakfasts, fresh juices and traditional paisa drinks.",
+    "hero-badge1": "📍 Bocagrande, Cartagena",
+    "sb-label": "Categories",
+    "cta-title": "Ready to order?",
+    "cta-sub": "Message us on WhatsApp and we'll attend you right away",
+    "cta-btn": "Order via WhatsApp",
+    "foot-addr": "Cra. 2 (Av. San Martín) #7-61, Bocagrande, Cartagena",
+    "foot-back": "← Back to home",
+    "count-suffix": "dishes",
+    "scroll-top": "▲ Top",
+    "cat-Antojos para Empezar": "Starters",
+    "cat-Para compartir": "To Share",
+    "cat-Calentados": "Calentados",
+    "cat-Bandejas": "Bandejas",
+    "cat-Típicos": "Traditional Dishes",
+    "cat-Pa cucharear": "Soups &amp; Stews",
+    "cat-Cazuelas": "Cazuelas",
+    "cat-Parrilla y Asados": "Grill &amp; BBQ",
+    "cat-Hamburguesas": "Burgers",
+    "cat-Menú Infantil": "Kids' Menu",
+    "cat-Postres": "Desserts",
+    "cat-Bebidas Tradicionales": "Traditional Drinks",
+    "cat-Otras bebidas": "Other Drinks",
+    "cat-Otras Bebidas": "Other Drinks",
+    "cat-Jugos Naturales": "Fresh Juices",
+    "cat-Cervezas": "Beers",
+    "cat-Sangría": "Sangria",
+    "cat-Cocktail": "Cocktails",
+    "cat-Aguardiente": "Aguardiente",
+    "cat-De tradición": "Traditional Dishes",
+    "cat-Desayunos Con Huevo": "Egg Breakfasts",
+    "cat-Pa' Cucharear": "Soups &amp; Stews",
+    "cat-Fritos": "Fried Items",
+    "cat-Antojos Para Empezar": "Starters"
+  }
+};
+function applyLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(_TR[lang]&&_TR[lang][k]!==undefined) el.innerHTML=_TR[lang][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>
+    b.classList.toggle('active',b.dataset.lang===lang));
+  localStorage.setItem('pp_lang',lang);
+  document.documentElement.lang=lang;
+}
+function setLang(lang){ applyLang(lang); }
+(function initLang(){
+  const saved=localStorage.getItem('pp_lang')||'es';
+  applyLang(saved);
+})();
 </script>
 </body>
 </html>
