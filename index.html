@@ -61,6 +61,26 @@
     }
     .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.75); }
 
+    .btn-brown {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--brown-d); color: var(--yellow);
+      font-weight: 700; font-size: .95rem;
+      padding: 13px 28px; border-radius: 50px;
+      text-decoration: none; border: 2px solid var(--brown-d);
+      transition: all .2s;
+    }
+    .btn-brown:hover { background: var(--brown); transform: translateY(-2px); }
+
+    .btn-ghost-dark {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--brown-d);
+      font-weight: 700; font-size: .95rem;
+      padding: 13px 28px; border-radius: 50px;
+      text-decoration: none; border: 2px solid var(--brown-d);
+      transition: all .2s;
+    }
+    .btn-ghost-dark:hover { background: var(--border); transform: translateY(-2px); }
+
     .btn-wa {
       display: inline-flex; align-items: center; gap: 10px;
       background: #25D366; color: #fff;
@@ -279,27 +299,33 @@
 
     /* ── GALLERY ── */
     #galeria { background: var(--bg); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 20px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 20px; }
     .g-card {
       border-radius: var(--r); overflow: hidden; background: var(--card);
       box-shadow: var(--sh); transition: all .3s; cursor: default;
+      display: flex; flex-direction: column;
     }
     .g-card:hover { transform: translateY(-6px); box-shadow: var(--sh-h); }
+    .g-img-wrap {
+      width: 100%; aspect-ratio: 4/3; overflow: hidden;
+      background: linear-gradient(135deg,#f5e8d4,#e8d4b8); flex-shrink: 0;
+    }
+    .g-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .g-card:hover .g-img-wrap img { transform: scale(1.07); }
     .g-img {
-      width: 100%; height: 220px;
+      width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
       font-size: 3.2rem;
-      background: linear-gradient(135deg,#f5e8d4,#e8d4b8);
-      overflow: hidden;
     }
-    .g-img img { width: 100%; height: 100%; object-fit: cover; }
-    .g-info { padding: 16px; }
-    .g-name  { font-family: 'Playfair Display',serif; font-size: 1.08rem; color: var(--brown-d); margin-bottom: 4px; }
-    .g-desc  { font-size: .8rem; color: var(--text-l); line-height: 1.55; }
+    .g-info { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .g-name  { font-family: 'Playfair Display',serif; font-size: 1.05rem; color: var(--brown-d); line-height: 1.3; }
+    .g-desc  { font-size: .78rem; color: var(--text-l); line-height: 1.55; flex: 1; }
+    .g-footer { display: flex; align-items: center; gap: 8px; margin-top: auto; flex-wrap: wrap; }
+    .g-price { font-size: .9rem; font-weight: 800; color: var(--brown); }
     .g-badge {
       display: inline-block; background: var(--yellow); color: var(--brown-d);
       font-size: .68rem; font-weight: 700; padding: 2px 10px; border-radius: 50px;
-      margin-top: 8px; text-transform: uppercase; letter-spacing: .05em;
+      text-transform: uppercase; letter-spacing: .04em;
     }
 
     /* ── MENU ── */
@@ -336,6 +362,7 @@
     .bar-item:hover { background: rgba(255,215,0,.14); border-color: rgba(255,215,0,.4); }
     .bar-icon { font-size: 2rem; margin-bottom: 8px; }
     .bar-name { font-weight: 600; font-size: .88rem; color: var(--yellow); }
+    .bar-sub  { font-size: .72rem; color: rgba(255,255,255,.55); margin-top: 4px; line-height: 1.4; }
 
     /* ── NOSOTROS ── */
     #nosotros { background: var(--bg); }
@@ -437,7 +464,6 @@
     <ul class="nav-links">
       <li><a href="#menus">Menús</a></li>
       <li><a href="#galeria">Platos</a></li>
-      <li><a href="#menu">Ambiente</a></li>
       <li><a href="#bar">Bar</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#ubicacion">Ubicación</a></li>
@@ -568,91 +594,107 @@
     <div class="gallery-grid">
 
       <div class="g-card fi">
-        <div class="g-img">🍛</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/3zWx9CHHFr/w_576_3zWx9CHHFr_img_5259.jpg" alt="Bandeja Campesina con Carne" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🍱</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Bandeja Paisa</h3>
-          <p class="g-desc">El plato más icónico de Colombia: frijoles, chicharrón, carne molida, chorizo, huevo, arroz, aguacate y arepa.</p>
-          <span class="g-badge">⭐ Favorito</span>
+          <h3 class="g-name">Bandeja Campesina con Carne</h3>
+          <p class="g-desc">Un plato abundante que sabe a campo y tradición. Arroz blanco, frijoles con hogao, carne asada, arepa, aguacate, plátano maduro y ensalada.</p>
+          <div class="g-footer"><span class="g-price">$42.000</span><span class="g-badge">🍱 Bandeja</span></div>
         </div>
       </div>
 
       <div class="g-card fi">
-        <div class="g-img">🫕</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/c0JKfvs2a7/w_576_c0JKfvs2a7_img_5269.jpg" alt="Bandeja Campesina con Chicharrón" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🍱</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Cazuela Paisa</h3>
-          <p class="g-desc">Reconfortante cazuela con los sabores tradicionales de la región Antioqueña.</p>
+          <h3 class="g-name">Bandeja Campesina con Chicharrón</h3>
+          <p class="g-desc">Un plato que sabe a campo y a hogar. Con arroz blanco, frijoles con hogao, chicharrón crocante, arepa paisa y aguacate fresco.</p>
+          <div class="g-footer"><span class="g-price">$39.000</span><span class="g-badge">🍱 Bandeja</span></div>
         </div>
       </div>
 
       <div class="g-card fi">
-        <div class="g-img">🥩</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/oBGJKMonhx/w_576_oBGJKMonhx_img_5230.jpg" alt="Picada de la Casa" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🥩</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Picada Colombiana</h3>
-          <p class="g-desc">Chicharrón al barril, pollo, cerdo, chorizo, chinchulines, papa criolla, patacón, maduro, arepa, guacamole y hogao. Para compartir.</p>
-          <span class="g-badge">🔥 Para compartir</span>
+          <h3 class="g-name">Picada de la Casa</h3>
+          <p class="g-desc">La combinación perfecta para compartir. Chicharrón al barril, chorizo, morcilla, pollo, papa criolla, patacón, arepa y guacamole.</p>
+          <div class="g-footer"><span class="g-price">$110.000</span><span class="g-badge">👥 Para compartir</span></div>
         </div>
       </div>
 
       <div class="g-card fi">
-        <div class="g-img">🥓</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/B9OJl2w6cB/w_576_B9OJl2w6cB_img_5235.jpg" alt="Picada de Mar y Tierra" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🥩</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Chicharrón al Barril</h3>
-          <p class="g-desc">Crujiente y jugoso, preparado al estilo paisa tradicional. Una especialidad de la casa.</p>
-          <span class="g-badge">⭐ Especialidad</span>
+          <h3 class="g-name">Picada de Mar y Tierra</h3>
+          <p class="g-desc">Lo mejor del mar y la tierra en un solo plato. Camarones, pulpo, calamar, carne, cerdo y patacón. Una explosión de sabores caribeños.</p>
+          <div class="g-footer"><span class="g-price">$140.000</span><span class="g-badge">👥 Para compartir</span></div>
         </div>
       </div>
 
       <div class="g-card fi">
-        <div class="g-img">🥩</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/9FL2OSqJaS/w_576_9FL2OSqJaS_img_5244.jpg" alt="Calentado Montañero con Carne" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🍳</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Baby Beef</h3>
-          <p class="g-desc">Jugoso corte a la parrilla, acompañado de las mejores guarniciones colombianas.</p>
+          <h3 class="g-name">Calentado Montañero con Carne</h3>
+          <p class="g-desc">Un plato que sabe a hogar y tradición. Arroz con frijoles y hogao, carne asada, arepa paisa y aguacate fresco.</p>
+          <div class="g-footer"><span class="g-price">$39.000</span><span class="g-badge">🍳 Calentado</span></div>
         </div>
       </div>
 
       <div class="g-card fi">
-        <div class="g-img">🐟</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/1DjsTpn8Hn/w_576_1DjsTpn8Hn_img_5247.jpg" alt="Calentado Montañero con Chicharrón" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🍳</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Salmón de la Casa</h3>
-          <p class="g-desc">Preparado con receta exclusiva: equilibrio perfecto de mar y sazón caribeña.</p>
-          <span class="g-badge">🌊 Del mar</span>
+          <h3 class="g-name">Calentado Montañero con Chicharrón</h3>
+          <p class="g-desc">El desayuno que reconforta y llena de energía. Arroz con frijoles y hogao, chicharrón crocante, arepa paisa y aguacate.</p>
+          <div class="g-footer"><span class="g-price">$38.000</span><span class="g-badge">🍳 Calentado</span></div>
         </div>
       </div>
 
       <div class="g-card fi">
-        <div class="g-img">🦐</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/0JT9qUA1it/w_576_0JT9qUA1it_w_1200_9e30c4ipbc" alt="Cazuela Campesina" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🫕</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Arroz con Camarón</h3>
-          <p class="g-desc">Arroz cremoso con camarones frescos. Sabor caribeño en cada cucharada.</p>
+          <h3 class="g-name">Cazuela Campesina</h3>
+          <p class="g-desc">Una cazuela reconfortante con los sabores de la región paisa. Plato humeante de tradición auténtica colombiana.</p>
+          <div class="g-footer"><span class="g-price">$46.000</span><span class="g-badge">🫕 Cazuela</span></div>
         </div>
       </div>
 
       <div class="g-card fi">
-        <div class="g-img">🐠</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/NSaRhO0qST/w_576_NSaRhO0qST_6-jpg-2.jpeg" alt="Combo Parrillada Dúo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🔥</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Mojarra</h3>
-          <p class="g-desc">Frita o asada, acompañada de patacón, arroz con coco y ensalada. El sabor del Caribe.</p>
+          <h3 class="g-name">Combo Parrillada Dúo</h3>
+          <p class="g-desc">Para dos personas: lo mejor de la parrilla con cortes seleccionados, guarniciones típicas y sazón caribeña. Un festín completo.</p>
+          <div class="g-footer"><span class="g-price">$90.000</span><span class="g-badge">🔥 Parrilla</span></div>
         </div>
       </div>
 
       <div class="g-card fi">
-        <div class="g-img">🫓</div>
+        <div class="g-img-wrap">
+          <img src="https://images.cluvi.com/CoKKxW1aXu/w_576_CoKKxW1aXu_5-jpg-2.jpeg" alt="Combo Antojo Berraco" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🔥</div>'">
+        </div>
         <div class="g-info">
-          <h3 class="g-name">Patacón con Carne Desmechada</h3>
-          <p class="g-desc">Patacón crocante con carne desmechada, hogao y guacamole. Un clásico irresistible.</p>
-          <span class="g-badge">💛 Clásico</span>
+          <h3 class="g-name">Combo Antojo Berraco</h3>
+          <p class="g-desc">El antojo que te pone berraco. Un combo completo de parrilla con todo lo que necesitas para quedar feliz.</p>
+          <div class="g-footer"><span class="g-price">$49.000</span><span class="g-badge">🔥 Parrilla</span></div>
         </div>
       </div>
 
-      <div class="g-card fi">
-        <div class="g-img">🍳</div>
-        <div class="g-info">
-          <h3 class="g-name">Calentado con Chicharrón</h3>
-          <p class="g-desc">La mejor forma de empezar el día: calentado tradicional con chicharrón crujiente.</p>
-          <span class="g-badge">☀️ Desayuno</span>
-        </div>
-      </div>
-
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="menu-tipico.html" target="_blank" rel="noopener" class="btn-brown">Ver carta completa →</a>
     </div>
   </div>
 </section>
@@ -666,82 +708,84 @@
     <div class="menu-grid">
 
       <div class="m-card fi">
-        <div class="m-icon">⭐</div>
-        <div class="m-name">Especiales del día</div>
-        <div class="m-desc">Platos del chef con ingredientes frescos. Consultar disponibilidad.</div>
-        <div class="m-price">Consultar carta</div>
+        <div class="m-icon">😋</div>
+        <div class="m-name">Antojos para Empezar</div>
+        <div class="m-desc">Entradas ligeras para abrir el apetito al estilo paisa.</div>
+        <div class="m-price">11 platos</div>
       </div>
 
       <div class="m-card fi">
-        <div class="m-icon">🥗</div>
-        <div class="m-name">Entradas</div>
-        <div class="m-desc">Para abrir el apetito al estilo colombiano.</div>
-        <div class="m-price">Consultar carta</div>
+        <div class="m-icon">👥</div>
+        <div class="m-name">Para compartir</div>
+        <div class="m-desc">Picadas y platos grandes perfectos para toda la mesa.</div>
+        <div class="m-price">11 platos</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🍳</div>
+        <div class="m-name">Calentados</div>
+        <div class="m-desc">La tradición del calentado montañero con carne, cerdo o chicharrón.</div>
+        <div class="m-price">6 platos</div>
+      </div>
+
+      <div class="m-card fi">
+        <div class="m-icon">🍱</div>
+        <div class="m-name">Bandejas</div>
+        <div class="m-desc">Bandejas campesinas completas con carne, cerdo, pollo o chicharrón.</div>
+        <div class="m-price">5 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🇨🇴</div>
-        <div class="m-name">Platos típicos</div>
-        <div class="m-desc">Bandeja Paisa, Cazuela, Calentado y los grandes clásicos.</div>
-        <div class="m-price">Consultar carta</div>
+        <div class="m-name">Típicos</div>
+        <div class="m-desc">Los grandes clásicos de la cocina colombiana auténtica.</div>
+        <div class="m-price">17 platos</div>
       </div>
 
       <div class="m-card fi">
-        <div class="m-icon">🥩</div>
-        <div class="m-name">Carnes</div>
-        <div class="m-desc">Baby Beef, cortes a la parrilla y más opciones jugosas.</div>
-        <div class="m-price">Consultar carta</div>
+        <div class="m-icon">🥄</div>
+        <div class="m-name">Pa cucharear</div>
+        <div class="m-desc">Sopas y guisos de cuchara para reconfortar el alma.</div>
+        <div class="m-price">11 platos</div>
       </div>
 
       <div class="m-card fi">
-        <div class="m-icon">🍖</div>
-        <div class="m-name">Picadas</div>
-        <div class="m-desc">Perfectas para compartir. Picada Colombiana, chicharrón y más.</div>
-        <div class="m-price">Consultar carta</div>
+        <div class="m-icon">🫕</div>
+        <div class="m-name">Cazuelas</div>
+        <div class="m-desc">Cazuelas humeantes con la sazón paisa de siempre.</div>
+        <div class="m-price">10 platos</div>
       </div>
 
       <div class="m-card fi">
-        <div class="m-icon">🐟</div>
-        <div class="m-name">Pescados</div>
-        <div class="m-desc">Salmón, mojarra, arroz con camarón. Sabores del mar Caribe.</div>
-        <div class="m-price">Consultar carta</div>
-      </div>
-
-      <div class="m-card fi">
-        <div class="m-icon">👶</div>
-        <div class="m-name">Menú infantil</div>
-        <div class="m-desc">Opciones especiales pensadas para los más pequeños.</div>
-        <div class="m-price">Consultar carta</div>
+        <div class="m-icon">🔥</div>
+        <div class="m-name">Parrilla y Asados</div>
+        <div class="m-desc">Combos y cortes a la brasa con guarniciones típicas.</div>
+        <div class="m-price">6 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">🍔</div>
         <div class="m-name">Hamburguesas</div>
-        <div class="m-desc">Jugosas hamburguesas artesanales al estilo de la casa.</div>
-        <div class="m-price">Consultar carta</div>
+        <div class="m-desc">Hamburguesas artesanales al estilo de la casa.</div>
+        <div class="m-price">9 platos</div>
       </div>
 
       <div class="m-card fi">
         <div class="m-icon">☀️</div>
         <div class="m-name">Desayunos</div>
-        <div class="m-desc">Calentados, huevos, arepas y changua. El mejor comienzo.</div>
-        <div class="m-price">Consultar carta</div>
-      </div>
-
-      <div class="m-card fi">
-        <div class="m-icon">🍰</div>
-        <div class="m-name">Postres y café</div>
-        <div class="m-desc">Dulce final colombiano y café de la mejor calidad.</div>
-        <div class="m-price">Consultar carta</div>
+        <div class="m-desc">Calentados, huevos, arepas y más — disponibles en Menú Desayunos.</div>
+        <div class="m-price">Ver desayunos</div>
       </div>
 
       <div class="m-cta-box fi">
         <div>
-          <h3>¿Quieres ver la carta completa?</h3>
-          <p>Escríbenos por WhatsApp o visítanos directamente en Bocagrande</p>
+          <h3>Carta completa con fotos y precios</h3>
+          <p>Explora cada categoría, ve los precios y pide directamente</p>
         </div>
-        <a href="https://wa.me/573028581981?text=Hola%2C%20me%20gustaría%20ver%20la%20carta%20completa%20de%20Paisa%20Parrilla"
-           class="btn-y" target="_blank" rel="noopener">📲 Pedir carta</a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+          <a href="menu-tipico.html" target="_blank" rel="noopener" class="btn-y">🍱 Menú Típico</a>
+          <a href="menu-desayunos.html" target="_blank" rel="noopener" class="btn-ghost-dark">☀️ Desayunos</a>
+        </div>
       </div>
 
     </div>
@@ -752,14 +796,15 @@
 <section id="bar">
   <div class="container">
     <h2 class="sec-title fi">Bar &amp; Cócteles</h2>
-    <p class="sec-sub fi">Brinda con el mejor ambiente caribeño</p>
+    <p class="sec-sub fi">Brinda con el mejor ambiente caribeño — selección completa en el local</p>
     <div class="bar-grid">
-      <div class="bar-item fi"><div class="bar-icon">🍹</div><div class="bar-name">Cócteles</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🫙</div><div class="bar-name">Sangrías</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🍷</div><div class="bar-name">Vinos</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🥃</div><div class="bar-name">Whiskey</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🌵</div><div class="bar-name">Tequila</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🍺</div><div class="bar-name">Cervezas</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍹</div><div class="bar-name">Cócteles</div><div class="bar-sub">Daiquiri, Mojito y más</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍷</div><div class="bar-name">Sangría</div><div class="bar-sub">Sangría artesanal de la casa</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍺</div><div class="bar-name">Cervezas</div><div class="bar-sub">Artesanales y comerciales</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🥃</div><div class="bar-name">Aguardiente</div><div class="bar-sub">Amarillo y otras referencias</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🌵</div><div class="bar-name">Tequila</div><div class="bar-sub">Blanco, reposado y añejo</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🍾</div><div class="bar-name">Vinos y Espumosos</div><div class="bar-sub">Tintos, blancos y cava</div></div>
+      <div class="bar-item fi"><div class="bar-icon">🫙</div><div class="bar-name">Ron</div><div class="bar-sub">Zacapa y selección premium</div></div>
     </div>
   </div>
 </section>
@@ -908,7 +953,7 @@
     <div class="cta-btns fi">
       <a href="https://wa.me/573028581981?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20Paisa%20Parrilla%20%F0%9F%8D%BD%EF%B8%8F"
          class="btn-wa" target="_blank" rel="noopener">💬 Reservar por WhatsApp</a>
-      <a href="https://www.rappi.com.co" class="btn-outline-w" target="_blank" rel="noopener">🛵 Pedir en Rappi</a>
+      <a href="https://www.rappi.com.co/restaurantes/900370648-paisa-parrilla-restaurante" class="btn-outline-w" target="_blank" rel="noopener">🛵 Pedir en Rappi</a>
     </div>
   </div>
 </section>
