@@ -41,15 +41,24 @@
     .sec-sub   { text-align: center; color: var(--text-l); font-size: .97rem; margin-bottom: 48px; }
 
     /* ── BUTTONS ── */
+    @keyframes btnGlow {
+      0%,100% { box-shadow: 0 4px 18px rgba(255,215,0,.4); }
+      50%      { box-shadow: 0 6px 34px rgba(255,215,0,.75); }
+    }
+    @keyframes btnGlowW {
+      0%,100% { box-shadow: 0 4px 18px rgba(255,255,255,.3); }
+      50%      { box-shadow: 0 6px 34px rgba(255,255,255,.65); }
+    }
     .btn-y {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--yellow); color: var(--brown-d);
       font-weight: 700; font-size: .95rem;
       padding: 14px 28px; border-radius: 50px;
       box-shadow: 0 4px 20px rgba(255,215,0,.35);
-      transition: all .2s;
+      transition: transform .2s, background .2s;
+      animation: btnGlow 2s ease-in-out infinite;
     }
-    .btn-y:hover { background: var(--yellow-d); transform: translateY(-2px); box-shadow: 0 6px 30px rgba(255,215,0,.45); }
+    .btn-y:hover { background: var(--yellow-d); transform: translateY(-2px); }
 
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
@@ -80,6 +89,17 @@
       transition: all .2s;
     }
     .btn-ghost-dark:hover { background: var(--border); transform: translateY(-2px); }
+
+    .btn-white-glow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--brown-d);
+      font-weight: 700; font-size: .95rem;
+      padding: 13px 28px; border-radius: 50px;
+      text-decoration: none; border: 2px solid #fff;
+      transition: transform .2s, background .2s;
+      animation: btnGlowW 2s ease-in-out infinite;
+    }
+    .btn-white-glow:hover { background: rgba(255,255,255,.85); transform: translateY(-2px); }
 
     .btn-wa {
       display: inline-flex; align-items: center; gap: 10px;
@@ -661,17 +681,6 @@
 
       <div class="g-card fi">
         <div class="g-img-wrap">
-          <img src="https://images.cluvi.com/0JT9qUA1it/w_576_0JT9qUA1it_w_1200_9e30c4ipbc" alt="Cazuela Campesina" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🫕</div>'">
-        </div>
-        <div class="g-info">
-          <h3 class="g-name">Cazuela Campesina</h3>
-          <p class="g-desc">Una cazuela reconfortante con los sabores de la región paisa. Plato humeante de tradición auténtica colombiana.</p>
-          <div class="g-footer"><span class="g-price">$46.000</span><span class="g-badge">🫕 Cazuela</span></div>
-        </div>
-      </div>
-
-      <div class="g-card fi">
-        <div class="g-img-wrap">
           <img src="https://images.cluvi.com/NSaRhO0qST/w_576_NSaRhO0qST_6-jpg-2.jpeg" alt="Combo Parrillada Dúo" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'g-img\'>🔥</div>'">
         </div>
         <div class="g-info">
@@ -784,7 +793,7 @@
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
           <a href="menu-tipico.html" target="_blank" rel="noopener" class="btn-y">🍱 Menú Típico</a>
-          <a href="menu-desayunos.html" target="_blank" rel="noopener" class="btn-ghost-dark">☀️ Desayunos</a>
+          <a href="menu-desayunos.html" target="_blank" rel="noopener" class="btn-white-glow">☀️ Desayunos</a>
         </div>
       </div>
 
@@ -802,7 +811,6 @@
       <div class="bar-item fi"><div class="bar-icon">🍷</div><div class="bar-name">Sangría</div><div class="bar-sub">Sangría artesanal de la casa</div></div>
       <div class="bar-item fi"><div class="bar-icon">🍺</div><div class="bar-name">Cervezas</div><div class="bar-sub">Artesanales y comerciales</div></div>
       <div class="bar-item fi"><div class="bar-icon">🥃</div><div class="bar-name">Aguardiente</div><div class="bar-sub">Amarillo y otras referencias</div></div>
-      <div class="bar-item fi"><div class="bar-icon">🌵</div><div class="bar-name">Tequila</div><div class="bar-sub">Blanco, reposado y añejo</div></div>
       <div class="bar-item fi"><div class="bar-icon">🍾</div><div class="bar-name">Vinos y Espumosos</div><div class="bar-sub">Tintos, blancos y cava</div></div>
       <div class="bar-item fi"><div class="bar-icon">🫙</div><div class="bar-name">Ron</div><div class="bar-sub">Zacapa y selección premium</div></div>
     </div>
